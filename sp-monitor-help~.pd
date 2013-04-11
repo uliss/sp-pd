@@ -1,0 +1,26 @@
+#N canvas 0 22 524 269 10;
+#X obj 27 73 osc~ 440;
+#X obj 173 25 hsl 128 15 0 2 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 170 53 volume \$1;
+#X obj 247 74 hradio 15 1 0 4 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X msg 247 99 channel \$1;
+#X obj 341 74 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 341 99 mute \$1;
+#X obj 367 37 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 409 99 pan \$1;
+#X obj 98 73 osc~ 660;
+#X obj 27 116 sp-monitor~;
+#X connect 0 0 10 0;
+#X connect 1 0 2 0;
+#X connect 2 0 10 2;
+#X connect 3 0 4 0;
+#X connect 4 0 10 2;
+#X connect 5 0 6 0;
+#X connect 6 0 10 2;
+#X connect 7 0 8 0;
+#X connect 8 0 10 2;
+#X connect 9 0 10 1;
