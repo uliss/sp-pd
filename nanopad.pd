@@ -1,0 +1,606 @@
+#N canvas 183 63 956 637 10;
+#X obj 101 103 cnv 15 438 94 empty npad Nanopad 5 12 0 14 -257983 -66577
+0;
+#X obj 600 63 loadbang;
+#X obj 48 243 notein;
+#X floatatom 48 273 5 0 0 0 - - -;
+#X floatatom 102 273 5 0 0 0 - - -;
+#X floatatom 146 273 5 0 0 0 - - -;
+#X obj 300 110 cnv 15 30 30 empty pad2 empty 20 12 0 14 -233017 -262144
+0;
+#X obj 350 110 cnv 15 30 30 empty pad3 empty 20 12 0 14 -233017 -262144
+0;
+#X obj 400 110 cnv 15 30 30 empty pad4 empty 20 12 0 14 -233017 -262144
+0;
+#X obj 450 110 cnv 15 30 30 empty pad5 empty 20 12 0 14 -233017 -262144
+0;
+#X obj 250 110 cnv 15 30 30 empty pad1 empty 20 12 0 14 -233017 -262144
+0;
+#X obj 250 160 cnv 15 30 30 empty pad7 empty 20 12 0 14 -233017 -262144
+0;
+#X obj 300 160 cnv 15 30 30 empty pad8 empty 20 12 0 14 -233017 -262144
+0;
+#X obj 350 160 cnv 15 30 30 empty pad9 empty 20 12 0 14 -233017 -262144
+0;
+#X obj 400 160 cnv 15 30 30 empty pad10 empty 20 12 0 14 -233017 -262144
+0;
+#X obj 450 160 cnv 15 30 30 empty pad11 empty 20 12 0 14 -233017 -262144
+0;
+#X obj 500 110 cnv 15 30 30 empty pad6 empty 20 12 0 14 -233017 -262144
+0;
+#X obj 500 160 cnv 15 30 30 empty pad12 empty 20 12 0 14 -233017 -262144
+0;
+#X obj 600 101 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 0 22 450 300 init_buttons_size 0;
+#N canvas 297 171 143 260 all_buttons 0;
+#X obj -62 61 makefilename pad%d;
+#X msg -62 -60 12;
+#X obj -62 -29 until;
+#X obj -62 1 f 0;
+#X obj -62 33 + 1;
+#X msg -16 -59 0;
+#X obj -62 -120 inlet;
+#X obj -63 106 outlet;
+#X obj -62 -88 t b b;
+#X connect 0 0 7 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 3 1;
+#X connect 4 0 0 0;
+#X connect 5 0 3 1;
+#X connect 6 0 8 0;
+#X connect 8 0 1 0;
+#X connect 8 1 5 0;
+#X restore 30 86 pd all_buttons;
+#X obj 30 51 inlet;
+#X msg 30 184 \; \$1 vis_size \$2 \$2;
+#X obj 30 136 pack s 30;
+#X connect 0 0 3 0;
+#X connect 1 0 0 0;
+#X connect 3 0 2 0;
+#X restore 600 128 pd init_buttons_size;
+#N canvas 244 274 450 300 init_buttons_color 0;
+#X obj 130 37 inlet;
+#N canvas 297 171 461 376 all_buttons 0;
+#X obj -62 61 makefilename pad%d;
+#X msg -62 -60 12;
+#X obj -62 -29 until;
+#X obj -62 1 f 0;
+#X obj -62 33 + 1;
+#X msg -16 -59 0;
+#X obj -62 -120 inlet;
+#X obj -63 106 outlet;
+#X obj -62 -88 t b b;
+#X connect 0 0 7 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 3 1;
+#X connect 4 0 0 0;
+#X connect 5 0 3 1;
+#X connect 6 0 8 0;
+#X connect 8 0 1 0;
+#X connect 8 1 5 0;
+#X restore 130 73 pd all_buttons;
+#X msg 130 155 \; \$1 color \$2;
+#X obj 130 113 pack s 10;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 3 0 2 0;
+#X restore 600 150 pd init_buttons_color;
+#N canvas 174 91 585 560 init_buttons_pos 0;
+#X obj -97 -55 inlet;
+#X msg -103 244 \; \$1 pos \$2 \$3;
+#X msg -97 7 12;
+#X obj -97 38 until;
+#X obj -97 68 f 0;
+#X obj -97 100 + 1;
+#X msg -51 8 0;
+#X obj -97 -21 t b b;
+#X obj -103 202 pack s f f;
+#X obj -98 149 makefilename pad%d;
+#X obj 57 112 moses 7;
+#X obj 57 146 expr 100 + 10;
+#X obj 167 149 expr 100 + 60;
+#X obj 42 274 expr 440 + 100 - 7 * (30 + 20) + ($f1 - 6) * (30 + 20)
++ 10;
+#X obj 43 221 expr 440 + 100 - 7 * (30 + 20) + $f1 * (30 + 20) + 10
+;
+#X obj -35 100 t f f;
+#X connect 0 0 7 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 4 1;
+#X connect 5 0 15 0;
+#X connect 6 0 4 1;
+#X connect 7 0 2 0;
+#X connect 7 1 6 0;
+#X connect 8 0 1 0;
+#X connect 9 0 8 0;
+#X connect 10 0 11 0;
+#X connect 10 0 14 0;
+#X connect 10 1 12 0;
+#X connect 10 1 13 0;
+#X connect 11 0 8 2;
+#X connect 12 0 8 2;
+#X connect 13 0 8 1;
+#X connect 14 0 8 1;
+#X connect 15 0 9 0;
+#X connect 15 1 10 0;
+#X restore 600 173 pd init_buttons_pos;
+#X obj 48 303 s \$0-note;
+#X obj 102 335 outlet;
+#X text 215 197 1;
+#X text 244 197 2;
+#X text 273 197 3;
+#X text 302 197 4;
+#X text 330 197 5;
+#X text 359 197 6;
+#X text 388 197 7;
+#X text 416 197 8;
+#X text 445 197 9;
+#X text 471 197 10;
+#X text 501 197 11;
+#X text 518 197 12;
+#N canvas 177 85 397 538 scene2 0;
+#X obj 30 20 r \$0-note;
+#X obj 30 45 sel 60 61 62 63 64 65 66 67 68 69 70 71;
+#X obj 30 118 s \$0-nanopad-ctrl;
+#X obj 49 194 s \$0-nanopad-ctrl;
+#X msg 49 166 2 \$1;
+#X msg 30 93 1 \$1;
+#X obj 68 270 s \$0-nanopad-ctrl;
+#X msg 68 242 3 \$1;
+#X obj 87 344 s \$0-nanopad-ctrl;
+#X msg 87 316 4 \$1;
+#X obj 107 418 s \$0-nanopad-ctrl;
+#X msg 107 390 5 \$1;
+#X obj 126 494 s \$0-nanopad-ctrl;
+#X msg 126 466 6 \$1;
+#X obj 145 118 s \$0-nanopad-ctrl;
+#X msg 145 90 7 \$1;
+#X obj 164 194 s \$0-nanopad-ctrl;
+#X obj 184 270 s \$0-nanopad-ctrl;
+#X obj 203 343 s \$0-nanopad-ctrl;
+#X obj 222 419 s \$0-nanopad-ctrl;
+#X obj 241 494 s \$0-nanopad-ctrl;
+#X obj 30 70 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 145 68 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 49 143 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 164 143 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 164 166 8 \$1;
+#X msg 184 242 9 \$1;
+#X msg 203 315 10 \$1;
+#X msg 222 391 11 \$1;
+#X msg 241 466 12 \$1;
+#X obj 68 217 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 184 218 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 87 293 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 203 293 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 107 368 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 222 367 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 241 443 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 126 443 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X connect 0 0 1 0;
+#X connect 1 0 21 0;
+#X connect 1 1 23 0;
+#X connect 1 2 30 0;
+#X connect 1 3 32 0;
+#X connect 1 4 34 0;
+#X connect 1 5 37 0;
+#X connect 1 6 22 0;
+#X connect 1 7 24 0;
+#X connect 1 8 31 0;
+#X connect 1 9 33 0;
+#X connect 1 10 35 0;
+#X connect 1 11 36 0;
+#X connect 4 0 3 0;
+#X connect 5 0 2 0;
+#X connect 7 0 6 0;
+#X connect 9 0 8 0;
+#X connect 11 0 10 0;
+#X connect 13 0 12 0;
+#X connect 15 0 14 0;
+#X connect 21 0 5 0;
+#X connect 22 0 15 0;
+#X connect 23 0 4 0;
+#X connect 24 0 25 0;
+#X connect 25 0 16 0;
+#X connect 26 0 17 0;
+#X connect 27 0 18 0;
+#X connect 28 0 19 0;
+#X connect 29 0 20 0;
+#X connect 30 0 7 0;
+#X connect 31 0 26 0;
+#X connect 32 0 9 0;
+#X connect 33 0 27 0;
+#X connect 34 0 11 0;
+#X connect 35 0 28 0;
+#X connect 36 0 29 0;
+#X connect 37 0 13 0;
+#X restore 772 88 pd scene2;
+#X obj 704 318 r \$0-nanopad-ctrl;
+#X obj 704 341 unpack f f;
+#X obj 761 390 sel 1;
+#X obj 704 457 pack f f;
+#X msg 761 432 14;
+#X msg 788 433 10;
+#X msg 704 481 \; pad\$1 color \$2 \;;
+#X obj 761 365 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#N canvas 445 71 397 538 scene3 0;
+#X obj 30 20 r \$0-note;
+#X obj 30 118 s \$0-nanopad-ctrl;
+#X obj 49 194 s \$0-nanopad-ctrl;
+#X msg 49 166 2 \$1;
+#X msg 30 93 1 \$1;
+#X obj 68 270 s \$0-nanopad-ctrl;
+#X msg 68 242 3 \$1;
+#X obj 87 344 s \$0-nanopad-ctrl;
+#X msg 87 316 4 \$1;
+#X obj 107 418 s \$0-nanopad-ctrl;
+#X msg 107 390 5 \$1;
+#X obj 126 494 s \$0-nanopad-ctrl;
+#X msg 126 466 6 \$1;
+#X obj 145 118 s \$0-nanopad-ctrl;
+#X msg 145 90 7 \$1;
+#X obj 164 194 s \$0-nanopad-ctrl;
+#X obj 184 270 s \$0-nanopad-ctrl;
+#X obj 203 343 s \$0-nanopad-ctrl;
+#X obj 222 419 s \$0-nanopad-ctrl;
+#X obj 241 494 s \$0-nanopad-ctrl;
+#X obj 30 70 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 145 68 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 49 143 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 164 143 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 164 166 8 \$1;
+#X msg 184 242 9 \$1;
+#X msg 203 315 10 \$1;
+#X msg 222 391 11 \$1;
+#X msg 241 466 12 \$1;
+#X obj 68 217 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 184 218 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 87 293 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 203 293 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 107 368 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 222 367 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 241 443 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 126 443 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 30 45 sel 72 73 74 75 76 77 78 79 80 81 82 83;
+#X connect 0 0 37 0;
+#X connect 3 0 2 0;
+#X connect 4 0 1 0;
+#X connect 6 0 5 0;
+#X connect 8 0 7 0;
+#X connect 10 0 9 0;
+#X connect 12 0 11 0;
+#X connect 14 0 13 0;
+#X connect 20 0 4 0;
+#X connect 21 0 14 0;
+#X connect 22 0 3 0;
+#X connect 23 0 24 0;
+#X connect 24 0 15 0;
+#X connect 25 0 16 0;
+#X connect 26 0 17 0;
+#X connect 27 0 18 0;
+#X connect 28 0 19 0;
+#X connect 29 0 6 0;
+#X connect 30 0 25 0;
+#X connect 31 0 8 0;
+#X connect 32 0 26 0;
+#X connect 33 0 10 0;
+#X connect 34 0 27 0;
+#X connect 35 0 28 0;
+#X connect 36 0 12 0;
+#X connect 37 0 20 0;
+#X connect 37 1 22 0;
+#X connect 37 2 29 0;
+#X connect 37 3 31 0;
+#X connect 37 4 33 0;
+#X connect 37 5 36 0;
+#X connect 37 6 21 0;
+#X connect 37 7 23 0;
+#X connect 37 8 30 0;
+#X connect 37 9 32 0;
+#X connect 37 10 34 0;
+#X connect 37 11 35 0;
+#X restore 772 117 pd scene3;
+#N canvas 445 71 397 538 scene4 0;
+#X obj 30 20 r \$0-note;
+#X obj 30 118 s \$0-nanopad-ctrl;
+#X obj 49 194 s \$0-nanopad-ctrl;
+#X msg 49 166 2 \$1;
+#X msg 30 93 1 \$1;
+#X obj 68 270 s \$0-nanopad-ctrl;
+#X msg 68 242 3 \$1;
+#X obj 87 344 s \$0-nanopad-ctrl;
+#X msg 87 316 4 \$1;
+#X obj 107 418 s \$0-nanopad-ctrl;
+#X msg 107 390 5 \$1;
+#X obj 126 494 s \$0-nanopad-ctrl;
+#X msg 126 466 6 \$1;
+#X obj 145 118 s \$0-nanopad-ctrl;
+#X msg 145 90 7 \$1;
+#X obj 164 194 s \$0-nanopad-ctrl;
+#X obj 184 270 s \$0-nanopad-ctrl;
+#X obj 203 343 s \$0-nanopad-ctrl;
+#X obj 222 419 s \$0-nanopad-ctrl;
+#X obj 241 494 s \$0-nanopad-ctrl;
+#X obj 30 70 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 145 68 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 49 143 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 164 143 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 164 166 8 \$1;
+#X msg 184 242 9 \$1;
+#X msg 203 315 10 \$1;
+#X msg 222 391 11 \$1;
+#X msg 241 466 12 \$1;
+#X obj 68 217 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 184 218 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 87 293 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 203 293 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 107 368 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 222 367 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 241 443 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 126 443 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 30 45 sel 84 85 86 87 88 89 90 91 92 93 94 95;
+#X connect 0 0 37 0;
+#X connect 3 0 2 0;
+#X connect 4 0 1 0;
+#X connect 6 0 5 0;
+#X connect 8 0 7 0;
+#X connect 10 0 9 0;
+#X connect 12 0 11 0;
+#X connect 14 0 13 0;
+#X connect 20 0 4 0;
+#X connect 21 0 14 0;
+#X connect 22 0 3 0;
+#X connect 23 0 24 0;
+#X connect 24 0 15 0;
+#X connect 25 0 16 0;
+#X connect 26 0 17 0;
+#X connect 27 0 18 0;
+#X connect 28 0 19 0;
+#X connect 29 0 6 0;
+#X connect 30 0 25 0;
+#X connect 31 0 8 0;
+#X connect 32 0 26 0;
+#X connect 33 0 10 0;
+#X connect 34 0 27 0;
+#X connect 35 0 28 0;
+#X connect 36 0 12 0;
+#X connect 37 0 20 0;
+#X connect 37 1 22 0;
+#X connect 37 2 29 0;
+#X connect 37 3 31 0;
+#X connect 37 4 33 0;
+#X connect 37 5 36 0;
+#X connect 37 6 21 0;
+#X connect 37 7 23 0;
+#X connect 37 8 30 0;
+#X connect 37 9 32 0;
+#X connect 37 10 34 0;
+#X connect 37 11 35 0;
+#X restore 772 147 pd scene4;
+#N canvas 445 71 397 538 scene1 0;
+#X obj 30 20 r \$0-note;
+#X obj 30 118 s \$0-nanopad-ctrl;
+#X obj 49 194 s \$0-nanopad-ctrl;
+#X msg 49 166 2 \$1;
+#X msg 30 93 1 \$1;
+#X obj 68 270 s \$0-nanopad-ctrl;
+#X msg 68 242 3 \$1;
+#X obj 87 344 s \$0-nanopad-ctrl;
+#X msg 87 316 4 \$1;
+#X obj 107 418 s \$0-nanopad-ctrl;
+#X msg 107 390 5 \$1;
+#X obj 126 494 s \$0-nanopad-ctrl;
+#X msg 126 466 6 \$1;
+#X obj 145 118 s \$0-nanopad-ctrl;
+#X msg 145 90 7 \$1;
+#X obj 164 194 s \$0-nanopad-ctrl;
+#X obj 184 270 s \$0-nanopad-ctrl;
+#X obj 203 343 s \$0-nanopad-ctrl;
+#X obj 222 419 s \$0-nanopad-ctrl;
+#X obj 241 494 s \$0-nanopad-ctrl;
+#X obj 30 70 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 145 68 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 49 143 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 164 143 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 164 166 8 \$1;
+#X msg 184 242 9 \$1;
+#X msg 203 315 10 \$1;
+#X msg 222 391 11 \$1;
+#X msg 241 466 12 \$1;
+#X obj 68 217 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 184 218 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 87 293 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 203 293 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 107 368 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 222 367 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 241 443 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 126 443 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 30 45 sel 39 48 45 43 51 49 36 38 40 42 44 46;
+#X connect 0 0 37 0;
+#X connect 3 0 2 0;
+#X connect 4 0 1 0;
+#X connect 6 0 5 0;
+#X connect 8 0 7 0;
+#X connect 10 0 9 0;
+#X connect 12 0 11 0;
+#X connect 14 0 13 0;
+#X connect 20 0 4 0;
+#X connect 21 0 14 0;
+#X connect 22 0 3 0;
+#X connect 23 0 24 0;
+#X connect 24 0 15 0;
+#X connect 25 0 16 0;
+#X connect 26 0 17 0;
+#X connect 27 0 18 0;
+#X connect 28 0 19 0;
+#X connect 29 0 6 0;
+#X connect 30 0 25 0;
+#X connect 31 0 8 0;
+#X connect 32 0 26 0;
+#X connect 33 0 10 0;
+#X connect 34 0 27 0;
+#X connect 35 0 28 0;
+#X connect 36 0 12 0;
+#X connect 37 0 20 0;
+#X connect 37 1 22 0;
+#X connect 37 2 29 0;
+#X connect 37 3 31 0;
+#X connect 37 4 33 0;
+#X connect 37 5 36 0;
+#X connect 37 6 21 0;
+#X connect 37 7 23 0;
+#X connect 37 8 30 0;
+#X connect 37 9 32 0;
+#X connect 37 10 34 0;
+#X connect 37 11 35 0;
+#X restore 772 60 pd scene1;
+#X obj 322 272 outlet;
+#X obj 374 272 outlet;
+#X obj 424 272 outlet;
+#X obj 474 272 outlet;
+#X obj 524 272 outlet;
+#X obj 574 272 outlet;
+#X obj 624 272 outlet;
+#X obj 674 272 outlet;
+#X obj 724 272 outlet;
+#X obj 774 272 outlet;
+#X obj 827 272 outlet;
+#X obj 879 272 outlet;
+#X obj 322 239 r out1;
+#X obj 374 239 r out2;
+#X obj 424 239 r out3;
+#X obj 474 239 r out4;
+#X obj 524 239 r out5;
+#X obj 839 389 sel 1;
+#X msg 839 417 1;
+#X msg 883 417 0;
+#X obj 837 448 pack f f;
+#X msg 837 481 \; out\$1 \$2 \;;
+#X obj 574 240 r out6;
+#X obj 624 241 r out7;
+#X obj 674 242 r out8;
+#X obj 724 242 r out9;
+#X obj 774 242 r out10;
+#X obj 827 242 r out11;
+#X obj 879 243 r out12;
+#X obj 48 335 outlet;
+#X obj 204 270 outlet;
+#X text 101 197 note;
+#X text 131 197 vel;
+#X obj 262 271 outlet;
+#X text 158 197 x;
+#X text 187 197 y;
+#X obj 204 240 r \$0-x;
+#X obj 262 240 r \$0-y;
+#X obj 101 33 ctlin 1;
+#X obj 101 60 s \$0-x;
+#X obj 169 33 ctlin 2;
+#X obj 169 60 s \$0-y;
+#X obj 226 10 r \$0-x;
+#X obj 271 10 r \$0-y;
+#X obj 146 125 grid touchpad 90 0 127 60 0 127 0 1 1 10 6 245 73;
+#X obj 226 44 pack f f;
+#X msg 226 64 values \$1 \$2;
+#X connect 1 0 18 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X connect 2 2 5 0;
+#X connect 3 0 22 0;
+#X connect 3 0 77 0;
+#X connect 4 0 23 0;
+#X connect 18 0 19 0;
+#X connect 18 0 20 0;
+#X connect 18 0 21 0;
+#X connect 37 0 38 0;
+#X connect 38 0 40 0;
+#X connect 38 0 68 0;
+#X connect 38 1 44 0;
+#X connect 39 0 41 0;
+#X connect 39 1 42 0;
+#X connect 40 0 43 0;
+#X connect 41 0 40 1;
+#X connect 42 0 40 1;
+#X connect 44 0 39 0;
+#X connect 44 0 65 0;
+#X connect 60 0 48 0;
+#X connect 61 0 49 0;
+#X connect 62 0 50 0;
+#X connect 63 0 51 0;
+#X connect 64 0 52 0;
+#X connect 65 0 66 0;
+#X connect 65 1 67 0;
+#X connect 66 0 68 1;
+#X connect 67 0 68 1;
+#X connect 68 0 69 0;
+#X connect 70 0 53 0;
+#X connect 71 0 54 0;
+#X connect 72 0 55 0;
+#X connect 73 0 56 0;
+#X connect 74 0 57 0;
+#X connect 75 0 58 0;
+#X connect 76 0 59 0;
+#X connect 84 0 78 0;
+#X connect 85 0 81 0;
+#X connect 86 0 87 0;
+#X connect 88 0 89 0;
+#X connect 90 0 93 0;
+#X connect 91 0 93 1;
+#X connect 93 0 94 0;
+#X connect 94 0 92 0;
+#X coords 0 -1 1 1 440 115 1 100 100;
