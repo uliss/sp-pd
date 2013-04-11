@@ -1,0 +1,10 @@
+#N canvas 420 249 299 233 10;
+#X obj 76 71 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 76 181 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 76 132 sp-bangonce;
+#X msg 106 90 reset;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 0;

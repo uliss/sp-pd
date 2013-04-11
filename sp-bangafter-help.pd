@@ -1,0 +1,11 @@
+#N canvas 509 147 450 300 10;
+#X obj 100 84 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 100 199 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 146 95 reset;
+#X obj 100 135 sp-bangafter 2;
+#X text 127 197 Bang on third time;
+#X connect 0 0 3 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
