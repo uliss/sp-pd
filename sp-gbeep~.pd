@@ -1,0 +1,9 @@
+#N canvas 304 261 450 300 10;
+#X obj 101 203 outlet~;
+#X obj 101 164 sp-beep~ \$1;
+#X obj 194 103 bng 12 250 50 0 \$0-beep-s \$0-beep-r empty 17 7 0 10
+-262144 -1 -1;
+#X obj 101 135 r \$0-beep-s;
+#X connect 1 0 0 0;
+#X connect 3 0 1 0;
+#X coords 0 -1 1 1 110 18 1 100 100;
