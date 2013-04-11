@@ -1,0 +1,19 @@
+#N canvas 639 68 523 348 10;
+#X obj 101 112 +dsp;
+#X obj 207 52 hsl 128 15 0 2 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 600 1;
+#X obj 101 79 osc~ 440;
+#X obj 152 21 phasor~ 200;
+#X obj 152 49 *~ 0.5;
+#X msg 267 127 save start;
+#X msg 269 161 save stop;
+#X msg 269 189 save unknown;
+#X msg 261 81 file save1.wav;
+#X connect 1 0 0 2;
+#X connect 2 0 0 0;
+#X connect 3 0 4 0;
+#X connect 4 0 0 1;
+#X connect 5 0 0 2;
+#X connect 6 0 0 2;
+#X connect 7 0 0 2;
+#X connect 8 0 0 2;
