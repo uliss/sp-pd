@@ -145,7 +145,7 @@ Click 0 -9 0 10 -261682 -1 -1 5950 1;
 #X msg 99 61 \$1 20;
 #X obj 99 85 line~;
 #X obj 25 161 *~;
-#X obj 99 40 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 99 40 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X msg 159 59 set \$1;
 #X obj 110 178 pvu~;
@@ -188,7 +188,7 @@ Click 0 -9 0 10 -261682 -1 -1 5950 1;
 #X connect 22 0 14 0;
 #X restore 943 100 pd viola1;
 #X obj 445 -99 tgl 15 0 \$0-viola1-tgl-s \$0-viola1-tgl-r 1 25 7 0
-14 -262144 -1 -4160 1 1;
+14 -262144 -1 -4160 0 1;
 #X obj 445 -73 bng 15 250 50 0 \$0-viola1-test-s \$0-viola1-test-r
 empty 17 7 0 10 -262144 -1 -1;
 #N canvas 135 394 579 300 viola2 0;
@@ -198,7 +198,7 @@ empty 17 7 0 10 -262144 -1 -1;
 #X floatatom 61 80 7 0 0 0 - - -;
 #X obj 160 147 line~;
 #X msg 160 122 \$1 20;
-#X obj 160 98 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 160 98 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 44 199 *~;
 #X obj 133 226 pvu~;
@@ -250,11 +250,11 @@ empty 17 7 0 10 -262144 -1 -1;
 #X connect 27 0 17 0;
 #X restore 943 130 pd viola2;
 #X obj 564 -99 tgl 15 0 \$0-viola2-tgl-s \$0-viola2-tgl-r 2 25 7 0
-14 -262144 -1 -4160 1 1;
+14 -262144 -1 -4160 0 1;
 #X obj 564 -73 bng 15 250 50 0 \$0-viola2-test-s \$0-viola2-test-r
 empty 17 7 0 10 -262144 -1 -1;
 #X obj 688 -99 tgl 15 0 \$0-viola3-tgl-s \$0-viola3-tgl-r 3 25 7 0
-14 -262144 -1 -4160 1 1;
+14 -262144 -1 -4160 0 1;
 #X obj 688 -73 bng 15 250 50 0 \$0-viola3-test-s \$0-viola3-test-r
 empty 17 7 0 10 -262144 -1 -1;
 #N canvas 380 287 579 300 viola3 0;
@@ -263,7 +263,7 @@ empty 17 7 0 10 -262144 -1 -1;
 #X floatatom 61 80 7 0 0 0 - - -;
 #X obj 160 147 line~;
 #X msg 160 122 \$1 20;
-#X obj 160 98 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 160 98 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 44 199 *~;
 #X obj 113 216 pvu~;
@@ -362,7 +362,7 @@ empty -2 -6 0 8 -262144 -1 -1 7150 1;
 #X text 586 -74 test viola 2;
 #X text 711 -74 test viola 3;
 #N canvas 431 284 424 250 delay 0;
-#X obj 171 -36 tgl 15 0 empty empty empty 17 7 0 10 -204786 -1 -1 1
+#X obj 171 -36 tgl 15 0 empty empty empty 17 7 0 10 -204786 -1 -1 0
 1;
 #X obj 125 71 *~;
 #X obj 171 25 line~;
@@ -399,8 +399,8 @@ empty -2 -6 0 8 -262144 -1 -1 7150 1;
 #X connect 17 0 1 0;
 #X restore 943 280 pd delay;
 #X obj 863 -232 tgl 30 0 \$0-delay-tgl-s \$0-delay-tgl-r Delay[d] 40
-13 0 22 -204800 -4160 -1 1 1;
-#N canvas 121 265 585 439 init 0;
+13 0 22 -204800 -4160 -1 0 1;
+#N canvas 121 265 585 439 init 1;
 #X obj 4 137 expr 1000 * 60 / $f1;
 #X obj -142 55 loadbang;
 #X obj -67 57 bng 15 250 50 0 empty empty init 19 7 0 13 -262144 -1
@@ -428,7 +428,7 @@ empty -2 -6 0 8 -262144 -1 -1 7150 1;
 #X obj 215 359 s \$0-click-start-tgl-r;
 #X obj 201 384 s \$0-input-tgl-r;
 #X obj -142 109 int \$0;
-#X msg -142 145 \; \$1-latency 20 \; \$1-load_tempo 160 \; \$1-click-vol-r
+#X msg -142 145 \; \$1-latency 15 \; \$1-load_tempo 164 \; \$1-click-vol-r
 0.2 \; \$1-set_v1_vol 0.5 \; \$1-set_v2_vol 0.6 \; \$1-set_v3_vol 0.6
 \; \$1-set_fb_vol 0.4 \; \$1-viola1-pan-r 0 \; \$1-viola2-pan-r -20
 \; \$1-viola3-pan-r 20 \; pd dsp 1;
