@@ -1,0 +1,8 @@
+#N canvas 76 225 450 300 10;
+#X symbolatom 122 170 20 0 0 0 - - -;
+#X obj 122 122 sp-ms2time;
+#X msg 122 65 59999;
+#X msg 176 65 599999;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 3 0 1 0;
