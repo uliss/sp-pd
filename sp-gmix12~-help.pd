@@ -1,0 +1,15 @@
+#N canvas 0 22 610 279 10;
+#X obj 90 86 sp-gmix12~;
+#X obj 90 29 osc~ 440;
+#X connect 1 0 0 0;
+#X connect 1 0 0 2;
+#X connect 1 0 0 4;
+#X connect 1 0 0 6;
+#X connect 1 0 0 8;
+#X connect 1 0 0 10;
+#X connect 1 0 0 12;
+#X connect 1 0 0 14;
+#X connect 1 0 0 16;
+#X connect 1 0 0 18;
+#X connect 1 0 0 20;
+#X connect 1 0 0 22;

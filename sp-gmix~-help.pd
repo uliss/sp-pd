@@ -1,0 +1,22 @@
+#N canvas 600 157 400 310 10;
+#X obj 99 23 osc~ 440;
+#X obj 99 236 env~;
+#X floatatom 99 277 5 0 0 0 - - -;
+#X obj 99 61 sp-gmix~;
+#X obj 164 24 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 164 44 mute \$1;
+#X msg 244 44 volume \$1;
+#X obj 247 15 hsl 128 15 0 3 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 7700 1;
+#X obj 37 253 dbtorms;
+#X floatatom 37 277 5 0 0 0 - - -;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X connect 1 0 8 0;
+#X connect 3 0 1 0;
+#X connect 4 0 5 0;
+#X connect 5 0 3 1;
+#X connect 6 0 3 1;
+#X connect 7 0 6 0;
+#X connect 8 0 9 0;
