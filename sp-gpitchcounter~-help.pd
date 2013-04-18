@@ -1,0 +1,4 @@
+#N canvas 0 22 303 344 10;
+#X obj 76 102 sp-gpitchcounter~;
+#X obj 76 57 adc~;
+#X connect 1 0 0 0;
