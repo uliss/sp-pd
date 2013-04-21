@@ -1,29 +1,25 @@
-#N canvas 279 124 534 352 10;
+#N canvas 330 152 543 376 10;
 #X obj 124 153 sp-delay~ 5000;
 #X text 204 20 creation: [sp-delay~ max_delay_ms];
 #X msg 205 118 delay \$1;
 #X msg 354 118 feedback \$1;
 #X obj 208 85 hsl 128 15 0 3000 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 5500 1;
+-1 -1 2700 1;
 #X obj 357 86 hsl 128 15 0 100 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 2100 1;
+-1 -1 11200 1;
 #X floatatom 439 119 5 0 0 0 - - -;
 #X floatatom 271 118 5 0 0 0 - - -;
-#X obj 34 86 sp-ghub2~;
-#X obj 34 23 adc~;
-#X obj 84 23 loadbang;
-#X msg 84 50 mute 1;
-#X obj 124 207 +dsp;
 #X text 353 59 feedback (%);
 #X text 204 59 delay (ms);
-#X connect 0 0 12 0;
+#X obj 53 84 sp-gbeep~ 440;
+#X obj 124 187 pvu~;
+#X obj 125 216 vu 15 120 empty empty -1 -8 0 10 -66577 -1 1 0;
+#X connect 0 0 11 0;
 #X connect 2 0 0 1;
 #X connect 3 0 0 1;
 #X connect 4 0 2 0;
 #X connect 4 0 7 0;
 #X connect 5 0 3 0;
 #X connect 5 0 6 0;
-#X connect 8 0 0 0;
-#X connect 9 0 8 0;
-#X connect 10 0 11 0;
-#X connect 11 0 8 2;
+#X connect 10 0 0 0;
+#X connect 11 0 12 0;
