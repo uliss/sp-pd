@@ -232,7 +232,7 @@
 -2 -8 0 10 -262144 -1 -1 4233 1;
 #X obj 426 401 hsl 128 10 -45 45 0 0 \$0-bass-pan-s \$0-bass-pan-r
 bass -2 -8 0 10 -262144 -1 -1 6350 1;
-#N canvas 33 75 415 348 init 1;
+#N canvas 33 75 415 348 init 0;
 #X obj 51 38 loadbang;
 #X obj 51 71 f \$0;
 #X obj 135 56 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -253,7 +253,7 @@ volume 0.7 \, mute 1 \; \$1-click-ctrl volume 1 \, mute 1 \; \$1-attack-on-r
 #X obj 30 109 tgl 25 0 \$0-tgl-start-s \$0-tgl-start-r Start_[s] 30
 10 0 20 -258699 -1 -166441 0 1;
 #X obj 30 244 tgl 15 0 \$0-attack-on-s \$0-attack-on-r start_on_attack
-20 8 0 10 -262144 -1 -1 1 1;
+20 8 0 10 -262144 -1 -1 0 1;
 #N canvas 638 48 451 498 stop-ctrl 1;
 #X obj 283 91 r \$0-tempo;
 #X obj 283 119 sp-bpm2ms;
@@ -307,13 +307,13 @@ volume 0.7 \, mute 1 \; \$1-click-ctrl volume 1 \, mute 1 \; \$1-attack-on-r
 #X connect 21 0 6 0;
 #X restore 801 434 pd stop-ctrl;
 #X obj 421 46 hradio 17 1 0 8 \$0-bar-pos-s \$0-bar-pos-r empty 0 -8
-0 10 -262144 -1 -1 7;
+0 10 -262144 -1 -1 0;
 #X obj 30 214 bng 15 250 50 0 \$0-bar-pos-stop-s \$0-bar-pos-stop-r
 stop_bar_pos[p] 20 7 0 10 -262130 -1 -1;
 #X obj 30 184 bng 15 250 50 0 \$0-bar-pos-sync-s \$0-bar-pos-sync-r
 bar_sync[y] 20 7 0 10 -203904 -1 -1;
 #X obj 31 159 tgl 15 0 \$0-auto-stop-s \$0-auto-stop-r auto_stop[a]
-20 7 0 10 -261234 -1 -1 1 1;
+20 7 0 10 -261234 -1 -1 0 1;
 #N canvas 392 332 291 309 autostart 0;
 #X obj 74 56 env~ 1024;
 #X obj 74 216 sp-bangonce;
@@ -349,12 +349,12 @@ bar_sync[y] 20 7 0 10 -203904 -1 -1;
 #X obj 221 133 outlet;
 #X obj 145 48 r~ \$0-right~;
 #X obj 65 93 r~ \$0-left~;
-#X msg 221 99 1;
 #X obj 221 77 r \$0-master-level;
+#X msg 221 104 volume \$1;
 #X connect 3 0 1 0;
 #X connect 4 0 0 0;
-#X connect 5 0 2 0;
-#X connect 6 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 2 0;
 #X coords 0 -1 1 1 110 20 1 10 10;
 #X restore 278 308 pd dsponnect;
 #X obj 275 116 vu 10 120 \$0-vu-r empty -1 -8 0 10 -66577 -1 1 0;

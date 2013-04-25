@@ -1,0 +1,17 @@
+#N canvas 0 22 510 359 10;
+#X obj 170 209 +dsp;
+#X obj 170 142 sp-glimiter~;
+#X obj 124 47 osc~ 440;
+#X obj 124 87 *~;
+#X obj 196 66 dbtorms;
+#X floatatom 196 24 5 0 0 0 - - -;
+#X obj 270 43 sp-gbeep~ 440;
+#X obj 270 82 *~ 20;
+#X connect 1 0 0 0;
+#X connect 1 1 0 1;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X connect 4 0 3 1;
+#X connect 5 0 4 0;
+#X connect 6 0 7 0;
+#X connect 7 0 1 1;

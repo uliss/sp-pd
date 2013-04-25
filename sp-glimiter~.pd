@@ -1,0 +1,45 @@
+#N canvas 541 375 599 301 10;
+#X obj 183 61 inlet~;
+#X obj 292 60 inlet~;
+#X obj 223 121 limiter~ 0 1;
+#X obj 183 163 z~ 32;
+#X obj 315 163 z~ 32;
+#X obj 183 195 *~;
+#X obj 315 195 *~;
+#X obj 183 229 outlet~;
+#X obj 315 228 outlet~;
+#X obj 11 26 cnv 15 108 34 empty empty empty 20 12 0 14 -128992 -66577
+0;
+#X obj 17 47 hsl 96 10 70 120 0 0 \$0-threshold-s \$0-threshold-r threshold
+-2 -8 0 10 -262144 -1 -262144 1900 1;
+#X obj 79 30 nbx 3 14 -1e+37 1e+37 0 0 \$0-threshold-num-s \$0-threshold-num-r
+empty 0 -8 0 10 -262144 -1 -1 80 256;
+#X obj 368 7 inlet;
+#X obj 368 27 clip 70 120;
+#X msg 368 104 limit \$1;
+#X obj 368 53 f;
+#X obj 461 12 loadbang;
+#X msg 461 36 100;
+#X msg 419 70 set \$1;
+#X connect 0 0 2 0;
+#X connect 0 0 3 0;
+#X connect 1 0 2 1;
+#X connect 1 0 4 0;
+#X connect 2 0 5 1;
+#X connect 2 0 6 1;
+#X connect 3 0 5 0;
+#X connect 4 0 6 0;
+#X connect 5 0 7 0;
+#X connect 6 0 8 0;
+#X connect 10 0 14 0;
+#X connect 10 0 11 0;
+#X connect 12 0 13 0;
+#X connect 13 0 15 0;
+#X connect 14 0 2 0;
+#X connect 15 0 14 0;
+#X connect 15 0 18 0;
+#X connect 15 0 11 0;
+#X connect 16 0 17 0;
+#X connect 17 0 15 0;
+#X connect 18 0 10 0;
+#X coords 0 -1 1 1 110 52 1 10 10;

@@ -4,7 +4,7 @@
 #X declare -lib sp-pd;
 #X declare -lib GEM;
 #X obj 335 -103 tgl 15 0 \$0-click-start-tgl-s \$0-click-start-tgl-r
-M 30 7 0 14 -261681 -1 -258699 1 1;
+M 30 7 0 14 -261681 -1 -258699 0 1;
 #X obj 445 -233 vsl 15 120 0.05 2 1 0 \$0-v1_vol \$0-set_v1_vol Viola1
 0 -9 0 10 -204786 -1 -1 7428 1;
 #X obj 474 -233 vu 15 120 \$0-viola1-ind-r empty -1 -8 0 10 -66577
@@ -19,10 +19,10 @@ M 30 7 0 14 -261681 -1 -258699 1 1;
 -1 1 0;
 #X obj 786 -233 vsl 15 120 0 0.7 0 0 \$0-feedback_vol \$0-set_fb_vol
 Feedback 0 -9 0 10 -204800 -1 -1 6800 1;
-#X obj 212 242 tgl 15 0 empty empty mic 19 7 0 13 -261234 -1 -258113
+#X obj 42 322 tgl 15 0 empty empty mic 19 7 0 13 -261234 -1 -258113
 0 1;
-#X text 229 259 KEY: "V";
-#X obj 208 175 +dsp;
+#X text 59 339 KEY: "V";
+#X obj 38 255 +dsp;
 #N canvas 523 22 496 388 osc 0;
 #X obj 44 39 sp-osc 8000;
 #X obj 44 266 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -59,7 +59,6 @@ Feedback 0 -9 0 10 -204800 -1 -1 6800 1;
 #X connect 9 6 7 0;
 #X connect 9 7 15 0;
 #X restore 943 6 pd osc;
-#X msg 311 148 1;
 #N canvas 448 224 507 328 click 0;
 #X obj 16 107 sp-metro 144;
 #X obj 16 188 *~;
@@ -207,7 +206,7 @@ empty 17 7 0 10 -262144 -1 -1;
 #X floatatom 61 80 7 0 0 0 - - -;
 #X obj 170 147 line~;
 #X msg 170 122 \$1 20;
-#X obj 170 98 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 170 98 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 44 199 *~;
 #X obj 113 296 pvu~;
@@ -266,11 +265,11 @@ empty 17 7 0 10 -262144 -1 -1;
 #X connect 31 0 0 0;
 #X restore 943 126 pd viola2;
 #X obj 564 -103 tgl 15 0 \$0-viola2-tgl-s \$0-viola2-tgl-r 2 25 7 0
-14 -262144 -1 -4160 1 1;
+14 -262144 -1 -4160 0 1;
 #X obj 564 -77 bng 15 250 50 0 \$0-viola2-test-s \$0-viola2-test-s
 empty 17 7 0 10 -262144 -1 -1;
 #X obj 688 -103 tgl 15 0 \$0-viola3-tgl-s \$0-viola3-tgl-r 3 25 7 0
-14 -262144 -1 -4160 1 1;
+14 -262144 -1 -4160 0 1;
 #X obj 688 -77 bng 15 250 50 0 \$0-viola3-test-s \$0-viola3-test-r
 empty 17 7 0 10 -262144 -1 -1;
 #N canvas 339 132 602 371 viola3 0;
@@ -279,7 +278,7 @@ empty 17 7 0 10 -262144 -1 -1;
 #X floatatom 61 80 7 0 0 0 - - -;
 #X obj 170 147 line~;
 #X msg 170 122 \$1 20;
-#X obj 170 98 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 170 98 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 44 199 *~;
 #X obj 133 286 pvu~;
@@ -414,7 +413,7 @@ empty -2 -6 0 8 -262144 -1 -1 7150 1;
 #X connect 17 0 16 0;
 #X restore 943 276 pd delay;
 #X obj 863 -236 tgl 30 0 \$0-delay-tgl-s \$0-delay-tgl-r Delay[d] 40
-13 0 22 -204800 -4160 -1 1 1;
+13 0 22 -204800 -4160 -1 0 1;
 #N canvas 83 73 803 622 init 0;
 #X obj 124 150 expr 1000 * 60 / $f1;
 #X obj -23 96 loadbang;
@@ -501,7 +500,7 @@ empty -2 -6 0 8 -262144 -1 -1 7150 1;
 #X connect 36 0 37 0;
 #X restore 943 -24 pd init;
 #X obj 16 -167 tgl 30 0 \$0-tgl-start-s \$0-tgl-start-r Start[s] 35
-14 0 20 -204786 -13381 -1 1 1;
+14 0 20 -204786 -13381 -1 0 1;
 #N canvas 395 230 519 260 output 0;
 #X obj 424 22 loadbang;
 #X obj 48 114 sp-monitor~;
@@ -522,11 +521,11 @@ empty -2 -6 0 8 -262144 -1 -1 7150 1;
 #X restore 764 211 pd output;
 #X text 372 -48 Panning:;
 #X text 858 -195 Delay and click are connected;
-#X obj 347 148 r \$0-vol;
+#X obj 243 212 r \$0-vol;
 #X obj 17 -44 vradio 30 1 0 3 \$0-settings-s \$0-settings-r Settings:
 0 -15 0 18 -262144 -1 -1 0;
-#X obj 259 105 catch~ \$0-out_right;
-#X obj 208 84 catch~ \$0-out_left;
+#X obj 89 185 catch~ \$0-out_right;
+#X obj 38 164 catch~ \$0-out_left;
 #X obj 59 -44 comment 100 18 Verdana s 0 0 0 0 home;
 #X obj 15 -257 comment 200 25 Verdana ? 0 0 0 0 [SPIRAL];
 #X obj 59 -14 comment 200 18 Verdana ? 0 0 0 0 concert;
@@ -555,7 +554,7 @@ empty -2 -6 0 8 -262144 -1 -1 7150 1;
 #X obj 165 31 sp-key d;
 #X obj 165 58 s \$0-key-delay;
 #X obj 284 30 sp-key s;
-#X obj 284 56 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 284 56 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 284 79 s \$0-key-start;
 #X obj 24 59 s \$0-key-click;
@@ -573,8 +572,8 @@ empty -2 -6 0 8 -262144 -1 -1 7150 1;
 #X connect 9 0 10 0;
 #X connect 11 0 12 0;
 #X restore 764 185 pd keys;
-#X obj 311 125 r \$0-signal-init;
-#N canvas 476 347 450 300 video 1;
+#X obj 141 205 r \$0-signal-init;
+#N canvas 476 347 450 300 video 0;
 #X obj 51 200 spiral-video;
 #X obj 51 52 r \$0-signal-start;
 #X obj 51 86 sel 1;
@@ -586,11 +585,12 @@ empty -2 -6 0 8 -262144 -1 -1 7150 1;
 #X connect 3 0 0 0;
 #X connect 4 0 0 0;
 #X restore 764 238 pd video;
-#X obj 256 135 hip~ 5;
-#X connect 12 0 10 2;
-#X connect 46 0 10 2;
-#X connect 48 0 57 0;
-#X connect 49 0 10 0;
-#X connect 55 0 12 0;
-#X connect 57 0 10 1;
+#X msg 141 228 volume 1;
+#X msg 243 238 volume \$1;
+#X connect 45 0 57 0;
+#X connect 47 0 10 1;
+#X connect 48 0 10 0;
+#X connect 54 0 56 0;
+#X connect 56 0 10 2;
+#X connect 57 0 10 2;
 #X coords 0 0 1 1 85 60 0;
