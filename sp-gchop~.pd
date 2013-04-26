@@ -1,0 +1,58 @@
+#N canvas 0 22 703 432 10;
+#X obj 278 195 sigpack/chop~;
+#X obj 185 68 inlet~;
+#X obj 278 281 outlet~;
+#X obj 508 20 inlet;
+#X obj 508 49 route freq factor;
+#X obj 557 77 clip -2 2;
+#X obj 508 113 clip 0 22050;
+#X obj 315 170 osc~ 2;
+#X obj 11 26 cnv 15 108 56 empty empty empty 20 12 0 14 -99865 -66577
+0;
+#X obj 17 47 hsl 98 10 0 30 0 0 \$0-freq-s \$0-freq-r freq -2 -10 0
+10 -262144 -1 -262144 647 1;
+#X obj 72 30 nbx 4 14 -1e+37 1e+37 0 0 \$0-freq-ind-s \$0-freq-ind-r
+empty 0 -8 0 10 -262144 -1 -1 2.00103 256;
+#X obj 508 168 s \$0-freq-r;
+#X obj 315 119 r \$0-freq-s;
+#X obj 66 65 hradio 10 1 0 5 \$0-mode-s \$0-mode-r factor -50 5 0 10
+-262144 -1 -262144 2;
+#X msg 508 139 set \$1;
+#X obj 588 168 s \$0-freq-ind-r;
+#X obj 398 149 r \$0-mode-s;
+#X obj 398 178 - 2;
+#X obj 607 108 + 2;
+#X msg 607 133 set \$1;
+#X obj 607 206 s \$0-mode-r;
+#X obj 308 19 loadbang;
+#X msg 308 43 2;
+#X obj 308 67 s \$0-mode-r;
+#X obj 106 13 tgl 10 0 \$0-skip-s \$0-skip-r s -8 5 0 10 -262130 -1
+-1 0 1;
+#X obj 391 67 s \$0-freq-r;
+#X obj 185 129 sp-switch~;
+#X connect 0 0 2 0;
+#X connect 1 0 26 0;
+#X connect 3 0 4 0;
+#X connect 4 0 6 0;
+#X connect 4 1 5 0;
+#X connect 5 0 0 2;
+#X connect 5 0 18 0;
+#X connect 6 0 14 0;
+#X connect 6 0 7 0;
+#X connect 7 0 0 1;
+#X connect 9 0 10 0;
+#X connect 12 0 7 0;
+#X connect 14 0 11 0;
+#X connect 14 0 15 0;
+#X connect 16 0 17 0;
+#X connect 17 0 0 2;
+#X connect 18 0 19 0;
+#X connect 19 0 20 0;
+#X connect 21 0 22 0;
+#X connect 22 0 23 0;
+#X connect 22 0 25 0;
+#X connect 24 0 26 1;
+#X connect 26 0 0 0;
+#X connect 26 1 2 0;
+#X coords 0 -1 1 1 110 75 1 10 10;

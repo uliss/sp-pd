@@ -1,0 +1,21 @@
+#N canvas 489 332 641 418 10;
+#X obj 20 110 phasor~ 220;
+#X obj 20 300 +dsp;
+#X obj 126 41 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 2100 1;
+#X msg 123 70 freq1 \$1;
+#X obj 264 41 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 500 1;
+#X msg 261 70 freq2 \$1;
+#X msg 254 111 factor1 -1;
+#X msg 334 111 factor2 2;
+#X obj 20 159 sp-gchop2~;
+#X connect 0 0 8 0;
+#X connect 2 0 3 0;
+#X connect 3 0 8 1;
+#X connect 4 0 5 0;
+#X connect 5 0 8 1;
+#X connect 6 0 8 1;
+#X connect 7 0 8 1;
+#X connect 8 0 1 0;
+#X connect 8 0 1 1;
