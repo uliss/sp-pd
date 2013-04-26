@@ -1,0 +1,11 @@
+#N canvas 0 22 307 377 10;
+#X obj 101 216 +dsp;
+#X obj 101 69 osc~ 440;
+#X obj 152 89 osc~ 550;
+#X obj 101 142 sp-gcrossfade~;
+#X connect 1 0 3 0;
+#X connect 1 0 3 1;
+#X connect 2 0 3 2;
+#X connect 2 0 3 3;
+#X connect 3 0 0 0;
+#X connect 3 1 0 1;
