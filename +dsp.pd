@@ -22,7 +22,7 @@
 #X obj 172 107 vu 8 80 \$0-pvu-l empty -1 -8 0 10 -66577 -1 0 0;
 #X obj 194 107 vu 8 80 \$0-pvu-r empty -1 -8 0 10 -66577 -1 0 0;
 #X obj 182 107 vsl 10 79 0 1.8 0 0 \$0-level-s \$0-level-r empty 0
--9 0 10 -162280 -4032 -1 5300 1;
+-9 0 10 -162280 -4032 -1 3200 1;
 #X obj 178 299 s \$0-level-ind-r;
 #X obj 178 270 r \$0-level-s;
 #X obj 162 418 s~ \$0-right;
