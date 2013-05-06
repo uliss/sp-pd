@@ -1,0 +1,16 @@
+#N canvas 361 301 450 300 10;
+#X obj 160 48 keyname;
+#X obj 166 169 spigot;
+#X msg 199 129 1;
+#X msg 239 129 0;
+#X obj 166 246 outlet;
+#X obj 199 77 strcmp \$1;
+#X obj 199 104 sel 0;
+#X connect 0 0 1 0;
+#X connect 0 1 5 0;
+#X connect 1 0 4 0;
+#X connect 2 0 1 1;
+#X connect 3 0 1 1;
+#X connect 5 0 6 0;
+#X connect 6 0 2 0;
+#X connect 6 1 3 0;
