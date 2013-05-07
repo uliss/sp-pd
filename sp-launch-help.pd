@@ -1,0 +1,4 @@
+#N canvas 467 222 233 184 10;
+#X msg 63 74 run TextEdit.app;
+#X obj 63 116 sp-launch;
+#X connect 0 0 1 0;
