@@ -1,0 +1,23 @@
+#N canvas 0 22 450 300 10;
+#X obj 150 179 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 112 18 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 212 23 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 213 60 metro 1000;
+#X obj 234 186 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 150 122 sp-bangsync;
+#X obj 72 145 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 115 60 metro 2000;
+#X msg 148 88 1;
+#X connect 1 0 7 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 3 0 5 1;
+#X connect 5 0 0 0;
+#X connect 7 0 5 0;
+#X connect 7 0 6 0;
+#X connect 8 0 5 0;
