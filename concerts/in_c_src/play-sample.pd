@@ -1,0 +1,14 @@
+#N canvas 372 327 396 194 10;
+#X obj 75 33 inlet;
+#X obj 75 66 sel 1;
+#X msg 116 95 stop;
+#X msg 75 95 bang;
+#X obj 75 155 outlet~;
+#X obj 75 125 tabplay~ arr-\$1-sample;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 1 1 2 0;
+#X connect 2 0 5 0;
+#X connect 3 0 5 0;
+#X connect 5 0 4 0;
+#X connect 5 1 3 0;
