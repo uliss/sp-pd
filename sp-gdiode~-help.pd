@@ -1,0 +1,16 @@
+#N canvas 0 22 492 424 10;
+#X obj 80 111 sp-gdiode~;
+#X obj 71 56 adc~;
+#X obj 80 179 sp-glimiter~;
+#X obj 80 261 +dsp;
+#X msg 183 60 mode 1;
+#X msg 237 60 diode mode 2;
+#X msg 330 60 limiter threshold 90;
+#X connect 0 0 2 0;
+#X connect 0 1 2 2;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 0 1;
+#X connect 5 0 0 1;
+#X connect 6 0 0 1;

@@ -1,4 +1,4 @@
-#N canvas 0 22 529 429 10;
+#N canvas 467 137 633 452 10;
 #X obj 124 67 osc~ 440;
 #X obj 124 107 *~;
 #X obj 186 46 dbtorms;
@@ -18,6 +18,8 @@
 #X obj 170 182 sp-glimiter~;
 #X msg 302 70 threshold \$1;
 #X floatatom 302 39 5 0 0 0 - - -;
+#X msg 406 43 limiter threshold 81;
+#X msg 409 71 limiter skip 1;
 #X connect 0 0 1 0;
 #X connect 1 0 15 0;
 #X connect 2 0 12 0;
@@ -36,3 +38,5 @@
 #X connect 15 1 10 1;
 #X connect 16 0 15 2;
 #X connect 17 0 16 0;
+#X connect 18 0 15 2;
+#X connect 19 0 15 2;
