@@ -1,0 +1,17 @@
+#N canvas 102 168 545 433 10;
+#X msg 220 34 level 1;
+#X obj 220 219 print;
+#X msg 290 34 other message;
+#X obj 119 219 pvu~;
+#X obj 120 260 vu 15 120 empty empty -1 -8 0 10 -66577 -1 1 0;
+#X obj 119 33 osc~ 440;
+#X obj 119 69 *~ 6;
+#X obj 119 113 sp-gcompr~;
+#X connect 0 0 7 1;
+#X connect 2 0 7 1;
+#X connect 3 0 4 0;
+#X connect 3 0 4 1;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 3 0;
+#X connect 7 1 1 0;
