@@ -1,0 +1,36 @@
+#N canvas 136 226 605 379 10;
+#X obj 82 33 ctlin;
+#X obj 114 147 vsl 15 70 0 127 0 0 \$0-ftsw1-s \$0-ftsw1-r empty 0
+-9 0 10 -191407 -1 -1 6900 1;
+#X obj 82 74 demux 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18;
+#X obj 379 106 s \$0-ftsw2-r;
+#X obj 160 147 vsl 15 70 0 127 0 0 \$0-ftsw2-s \$0-ftsw2-r empty 0
+-9 0 10 -191407 -1 -1 0 1;
+#X obj 204 106 s \$0-ftsw1-r;
+#X text 159 221 FT2;
+#X text 112 221 FT1;
+#X obj 209 325 outlet;
+#X obj 310 325 outlet;
+#X obj 109 324 outlet;
+#X obj 265 193 pgmin;
+#X obj 209 296 r \$0-ftsw1-r;
+#X obj 310 297 r \$0-ftsw2-r;
+#X obj 114 117 nbx 3 25 -1e+37 1e+37 0 0 \$0-event-s \$0-event-r empty
+0 -7 0 18 -261682 -1 -1 10 256;
+#X obj 265 226 s \$0-event-r;
+#X obj 109 296 r \$0-event-r;
+#X obj 137 203 bng 16 250 50 0 \$0-bang-s \$0-bang-r empty 17 7 0 10
+-228856 -258113 -1;
+#X obj 223 253 s \$0-bang-r;
+#X msg 223 226 1;
+#X connect 0 0 2 0;
+#X connect 0 1 2 1;
+#X connect 2 7 5 0;
+#X connect 2 17 3 0;
+#X connect 11 0 15 0;
+#X connect 11 0 19 0;
+#X connect 12 0 8 0;
+#X connect 13 0 9 0;
+#X connect 16 0 10 0;
+#X connect 19 0 18 0;
+#X coords 0 -1 1 1 90 140 1 100 100;

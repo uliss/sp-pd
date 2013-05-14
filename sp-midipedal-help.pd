@@ -1,0 +1,16 @@
+#N canvas 500 138 484 457 10;
+#X floatatom 211 249 5 0 0 0 - - -;
+#X floatatom 263 251 5 0 0 0 - - -;
+#X floatatom 167 249 5 0 0 0 - - -;
+#X obj 172 72 sp-midipedal;
+#X obj 252 318 +dsp;
+#X obj 128 314 osc~;
+#X floatatom 68 321 5 0 0 0 - - -;
+#X obj 128 287 expr ($f1 + 50) * 3;
+#X connect 0 0 7 0;
+#X connect 3 0 2 0;
+#X connect 3 1 0 0;
+#X connect 3 2 1 0;
+#X connect 5 0 4 0;
+#X connect 7 0 5 0;
+#X connect 7 0 6 0;
