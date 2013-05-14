@@ -1,0 +1,11 @@
+#N canvas 0 22 450 300 10;
+#X obj 128 114 sp-ms2bpm;
+#X msg 128 75 1000;
+#X obj 128 168 nbx 5 19 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 15
+-262144 -1 -1 300 256;
+#X msg 170 76 200;
+#X floatatom 206 49 5 0 0 0 - - -;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 0;
