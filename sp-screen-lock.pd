@@ -1,0 +1,14 @@
+#N canvas 0 22 583 324 10;
+#X obj 102 210 ggee/shell;
+#X obj 102 28 loadbang;
+#X obj 159 243 print SP: SCREEN LOCKED;
+#X obj 170 28 inlet;
+#X obj 102 141 ggee/getdir;
+#X msg 157 110 bang;
+#X msg 102 167 \$1/screenlock.sh;
+#X connect 0 1 2 0;
+#X connect 1 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 6 0;
+#X connect 5 0 4 0;
+#X connect 6 0 0 0;
