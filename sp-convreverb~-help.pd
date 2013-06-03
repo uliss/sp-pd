@@ -1,0 +1,18 @@
+#N canvas 0 22 450 300 10;
+#X declare -lib zexy;
+#X obj 99 199 +dsp;
+#X obj 99 155 sp-convreverb~;
+#X obj 180 123 openpanel;
+#X obj 180 93 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 72 56 adc~;
+#X msg 124 54 0;
+#X obj 123 80 dirac~;
+#X connect 1 0 0 0;
+#X connect 1 1 0 1;
+#X connect 2 0 1 2;
+#X connect 3 0 2 0;
+#X connect 4 0 1 0;
+#X connect 4 0 1 1;
+#X connect 5 0 6 0;
+#X connect 6 0 1 0;
