@@ -1,6 +1,6 @@
-#N canvas 143 114 947 526 10;
+#N canvas 154 234 947 526 10;
 #X obj 278 328 +dsp;
-#N canvas 327 142 668 269 input 0;
+#N canvas 72 427 668 269 input 0;
 #X obj 152 42 env~;
 #X obj 197 109 max;
 #X obj 243 109 - 0.05;
@@ -24,6 +24,9 @@
 #X obj 287 163 env~;
 #X obj 287 191 - 100;
 #X obj 287 219 s \$0-vu-gameboy-r;
+#X obj 262 9 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 262 37 message-ground-loop;
 #X connect 0 0 3 0;
 #X connect 1 0 2 0;
 #X connect 1 0 4 1;
@@ -46,6 +49,7 @@
 #X connect 15 1 8 1;
 #X connect 19 0 20 0;
 #X connect 20 0 21 0;
+#X connect 22 0 23 0;
 #X restore 802 258 pd input;
 #N canvas 491 100 471 313 delay 0;
 #X obj 24 132 sp-vdelay~ 4000;
@@ -99,7 +103,7 @@
 #X connect 9 0 6 1;
 #X connect 10 0 7 1;
 #X restore 802 374 pd output;
-#N canvas 532 153 459 457 keys 1;
+#N canvas 532 153 459 457 keys 0;
 #X obj 48 214 sp-key i;
 #X obj 49 154 sp-key s;
 #X obj 223 72 s \$0-signal-start;
@@ -254,7 +258,7 @@ volume 0.7 \, mute 1 \; \$1-click-ctrl volume 1 \, mute 1 \; \$1-attack-on-r
 10 0 20 -258699 -1 -166441 0 1;
 #X obj 30 244 tgl 15 0 \$0-attack-on-s \$0-attack-on-r start_on_attack
 20 8 0 10 -262144 -1 -1 0 1;
-#N canvas 638 48 451 498 stop-ctrl 1;
+#N canvas 638 48 451 498 stop-ctrl 0;
 #X obj 283 91 r \$0-tempo;
 #X obj 283 119 sp-bpm2ms;
 #X obj 175 136 metro;
@@ -313,7 +317,7 @@ stop_bar_pos[p] 20 7 0 10 -262130 -1 -1;
 #X obj 30 184 bng 15 250 50 0 \$0-bar-pos-sync-s \$0-bar-pos-sync-r
 bar_sync[y] 20 7 0 10 -203904 -1 -1;
 #X obj 31 159 tgl 15 0 \$0-auto-stop-s \$0-auto-stop-r auto_stop[a]
-20 7 0 10 -261234 -1 -1 0 1;
+20 7 0 10 -261234 -1 -1 1 1;
 #N canvas 392 332 291 309 autostart 0;
 #X obj 74 56 env~ 1024;
 #X obj 74 216 sp-bangonce;
