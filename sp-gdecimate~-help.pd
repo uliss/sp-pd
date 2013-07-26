@@ -1,0 +1,32 @@
+#N canvas 534 105 553 494 10;
+#X obj 37 189 osc~ 220;
+#X obj 213 122 hsl 128 15 1 32 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 1100 1;
+#X msg 210 148 gdecimate bits \$1;
+#X obj 243 172 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 900 1;
+#X msg 240 198 gdecimate ratio \$1;
+#X obj 37 360 +dsp;
+#X msg 180 88 gdecimate pass \$1;
+#X obj 180 62 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 245 55 volume 0.5;
+#X obj 37 226 sp-gdecimate~ filter1;
+#X msg 44 63 gdecimate unknown;
+#X msg 365 53 \; sp-filter1 pass 1;
+#X obj 363 122 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 12700 1;
+#X msg 360 148 gdecimate mix \$1;
+#X connect 0 0 9 0;
+#X connect 1 0 2 0;
+#X connect 2 0 9 1;
+#X connect 3 0 4 0;
+#X connect 4 0 9 1;
+#X connect 6 0 9 1;
+#X connect 7 0 6 0;
+#X connect 8 0 9 1;
+#X connect 9 0 5 0;
+#X connect 9 1 5 2;
+#X connect 10 0 9 1;
+#X connect 12 0 13 0;
+#X connect 13 0 9 1;
