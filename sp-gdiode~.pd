@@ -1,25 +1,66 @@
-#N canvas 392 227 516 219 10;
-#X obj 133 58 inlet~;
-#X obj 133 114 sigpack/diode~;
-#X obj 133 154 hip~ 20;
-#X obj 133 187 outlet~;
-#X obj 343 15 inlet;
-#X obj 436 83 outlet;
-#X obj 11 25 cnv 15 108 30 empty empty empty 20 12 0 14 -9622 -66577
+#N canvas 218 224 836 370 10;
+#X obj 304 15 inlet~;
+#X obj 304 71 sigpack/diode~;
+#X obj 304 101 hip~ 20;
+#X obj 273 304 outlet~;
+#X obj 483 15 inlet;
+#X obj 11 25 cnv 15 198 42 empty empty empty 20 12 0 14 -9622 -66577
 0;
-#X obj 343 49 route diode mode;
-#X obj 74 33 hradio 13 1 0 3 \$0-mode-s \$0-mode-r mode -27 7 0 10
--262144 -1 -262144 2;
-#X obj 343 83 route mode;
-#X obj 343 124 s \$0-mode-r;
-#X obj 214 58 r \$0-mode-s;
+#X obj 68 32 hradio 12 1 0 3 \$0-mode-s \$0-mode-r mode: -35 6 0 10
+-262144 -1 -262144 0;
+#X obj 483 124 s \$0-mode-r;
+#X obj 385 15 r \$0-mode-s;
+#X obj 71 49 hsl 90 12 0 1 0 0 \$0-dry-wet-s \$0-dry-wet-r dry/wet:
+-55 6 0 10 -262144 -1 -262144 8900 1;
+#X obj 171 49 nbx 3 12 -1e+37 1e+37 0 0 \$0-dry-wet-nbx-s \$0-dry-wet-nbx-r
+empty 0 -8 0 10 -262144 -1 -1 1 256;
+#X obj 273 204 sp-dry-wet~;
+#X obj 336 172 r \$0-dry-wet-s;
+#X obj 467 201 r \$0-dry-wet-s;
+#X obj 467 232 change;
+#X obj 467 272 s \$0-dry-wet-r;
+#X obj 507 249 s \$0-dry-wet-nbx-r;
+#X obj 638 201 r \$0-dry-wet-nbx-s;
+#X obj 638 234 change;
+#X obj 638 273 s \$0-dry-wet-nbx-r;
+#X obj 705 251 s \$0-dry-wet-r;
+#X obj 705 146 loadbang;
+#X msg 705 171 1;
+#X obj 483 83 route mode pass dry-wet;
+#X obj 573 140 s \$0-dry-wet-r;
+#X obj 546 328 outlet;
+#X obj 618 112 print [sp-gdiode~] unknown command;
+#X obj 193 30 tgl 12 0 \$0-pass-s \$0-pass-r pass -30 6 0 10 -262130
+-1 -262144 0 1;
+#X obj 528 166 s \$0-pass-r;
+#X obj 483 49 route diode;
+#X obj 273 253 sp-pass~;
+#X obj 318 226 r \$0-pass-s;
+#X obj 568 15 r sp-\$1;
 #X connect 0 0 1 0;
+#X connect 0 0 11 0;
+#X connect 0 0 30 1;
 #X connect 1 0 2 0;
-#X connect 2 0 3 0;
-#X connect 4 0 7 0;
-#X connect 7 0 9 0;
-#X connect 7 1 10 0;
-#X connect 7 2 5 0;
-#X connect 9 0 10 0;
-#X connect 11 0 1 1;
-#X coords 0 -1 1 1 110 48 1 10 10;
+#X connect 2 0 11 1;
+#X connect 4 0 29 0;
+#X connect 8 0 1 1;
+#X connect 11 0 30 0;
+#X connect 12 0 11 2;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 14 0 16 0;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 18 0 20 0;
+#X connect 21 0 22 0;
+#X connect 22 0 20 0;
+#X connect 23 0 7 0;
+#X connect 23 1 28 0;
+#X connect 23 2 24 0;
+#X connect 23 3 26 0;
+#X connect 29 0 23 0;
+#X connect 29 1 25 0;
+#X connect 30 0 3 0;
+#X connect 31 0 30 2;
+#X connect 32 0 23 0;
+#X coords 0 -1 1 1 200 60 1 10 10;
