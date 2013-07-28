@@ -1,25 +1,26 @@
-#N canvas 392 227 516 219 10;
+#N canvas 228 430 838 244 10;
 #X obj 133 58 inlet~;
 #X obj 133 114 sigpack/diode~;
 #X obj 133 154 hip~ 20;
 #X obj 133 187 outlet~;
 #X obj 343 15 inlet;
-#X obj 436 83 outlet;
-#X obj 11 25 cnv 15 108 30 empty empty empty 20 12 0 14 -9622 -66577
+#X obj 436 193 outlet;
+#X obj 11 25 cnv 15 98 30 empty empty empty 20 12 0 14 -9622 -66577
 0;
 #X obj 343 49 route diode mode;
-#X obj 74 33 hradio 13 1 0 3 \$0-mode-s \$0-mode-r mode -27 7 0 10
--262144 -1 -262144 2;
+#X obj 64 33 hradio 13 1 0 3 \$0-mode-s \$0-mode-r mode -27 7 0 10
+-262144 -1 -262144 0;
 #X obj 343 83 route mode;
 #X obj 343 124 s \$0-mode-r;
 #X obj 214 58 r \$0-mode-s;
+#X obj 456 100 print [sp-gdiode~] unknown command;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
 #X connect 4 0 7 0;
 #X connect 7 0 9 0;
-#X connect 7 1 10 0;
 #X connect 7 2 5 0;
 #X connect 9 0 10 0;
+#X connect 9 1 12 0;
 #X connect 11 0 1 1;
-#X coords 0 -1 1 1 110 48 1 10 10;
+#X coords 0 -1 1 1 100 48 1 10 10;
