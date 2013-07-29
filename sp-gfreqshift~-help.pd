@@ -1,0 +1,27 @@
+#N canvas 356 84 540 475 10;
+#X obj 99 40 osc~ 440;
+#X obj 107 287 +dsp;
+#X obj 202 15 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 199 43 freqshift shift \$1;
+#X msg 396 44 freqshift pass \$1;
+#X obj 396 15 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 99 85 sp-gfreqshift~ 10;
+#X msg 370 146 freqshift dry-wet \$1;
+#X obj 373 115 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 407 68 volume 0.5;
+#X msg 407 90 freqshift unknown;
+#X connect 0 0 6 0;
+#X connect 2 0 3 0;
+#X connect 3 0 6 1;
+#X connect 4 0 6 1;
+#X connect 5 0 4 0;
+#X connect 6 0 1 0;
+#X connect 6 1 1 1;
+#X connect 6 2 1 2;
+#X connect 7 0 6 1;
+#X connect 8 0 7 0;
+#X connect 9 0 6 1;
+#X connect 10 0 6 1;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #N canvas 218 224 836 370 10;
 #X obj 304 15 inlet~;
 #X obj 304 71 sigpack/diode~;
@@ -64,3 +65,58 @@ empty 0 -8 0 10 -262144 -1 -1 1 256;
 #X connect 31 0 30 2;
 #X connect 32 0 23 0;
 #X coords 0 -1 1 1 200 60 1 10 10;
+=======
+#N canvas 265 169 870 383 10;
+#X obj 243 18 inlet~;
+#X obj 243 74 sigpack/diode~;
+#X obj 243 114 hip~ 20;
+#X obj 243 287 outlet~;
+#X obj 443 15 inlet;
+#X obj 536 193 outlet;
+#X obj 11 27 cnv 15 198 50 empty empty empty 20 12 0 14 -9622 -66577
+0;
+#X obj 443 49 route diode mode;
+#X obj 69 35 hradio 12 1 0 3 \$0-mode-s \$0-mode-r mode: -35 6 0 10
+-262144 -1 -262144 2;
+#X obj 443 124 s \$0-mode-r;
+#X obj 324 18 r \$0-mode-s;
+#X obj 626 100 print [sp-gdiode~] unknown command;
+#X obj 443 83 route mode pass dry-wet;
+#X obj 191 34 tgl 12 0 \$0-pass-s \$0-pass-r pass: -35 6 0 10 -262130
+-1 -262144 0 1;
+#X obj 72 57 hsl 88 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r dry/wet:
+-55 6 0 10 -262144 -1 -262144 3132 1;
+#X obj 168 57 nbx 3 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r empty
+0 -8 0 10 -262144 -1 -1 36 256;
+#X obj 243 252 sp-pass~;
+#X obj 212 183 sp-dry-wet~;
+#X obj 288 226 r \$0-pass-s;
+#X obj 556 16 r sp-\$1;
+#X obj 488 156 s \$0-pass-r;
+#X obj 533 237 s \$0-dry-wet-r;
+#X obj 651 171 r \$0-dry-wet-s;
+#X obj 651 200 change;
+#X obj 651 227 s \$0-dry-wet-r;
+#X obj 275 150 r \$0-dry-wet-s;
+#X connect 0 0 1 0;
+#X connect 0 0 16 1;
+#X connect 0 0 17 0;
+#X connect 1 0 2 0;
+#X connect 2 0 17 1;
+#X connect 4 0 7 0;
+#X connect 7 0 12 0;
+#X connect 7 2 5 0;
+#X connect 10 0 1 1;
+#X connect 12 0 9 0;
+#X connect 12 1 20 0;
+#X connect 12 2 21 0;
+#X connect 12 3 11 0;
+#X connect 16 0 3 0;
+#X connect 17 0 16 0;
+#X connect 18 0 16 2;
+#X connect 19 0 12 0;
+#X connect 22 0 23 0;
+#X connect 23 0 24 0;
+#X connect 25 0 17 2;
+#X coords 0 -1 1 1 200 70 1 10 10;
+>>>>>>> 9886bb0b8216e406e8e9ca9b7c4ceab41b8e2ab6
