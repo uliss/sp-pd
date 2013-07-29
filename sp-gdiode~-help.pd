@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #N canvas 425 187 492 424 10;
 #X obj 40 301 +dsp;
 #X msg 290 100 limiter threshold 90;
@@ -7,8 +6,8 @@
 1;
 #X msg 172 74 diode pass \$1;
 #X msg 66 52 diode invalid;
-#X obj 295 23 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 3300 1;
+#X obj 295 23 hsl 128 15 0 100 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 1000 1;
 #X msg 292 54 diode dry-wet \$1;
 #X obj 40 96 osc~ 220;
 #X obj 40 219 sp-glimiter~;
@@ -27,31 +26,3 @@
 #X connect 11 0 9 0;
 #X connect 11 0 9 1;
 #X connect 11 1 9 2;
-=======
-#N canvas 270 198 619 426 10;
-#X obj 80 111 sp-gdiode~;
-#X obj 80 189 sp-glimiter~;
-#X obj 80 291 +dsp;
-#X msg 197 40 diode mode 2;
-#X msg 330 60 limiter threshold 90;
-#X msg 173 15 diode unknown;
-#X obj 71 56 osc~ 440;
-#X msg 294 31 diode pass \$1;
-#X obj 294 10 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X msg 359 160 diode dry-wet \$1;
-#X obj 362 133 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
-#X connect 0 0 1 0;
-#X connect 0 1 1 2;
-#X connect 1 0 2 0;
-#X connect 1 1 2 1;
-#X connect 3 0 0 1;
-#X connect 4 0 0 1;
-#X connect 5 0 0 1;
-#X connect 6 0 0 0;
-#X connect 7 0 0 1;
-#X connect 8 0 7 0;
-#X connect 9 0 0 1;
-#X connect 10 0 9 0;
->>>>>>> 9886bb0b8216e406e8e9ca9b7c4ceab41b8e2ab6
