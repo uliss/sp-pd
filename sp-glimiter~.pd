@@ -8,15 +8,15 @@
 #X obj 11 26 cnv 15 198 45 empty empty empty 20 12 0 14 -98702 -66577
 0;
 #X obj 19 50 hsl 140 12 70 120 0 0 \$0-threshold-s \$0-threshold-r
-threshold(db) 0 -10 0 10 -262144 -1 -262144 0 1;
+threshold(db) 0 -10 0 10 -262144 -1 -262144 8340 1;
 #X obj 168 50 nbx 3 12 -1e+37 1e+37 0 0 \$0-threshold-num-s \$0-threshold-num-r
-empty 0 -8 0 10 -262144 -1 -1 80 256;
+empty 0 -8 0 10 -262144 -1 -1 100 256;
 #X obj 448 27 inlet;
 #X msg 448 214 limit \$1;
 #X obj 391 92 loadbang;
 #X msg 391 116 100;
-#X obj 191 33 tgl 12 0 \$0-skip-s \$0-skip-r pass -31 5 0 10 -262144
--1 -262144 0 1;
+#X obj 191 33 tgl 12 0 \$0-skip-s \$0-skip-r pass -31 5 0 10 -262130
+-1 -262144 1 1;
 #X obj 193 161 sp-switch~;
 #X obj 302 161 sp-switch~;
 #X obj 523 339 outlet;
