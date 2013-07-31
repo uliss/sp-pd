@@ -1,0 +1,60 @@
+#N canvas 211 47 927 462 10;
+#X obj 295 206 saturate~;
+#X obj 11 27 cnv 15 198 70 empty empty empty 20 12 0 14 -16662 -66577
+0;
+#X obj 264 19 inlet~;
+#X obj 192 31 tgl 12 0 \$0-pass-s \$0-pass-r pass: -35 6 0 10 -262130
+-1 -262144 0 1;
+#X obj 264 342 sp-pass~;
+#X obj 264 378 outlet~;
+#X obj 264 262 sp-dry-wet~;
+#X obj 309 315 r \$0-pass-s;
+#X obj 18 46 hsl 128 12 -1 1 0 0 \$0-threshold-s \$0-threshold-r threshold:
+-2 -8 0 10 -262144 -1 -262144 6900 1;
+#X obj 346 164 r \$0-threshold-s;
+#X obj 153 46 nbx 5 12 -1 1 0 0 \$0-threshold-s \$0-threshold-r empty
+0 -8 0 10 -262144 -1 -1 0.0866142 256;
+#X obj 32 185 r \$0-threshold-s;
+#X obj 32 211 change;
+#X obj 32 237 s \$0-threshold-r;
+#X obj 19 76 hsl 128 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r dry/wet:
+-2 -8 0 10 -262144 -1 -262144 11800 1;
+#X obj 154 76 nbx 3 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r empty
+0 -8 0 10 -262144 -1 -1 92.9134 256;
+#X obj 34 280 r \$0-dry-wet-s;
+#X obj 34 306 change;
+#X obj 34 331 s \$0-dry-wet-r;
+#X obj 327 232 r \$0-dry-wet-s;
+#X obj 366 -2 inlet;
+#X obj 366 35 route saturate;
+#X obj 447 352 outlet;
+#X obj 366 75 route threshold pass dry-wet;
+#X obj 366 106 s \$0-threshold-r;
+#X obj 421 138 s \$0-pass-r;
+#X obj 476 170 s \$0-dry-wet-r;
+#X obj 531 104 print [sp-gsaturate~] unknown command;
+#X obj 497 13 loadbang;
+#X msg 497 39 threshold 0 \, dry-wet 100;
+#X connect 0 0 6 1;
+#X connect 2 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 4 1;
+#X connect 4 0 5 0;
+#X connect 6 0 4 0;
+#X connect 7 0 4 2;
+#X connect 9 0 0 1;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 19 0 6 2;
+#X connect 20 0 21 0;
+#X connect 21 0 23 0;
+#X connect 21 1 22 0;
+#X connect 23 0 24 0;
+#X connect 23 1 25 0;
+#X connect 23 2 26 0;
+#X connect 23 3 27 0;
+#X connect 28 0 29 0;
+#X connect 29 0 23 0;
+#X coords 0 -1 1 1 200 90 1 10 10;
