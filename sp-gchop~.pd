@@ -1,58 +1,93 @@
-#N canvas 0 22 703 432 10;
-#X obj 278 195 sigpack/chop~;
-#X obj 185 68 inlet~;
-#X obj 278 281 outlet~;
-#X obj 508 20 inlet;
-#X obj 508 49 route freq factor;
-#X obj 557 77 clip -2 2;
-#X obj 508 113 clip 0 22050;
-#X obj 315 170 osc~ 2;
-#X obj 11 26 cnv 15 108 56 empty empty empty 20 12 0 14 -99865 -66577
+#N canvas 40 134 1137 430 10;
+#X obj 348 195 sigpack/chop~;
+#X obj 262 20 inlet~;
+#X obj 317 381 outlet~;
+#X obj 658 20 inlet;
+#X obj 701 147 clip -2 2;
+#X obj 658 183 clip 0 22050;
+#X obj 11 27 cnv 15 198 100 empty empty empty 20 12 0 14 -99865 -66577
 0;
-#X obj 17 47 hsl 98 10 0 30 0 0 \$0-freq-s \$0-freq-r freq -2 -10 0
-10 -262144 -1 -262144 647 1;
-#X obj 72 30 nbx 4 14 -1e+37 1e+37 0 0 \$0-freq-ind-s \$0-freq-ind-r
-empty 0 -8 0 10 -262144 -1 -1 2.00103 256;
-#X obj 508 168 s \$0-freq-r;
-#X obj 315 119 r \$0-freq-s;
-#X obj 66 65 hradio 10 1 0 5 \$0-mode-s \$0-mode-r factor -50 5 0 10
--262144 -1 -262144 2;
-#X msg 508 139 set \$1;
-#X obj 588 168 s \$0-freq-ind-r;
-#X obj 398 149 r \$0-mode-s;
-#X obj 398 178 - 2;
-#X obj 607 108 + 2;
-#X msg 607 133 set \$1;
-#X obj 607 206 s \$0-mode-r;
-#X obj 308 19 loadbang;
-#X msg 308 43 2;
-#X obj 308 67 s \$0-mode-r;
-#X obj 106 13 tgl 10 0 \$0-skip-s \$0-skip-r s -8 5 0 10 -262130 -1
--1 0 1;
-#X obj 391 67 s \$0-freq-r;
-#X obj 185 129 sp-switch~;
-#X connect 0 0 2 0;
-#X connect 1 0 26 0;
-#X connect 3 0 4 0;
-#X connect 4 0 6 0;
-#X connect 4 1 5 0;
-#X connect 5 0 0 2;
-#X connect 5 0 18 0;
-#X connect 6 0 14 0;
-#X connect 6 0 7 0;
-#X connect 7 0 0 1;
-#X connect 9 0 10 0;
-#X connect 12 0 7 0;
-#X connect 14 0 11 0;
+#X obj 69 90 hsl 85 12 0 10000 0 0 \$0-freq-s \$0-freq-r freq: -52
+6 0 10 -262144 -1 -262144 2810 1;
+#X obj 658 208 s \$0-freq-r;
+#X obj 385 76 r \$0-freq-s;
+#X obj 66 32 hradio 12 1 0 5 \$0-mode-s \$0-mode-r factor: -50 6 0
+10 -262144 -1 -262144 4;
+#X obj 548 149 r \$0-mode-s;
+#X obj 548 178 - 2;
+#X obj 757 198 + 2;
+#X msg 757 223 set \$1;
+#X obj 757 256 s \$0-mode-r;
+#X obj 192 32 tgl 12 0 \$0-skip-s \$0-skip-r pass: -35 5 0 10 -262130
+-1 -262144 0 1;
+#X obj 161 90 nbx 4 12 0 10000 0 0 \$0-freq-s \$0-freq-r empty 0 -8
+0 10 -262144 -1 -1 3345.24 256;
+#X obj 11 340 r \$0-freq-s;
+#X obj 11 365 change;
+#X obj 11 390 s \$0-freq-r;
+#X obj 715 367 outlet;
+#X obj 69 108 hsl 85 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r dry/wet:
+-52 6 0 10 -262144 -1 -262144 6000 1;
+#X obj 162 108 nbx 3 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r empty
+0 -8 0 10 -262144 -1 -1 71.4286 256;
+#X obj 96 341 r \$0-dry-wet-s;
+#X obj 96 367 change;
+#X obj 96 391 s \$0-dry-wet-r;
+#X obj 317 349 sp-pass~;
+#X obj 317 290 sp-dry-wet~;
+#X obj 380 264 r \$0-dry-wet-s;
+#X obj 362 323 r \$0-skip-s;
+#X obj 658 57 route chop;
+#X obj 407 22 inlet~;
+#X obj 658 119 route freq factor pass dry-wet source;
+#X obj 877 147 print [sp-gchop~] unknown command;
+#X obj 67 51 vradio 12 1 0 2 \$0-source-s \$0-source-r source: -50
+6 0 10 -262144 -1 -262144 0;
+#X text 82 48 internal;
+#X text 83 61 external;
+#X obj 385 147 sp-pass~;
+#X obj 385 112 osc~ 2;
+#X obj 433 111 r \$0-source-s;
+#X obj 773 20 loadbang;
+#X obj 852 19 r sp-\$1;
+#X obj 745 167 s \$0-pass-r;
+#X msg 773 47 factor 2 \, freq 2 \, source 0;
+#X obj 789 289 s \$0-dry-wet-r;
+#X obj 833 193 s \$0-source-r;
+#X connect 0 0 28 1;
+#X connect 1 0 28 0;
+#X connect 1 0 0 0;
+#X connect 1 0 27 1;
+#X connect 3 0 31 0;
+#X connect 4 0 0 2;
+#X connect 4 0 13 0;
+#X connect 5 0 8 0;
+#X connect 9 0 39 0;
+#X connect 11 0 12 0;
+#X connect 12 0 0 2;
+#X connect 13 0 14 0;
 #X connect 14 0 15 0;
-#X connect 16 0 17 0;
-#X connect 17 0 0 2;
 #X connect 18 0 19 0;
 #X connect 19 0 20 0;
-#X connect 21 0 22 0;
-#X connect 22 0 23 0;
-#X connect 22 0 25 0;
-#X connect 24 0 26 1;
-#X connect 26 0 0 0;
-#X connect 26 1 2 0;
-#X coords 0 -1 1 1 110 75 1 10 10;
+#X connect 24 0 25 0;
+#X connect 25 0 26 0;
+#X connect 27 0 2 0;
+#X connect 28 0 27 0;
+#X connect 29 0 28 2;
+#X connect 30 0 27 2;
+#X connect 31 0 33 0;
+#X connect 31 1 21 0;
+#X connect 32 0 38 1;
+#X connect 33 0 5 0;
+#X connect 33 1 4 0;
+#X connect 33 2 43 0;
+#X connect 33 3 45 0;
+#X connect 33 4 46 0;
+#X connect 33 5 34 0;
+#X connect 38 0 0 1;
+#X connect 39 0 38 0;
+#X connect 40 0 38 2;
+#X connect 41 0 44 0;
+#X connect 42 0 33 0;
+#X connect 44 0 33 0;
+#X coords 0 -1 1 1 200 120 1 10 10;
