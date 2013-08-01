@@ -1,0 +1,22 @@
+#N canvas 329 150 450 300 10;
+#X obj 111 47 osc~ 440;
+#X obj 174 47 osc~ 660;
+#X msg 241 69 pass \$1;
+#X obj 241 42 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 111 166 sigmund~;
+#X obj 111 94 sp-gpass~ p1;
+#X msg 319 72 \; sp-p1 1;
+#X msg 284 40 other;
+#X obj 204 162 print;
+#X obj 111 195 mtof;
+#X floatatom 111 232 5 0 0 0 - - -;
+#X connect 0 0 5 0;
+#X connect 1 0 5 1;
+#X connect 2 0 5 2;
+#X connect 3 0 2 0;
+#X connect 4 0 9 0;
+#X connect 5 0 4 0;
+#X connect 5 1 8 0;
+#X connect 7 0 5 2;
+#X connect 9 0 10 0;
