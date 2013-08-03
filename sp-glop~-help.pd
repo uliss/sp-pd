@@ -1,0 +1,9 @@
+#N canvas 268 252 571 474 10;
+#X obj 64 294 +dsp;
+#X obj 64 76 sp-glop~ f1;
+#X obj 64 222 sp-glimiter~ 80;
+#X obj 64 36 noise~;
+#X connect 1 0 2 0;
+#X connect 1 1 2 2;
+#X connect 2 0 0 0;
+#X connect 3 0 1 0;
