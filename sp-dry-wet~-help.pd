@@ -1,12 +1,14 @@
-#N canvas 0 22 450 300 10;
-#X obj 177 60 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12600 1;
+#N canvas 93 48 528 324 10;
+#X obj 177 60 hsl 128 15 0 100 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 12700 1;
 #X obj 111 100 osc~ 440;
 #X obj 111 188 +dsp;
 #X obj 188 98 phasor~ 660;
 #X obj 111 141 sp-dry-wet~;
 #X text 111 21 wet by default;
+#X msg 304 147 stereo_width 0 \, volume 0.1;
 #X connect 0 0 4 2;
 #X connect 1 0 4 0;
 #X connect 3 0 4 1;
 #X connect 4 0 2 0;
+#X connect 6 0 2 2;
