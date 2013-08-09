@@ -1,13 +1,20 @@
-#N canvas 639 68 523 348 10;
-#X obj 237 142 hsl 128 15 0 2 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+#N canvas 398 231 523 348 10;
+#X obj 327 142 hsl 128 15 0 2 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 1700 1;
 #X obj 131 169 osc~ 440;
-#X obj 182 111 phasor~ 200;
-#X obj 182 139 *~ 0.5;
-#X msg 234 171 volume \$1;
+#X obj 227 111 phasor~ 200;
+#X obj 227 139 *~ 0.5;
+#X msg 324 169 volume \$1;
 #X obj 131 202 +dsp;
+#X msg 38 62 \; pd dsp 1;
+#X msg 105 62 \; pd dsp 0;
+#X obj 324 65 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X msg 324 91 on \$1;
 #X connect 0 0 4 0;
 #X connect 1 0 5 0;
 #X connect 2 0 3 0;
 #X connect 3 0 5 1;
 #X connect 4 0 5 2;
+#X connect 8 0 9 0;
+#X connect 9 0 5 2;
