@@ -1,0 +1,51 @@
+#N canvas 104 110 933 428 10;
+#X obj 11 28 cnv 15 198 60 empty empty empty 20 12 0 14 -99865 -66577
+0;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array \$0-spectr 512 float 0;
+#X coords 0 1 511 0 200 60 1 0 0;
+#X restore 10 88 graph;
+#X obj 252 291 spectrum.mmb~ \$0-spectr;
+#X obj 252 39 inlet~;
+#X obj 351 41 inlet;
+#X obj 272 263 outlet~;
+#X obj 351 80 route spectrum;
+#X obj 432 344 outlet;
+#X obj 18 35 tgl 12 0 \$0-plot-s \$0-plot-r plot 17 6 0 10 -262144
+-1 -262144 1 1;
+#X obj 604 94 r \$0-plot-s;
+#X msg 604 128 plot \$1;
+#X obj 438 19 loadbang;
+#X obj 351 134 s \$0-plot-r;
+#X obj 18 55 tgl 12 0 \$0-logfreq-s \$0-logfreq-r logfreq 17 6 0 10
+-262144 -1 -262144 0 1;
+#X obj 684 94 r \$0-logfreq-s;
+#X msg 684 128 logfreq \$1;
+#X obj 402 185 s \$0-logfreq-r;
+#X obj 351 109 route plot logfreq refresh;
+#X obj 453 135 clip 50 2000;
+#X obj 453 160 s \$0-refresh-r;
+#X obj 85 55 nbx 6 12 50 2000 0 0 \$0-refresh-s \$0-refresh-r refresh
+0 -8 0 10 -262144 -1 -262144 50 256;
+#X obj 686 163 r \$0-refresh-s;
+#X msg 686 189 refresh \$1;
+#X msg 438 48 plot 1 \, logreq 0 \, refresh 150;
+#X connect 3 0 2 0;
+#X connect 3 0 5 0;
+#X connect 4 0 6 0;
+#X connect 6 0 17 0;
+#X connect 6 1 7 0;
+#X connect 9 0 10 0;
+#X connect 10 0 2 1;
+#X connect 11 0 23 0;
+#X connect 14 0 15 0;
+#X connect 15 0 2 1;
+#X connect 17 0 12 0;
+#X connect 17 1 16 0;
+#X connect 17 2 18 0;
+#X connect 17 3 2 1;
+#X connect 18 0 19 0;
+#X connect 21 0 22 0;
+#X connect 22 0 2 1;
+#X connect 23 0 17 0;
+#X coords 0 -1 1 1 200 140 1 10 10;

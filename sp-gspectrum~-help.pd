@@ -1,0 +1,21 @@
+#N canvas 0 22 560 313 10;
+#X obj 106 44 mtof;
+#X obj 109 16 hsl 128 15 0 200 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 2500 1;
+#X obj 106 69 sp-square~ 440;
+#X msg 299 53 spectrum plot \$1;
+#X obj 299 29 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 375 29 spectrum logfreq 1;
+#X msg 427 76 spectrum refresh \$1;
+#X obj 427 55 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 959 256;
+#X obj 106 110 sp-gspectrum~;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 2 0 8 0;
+#X connect 3 0 8 1;
+#X connect 4 0 3 0;
+#X connect 5 0 8 1;
+#X connect 6 0 8 1;
+#X connect 7 0 6 0;
