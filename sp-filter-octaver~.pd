@@ -18,6 +18,8 @@
 #X obj 506 163 dbtorms;
 #X obj 251 111 sigmund~ pitch env -stabletime 10;
 #X obj 288 383 hip~ 20;
+#X obj 432 212 loadbang;
+#X msg 432 240 0.5;
 #X connect 0 0 17 0;
 #X connect 1 0 5 0;
 #X connect 1 0 6 0;
@@ -39,3 +41,5 @@
 #X connect 17 0 13 0;
 #X connect 17 1 16 0;
 #X connect 18 0 3 0;
+#X connect 19 0 20 0;
+#X connect 20 0 7 1;
