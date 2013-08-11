@@ -1,0 +1,93 @@
+#N canvas 66 107 990 579 10;
+#X obj 11 27 cnv 15 198 100 empty empty empty 20 12 0 14 -13381 -66577
+0;
+#X obj 259 79 inlet~;
+#X obj 429 18 inlet;
+#X obj 429 55 route octaver;
+#X obj 504 261 outlet;
+#X obj 191 33 tgl 12 0 \$0-pass-s \$0-pass-r pass: -35 6 0 10 -262130
+-1 -262144 1 1;
+#X obj 520 140 clip -5 4;
+#X obj 612 116 print [sp-goctaver~] unknown command;
+#X obj 237 405 sp-pass~;
+#X obj 237 347 sp-dry-wet~;
+#X obj 24 110 hsl 130 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r dry-wet:
+-2 -8 0 10 -262144 -1 -262144 0 1;
+#X obj 165 110 nbx 3 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r empty
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 27 255 r \$0-dry-wet-s;
+#X obj 27 279 int;
+#X obj 27 303 change;
+#X obj 27 327 s \$0-dry-wet-r;
+#X obj 616 17 loadbang;
+#X obj 474 167 s \$0-dry-wet-r;
+#X obj 282 371 r \$0-pass-s;
+#X obj 300 316 r \$0-dry-wet-r;
+#X obj 22 82 hradio 12 1 0 11 \$0-octave-s \$0-octave-r octave: 0 -8
+0 10 -262144 -1 -262144 4;
+#X obj 409 244 - 5;
+#X obj 409 215 r \$0-octave-s;
+#X obj 616 40 f \$1;
+#X obj 542 18 r sp-\$2;
+#X obj 520 191 + 5;
+#X obj 520 219 s \$0-octave-r;
+#X obj 164 82 nbx 3 12 -5 5 0 0 \$0-octave-nbx-s \$0-octave-nbx-r empty
+0 -8 0 10 -262144 -1 -1 -1 256;
+#X obj 725 176 r \$0-octave-nbx-s;
+#X obj 725 197 + 5;
+#X obj 725 241 change;
+#X obj 725 263 s \$0-octave-r;
+#X obj 845 176 r \$0-octave-s;
+#X obj 845 201 - 5;
+#X obj 725 219 int;
+#X obj 845 224 change;
+#X obj 845 248 s \$0-octave-nbx-r;
+#X obj 237 430 hip~ 20;
+#X obj 237 462 outlet~;
+#X obj 66 32 vradio 12 1 0 3 \$0-src-s \$0-src-r shape: -40 6 0 10
+-262144 -1 -262144 0;
+#X obj 429 119 s \$0-pass-r;
+#X obj 429 89 route pass dry-wet octave shape;
+#X obj 329 215 r \$0-src-s;
+#X obj 566 173 s \$0-src-r;
+#X msg 616 63 dry-wet 100 \, octave \$1 \, shape 0;
+#X obj 86 30 comment 40 10 helvetica ? 0 200 200 200 sin square phasor
+;
+#X obj 268 261 sp-filter-octaver~ \$1;
+#X connect 1 0 8 1;
+#X connect 1 0 9 0;
+#X connect 1 0 46 0;
+#X connect 2 0 3 0;
+#X connect 3 0 41 0;
+#X connect 3 1 4 0;
+#X connect 6 0 25 0;
+#X connect 8 0 37 0;
+#X connect 9 0 8 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 16 0 23 0;
+#X connect 18 0 8 2;
+#X connect 19 0 9 2;
+#X connect 21 0 46 2;
+#X connect 22 0 21 0;
+#X connect 23 0 44 0;
+#X connect 24 0 41 0;
+#X connect 25 0 26 0;
+#X connect 28 0 29 0;
+#X connect 29 0 34 0;
+#X connect 30 0 31 0;
+#X connect 32 0 33 0;
+#X connect 33 0 35 0;
+#X connect 34 0 30 0;
+#X connect 35 0 36 0;
+#X connect 37 0 38 0;
+#X connect 41 0 40 0;
+#X connect 41 1 17 0;
+#X connect 41 2 6 0;
+#X connect 41 3 43 0;
+#X connect 41 4 7 0;
+#X connect 42 0 46 1;
+#X connect 44 0 41 0;
+#X connect 46 0 9 1;
+#X coords 0 -1 1 1 200 120 1 10 10;
