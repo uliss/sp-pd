@@ -1,0 +1,6 @@
+#N canvas 0 22 450 300 10;
+#X obj 111 48 adc~;
+#X obj 111 207 output~;
+#X obj 111 110 sp-filter-octaver -1;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
