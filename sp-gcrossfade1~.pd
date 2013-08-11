@@ -8,9 +8,9 @@
 #X obj 456 235 outlet;
 #X obj 369 51 route crossfade;
 #X obj 21 47 hsl 120 12 -100 100 0 0 \$0-cross-s \$0-cross-r crossfade:
--2 -8 0 10 -262144 -1 -262144 5950 1;
+-2 -8 0 10 -262144 -1 -262144 9400 1;
 #X obj 156 47 nbx 4 12 -100 100 0 0 \$0-cross-s \$0-cross-r empty 0
--8 0 10 -262144 -1 -1 0 256;
+-8 0 10 -262144 -1 -1 57.9832 256;
 #X obj 135 175 r \$0-cross-s;
 #X obj 135 200 change;
 #X obj 135 257 s \$0-cross-r;
