@@ -9,9 +9,9 @@
 #X obj 21 37 cnv 15 198 180 empty empty empty 20 12 0 14 -2681 -66577
 0;
 #X obj 176 61 nbx 3 12 0 100 0 0 \$0-roomsize-s \$0-roomsize-r empty
--60 7 0 10 -262144 -1 -262144 64 256;
+-60 7 0 10 -262144 -1 -262144 48.062 256;
 #X obj 34 61 hsl 130 12 0 100 0 0 \$0-roomsize-s \$0-roomsize-r roomsize:
--2 -8 0 10 -262144 -1 -262144 8256 1;
+-2 -8 0 10 -262144 -1 -262144 6200 1;
 #X obj 792 18 r \$0-roomsize-s;
 #X obj 792 47 change;
 #X obj 175 90 nbx 3 12 0 100 0 0 \$0-damping-s \$0-damping-r empty
@@ -20,21 +20,21 @@
 -2 -8 0 10 -262144 -1 -262144 1548 1;
 #X obj 293 76 r \$0-param;
 #X obj 907 110 s \$0-param;
-#X obj 792 187 change;
-#X obj 892 263 s \$0-param;
-#X obj 792 158 r \$0-damping-s;
+#X obj 832 187 change;
+#X obj 932 263 s \$0-param;
+#X obj 832 158 r \$0-damping-s;
 #X obj 175 119 nbx 3 12 0 100 0 0 \$0-width-s \$0-width-r empty -60
-7 0 10 -262144 -1 -262144 100 256;
+7 0 10 -262144 -1 -262144 45.7364 256;
 #X obj 33 119 hsl 130 12 0 100 0 0 \$0-width-s \$0-width-r stereo_width:
--2 -8 0 10 -262144 -1 -262144 12900 1;
+-2 -8 0 10 -262144 -1 -262144 5900 1;
 #X obj 175 150 nbx 3 12 0 100 0 0 \$0-wet-s \$0-wet-r empty -60 7 0
-10 -262144 -1 -262144 20 256;
+10 -262144 -1 -262144 8.37209 256;
 #X obj 33 150 hsl 130 12 0 100 0 0 \$0-wet-s \$0-wet-r wet: -2 -8 0
-10 -262144 -1 -262144 2580 1;
+10 -262144 -1 -262144 1080 1;
 #X obj 175 179 nbx 3 12 0 100 0 0 \$0-dry-s \$0-dry-r empty -60 7 0
-10 -262144 -1 -262144 100 256;
+10 -262144 -1 -262144 68.5426 256;
 #X obj 33 179 hsl 130 12 0 100 0 0 \$0-dry-s \$0-dry-r dry: -2 -8 0
-10 -262144 -1 -262144 12900 1;
+10 -262144 -1 -262144 8842 1;
 #X obj 174 199 tgl 12 0 \$0-freeze-s \$0-freeze-r freeze: -60 7 0 10
 -262144 -1 -262144 0 1;
 #X obj 20 297 change;
@@ -42,7 +42,7 @@
 #X obj 20 268 r \$0-width-s;
 #X msg 110 341 width \$1;
 #X msg 907 86 roomsize \$1;
-#X msg 892 229 damping \$1;
+#X msg 932 229 damping \$1;
 #X obj 220 297 change;
 #X obj 300 364 s \$0-param;
 #X msg 300 339 wet \$1;
@@ -54,8 +54,8 @@
 #X obj 624 320 r \$0-freeze-s;
 #X msg 624 351 freeze \$1;
 #X obj 624 379 s \$0-param;
-#X obj 612 220 s \$0-freeze-r;
-#X obj 694 191 s \$0-param;
+#X obj 642 220 s \$0-freeze-r;
+#X obj 736 191 s \$0-param;
 #N canvas 420 382 446 231 init 0;
 #X obj 48 192 outlet;
 #X obj 48 44 loadbang;
@@ -64,75 +64,78 @@
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
 #X restore 543 32 pd init;
-#X obj 653 159 s \$0-bypass-r;
-#X obj 740 320 r \$0-bypass-s;
 #X msg 740 351 bypass \$1;
 #X obj 740 379 s \$0-param;
-#X obj 200 43 tgl 12 0 \$0-bypass-s \$0-bypass-r pass: -35 6 0 10 -262130
+#X obj 200 43 tgl 12 0 \$0-pass-s \$0-pass-r pass: -35 6 0 10 -262130
 -1 -262144 0 1;
 #X obj 792 75 s \$0-roomsize-r;
 #X obj 409 159 s \$0-roomsize-r;
 #X obj 907 64 / 100;
-#X obj 449 191 s \$0-damping-r;
-#X obj 792 215 s \$0-damping-r;
-#X obj 892 204 / 100;
+#X obj 455 191 s \$0-damping-r;
+#X obj 832 215 s \$0-damping-r;
+#X obj 932 204 / 100;
 #X obj 20 325 s \$0-width-r;
 #X obj 110 314 / 100;
-#X obj 490 220 s \$0-width-r;
+#X obj 502 220 s \$0-width-r;
 #X obj 409 70 route freeverb;
-#X obj 531 159 s \$0-wet-r;
+#X obj 549 159 s \$0-wet-r;
 #X obj 220 325 s \$0-wet-r;
 #X obj 300 314 / 100;
 #X obj 462 30 r sp-\$1;
 #X obj 400 325 s \$0-dry-r;
 #X obj 480 314 / 100;
-#X obj 571 191 s \$0-dry-r;
-#X obj 409 129 route roomsize damping width wet dry freeze pass;
+#X obj 595 191 s \$0-dry-r;
+#X obj 689 159 s \$0-pass-r;
+#X obj 409 129 route roomsize damping stereo-width wet dry freeze pass
+;
+#X obj 736 285 print [sp-gfreeverb~] unknown command;
+#X obj 740 320 r \$0-pass-s;
 #X connect 0 0 2 0;
 #X connect 2 0 1 0;
 #X connect 2 1 4 0;
 #X connect 3 0 2 1;
-#X connect 5 0 60 0;
+#X connect 5 0 58 0;
 #X connect 10 0 11 0;
+#X connect 11 0 49 0;
 #X connect 11 0 51 0;
-#X connect 11 0 53 0;
 #X connect 14 0 2 0;
-#X connect 16 0 55 0;
-#X connect 16 0 56 0;
+#X connect 16 0 53 0;
+#X connect 16 0 54 0;
 #X connect 18 0 16 0;
-#X connect 26 0 57 0;
-#X connect 26 0 58 0;
+#X connect 26 0 55 0;
+#X connect 26 0 56 0;
 #X connect 28 0 26 0;
 #X connect 29 0 27 0;
 #X connect 30 0 15 0;
 #X connect 31 0 17 0;
-#X connect 32 0 62 0;
-#X connect 32 0 63 0;
+#X connect 32 0 60 0;
+#X connect 32 0 61 0;
 #X connect 34 0 33 0;
 #X connect 35 0 32 0;
-#X connect 36 0 65 0;
-#X connect 36 0 66 0;
+#X connect 36 0 63 0;
+#X connect 36 0 64 0;
 #X connect 38 0 36 0;
 #X connect 39 0 37 0;
 #X connect 40 0 41 0;
 #X connect 41 0 42 0;
-#X connect 45 0 68 0;
-#X connect 47 0 48 0;
-#X connect 48 0 49 0;
-#X connect 53 0 30 0;
-#X connect 56 0 31 0;
-#X connect 58 0 29 0;
-#X connect 60 0 68 0;
-#X connect 60 1 6 0;
-#X connect 63 0 34 0;
-#X connect 64 0 68 0;
-#X connect 66 0 39 0;
-#X connect 68 0 52 0;
-#X connect 68 1 54 0;
-#X connect 68 2 59 0;
-#X connect 68 3 61 0;
-#X connect 68 4 67 0;
-#X connect 68 5 43 0;
-#X connect 68 6 46 0;
-#X connect 68 7 44 0;
+#X connect 45 0 67 0;
+#X connect 46 0 47 0;
+#X connect 51 0 30 0;
+#X connect 54 0 31 0;
+#X connect 56 0 29 0;
+#X connect 58 0 67 0;
+#X connect 58 1 6 0;
+#X connect 61 0 34 0;
+#X connect 62 0 67 0;
+#X connect 64 0 39 0;
+#X connect 67 0 50 0;
+#X connect 67 1 52 0;
+#X connect 67 2 57 0;
+#X connect 67 3 59 0;
+#X connect 67 4 65 0;
+#X connect 67 5 43 0;
+#X connect 67 6 66 0;
+#X connect 67 7 44 0;
+#X connect 67 7 68 0;
+#X connect 69 0 46 0;
 #X coords 0 -1 1 1 200 200 1 20 20;
