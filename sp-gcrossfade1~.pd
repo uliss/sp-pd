@@ -1,0 +1,41 @@
+#N canvas 203 152 732 290 10;
+#X obj 11 27 cnv 15 198 40 empty empty empty 20 12 0 14 -13330 -66577
+0;
+#X obj 235 16 inlet~;
+#X obj 299 16 inlet~;
+#X obj 235 253 outlet~;
+#X obj 369 16 inlet;
+#X obj 456 235 outlet;
+#X obj 369 51 route crossfade;
+#X obj 21 47 hsl 120 12 -100 100 0 0 \$0-cross-s \$0-cross-r crossfade:
+-2 -8 0 10 -262144 -1 -262144 5950 1;
+#X obj 156 47 nbx 4 12 -100 100 0 0 \$0-cross-s \$0-cross-r empty 0
+-8 0 10 -262144 -1 -1 0 256;
+#X obj 135 175 r \$0-cross-s;
+#X obj 135 200 change;
+#X obj 135 257 s \$0-cross-r;
+#X msg 135 227 set \$1;
+#X obj 369 86 clip -100 100;
+#X obj 369 113 s \$0-cross-r;
+#X obj 483 21 r sp-\$1;
+#X obj 555 18 loadbang;
+#X msg 555 41 0;
+#X obj 235 210 sp-crossfade~;
+#X obj 318 149 r \$0-cross-s;
+#X obj 318 175 scale -100 100 0 1 0;
+#X connect 1 0 18 0;
+#X connect 2 0 18 1;
+#X connect 4 0 6 0;
+#X connect 6 0 13 0;
+#X connect 6 1 5 0;
+#X connect 9 0 10 0;
+#X connect 10 0 12 0;
+#X connect 12 0 11 0;
+#X connect 13 0 14 0;
+#X connect 15 0 13 0;
+#X connect 16 0 17 0;
+#X connect 17 0 13 0;
+#X connect 18 0 3 0;
+#X connect 19 0 20 0;
+#X connect 20 0 18 2;
+#X coords 0 -1 1 1 200 60 1 10 10;
