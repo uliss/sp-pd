@@ -1,0 +1,111 @@
+#N canvas 152 107 1035 556 10;
+#X declare -lib ggee;
+#X obj 264 19 inlet~;
+#X obj 307 492 outlet~;
+#X obj 458 25 inlet;
+#X obj 11 27 cnv 15 198 150 empty empty empty 20 12 0 14 -152008 -66577
+0;
+#X obj 458 59 route moog;
+#X obj 515 257 outlet;
+#X obj 551 24 r sp-\$1;
+#X obj 23 361 import ggee;
+#X obj 264 322 moog~;
+#X obj 233 365 sp-dry-wet~;
+#X obj 307 433 sp-pass~;
+#X obj 191 30 tgl 12 0 \$0-pass-s \$0-pass-r pass: -35 6 0 10 -262130
+-1 -262144 0 1;
+#X obj 352 400 r \$0-pass-s;
+#X obj 458 128 s \$0-pass-r;
+#X obj 20 46 hsl 120 12 0 6 0 0 \$0-q-s \$0-q-r Q: -2 -8 0 10 -262144
+-1 -262144 4300 1;
+#X obj 151 46 nbx 5 12 0 6 0 0 \$0-q-s \$0-q-r empty 0 -8 0 10 -262144
+-1 -1 2 256;
+#X obj 217 48 change;
+#X obj 491 186 s \$0-q-r;
+#X obj 618 26 loadbang;
+#X obj 302 261 r \$0-q-s;
+#X obj 19 73 hsl 120 12 0 4 0 0 \$0-freq-s \$0-freq-r freq: -2 -8 0
+10 -262144 -1 -262144 645 1;
+#X obj 151 73 nbx 5 12 0 4 0 0 \$0-freq-s \$0-freq-r empty 0 -8 0 10
+-262144 -1 -1 0.2 256;
+#X obj 217 76 change;
+#X obj 310 113 osc~;
+#X obj 310 89 r \$0-freq-s;
+#X obj 310 140 +~ 1;
+#X obj 310 171 *~ 2000;
+#X obj 310 205 +~ 100;
+#X obj 592 210 s \$0-freq-r;
+#X obj 491 157 clip 0 6;
+#X obj 302 288 sig~ 3;
+#X obj 369 170 r \$0-low-s;
+#X obj 349 139 r \$0-high-s;
+#X obj 19 102 hsl 120 12 20 20000 0 0 \$0-low-s \$0-low-r low: -2 -8
+0 10 -262144 -1 -262144 107 1;
+#X obj 151 102 nbx 5 12 0 20000 0 0 \$0-low-s \$0-low-r empty 0 -8
+0 10 -262144 -1 -1 199.652 256;
+#X obj 19 130 hsl 120 12 20 20000 0 0 \$0-high-s \$0-high-r high: -2
+-8 0 10 -262144 -1 -262144 1775 1;
+#X obj 151 130 nbx 5 12 20 20000 0 0 \$0-high-s \$0-high-r empty 0
+-8 0 10 -262144 -1 -1 3000.21 256;
+#X obj 217 104 change;
+#X obj 217 132 change;
+#X obj 659 136 print [sp-gmoog~] unknown command;
+#X obj 558 170 s \$0-high-r;
+#X obj 525 231 s \$0-low-r;
+#X obj 19 159 hsl 120 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r dry-wet:
+-2 -8 0 10 -262144 -1 -262144 0 1;
+#X obj 152 159 nbx 5 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r empty
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 217 160 change;
+#X obj 326 320 r \$0-dry-wet-s;
+#X obj 458 100 route pass q low high freq dry-wet;
+#X obj 625 249 s \$0-dry-wet-r;
+#X msg 618 58 q 1 \, freq 0.25 \, low 100 \, high 2000 \, dry-wet 100
+;
+#X connect 0 0 8 0;
+#X connect 0 0 9 0;
+#X connect 0 0 10 1;
+#X connect 2 0 4 0;
+#X connect 4 0 46 0;
+#X connect 4 1 5 0;
+#X connect 6 0 46 0;
+#X connect 8 0 9 1;
+#X connect 9 0 10 0;
+#X connect 10 0 1 0;
+#X connect 12 0 10 2;
+#X connect 14 0 15 0;
+#X connect 15 0 16 0;
+#X connect 16 0 14 0;
+#X connect 18 0 48 0;
+#X connect 19 0 30 0;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 22 0 20 0;
+#X connect 23 0 25 0;
+#X connect 24 0 23 0;
+#X connect 25 0 26 0;
+#X connect 26 0 27 0;
+#X connect 27 0 8 1;
+#X connect 29 0 17 0;
+#X connect 30 0 8 2;
+#X connect 31 0 27 1;
+#X connect 32 0 26 1;
+#X connect 33 0 34 0;
+#X connect 34 0 37 0;
+#X connect 35 0 36 0;
+#X connect 36 0 38 0;
+#X connect 37 0 33 0;
+#X connect 38 0 35 0;
+#X connect 42 0 43 0;
+#X connect 43 0 44 0;
+#X connect 44 0 42 0;
+#X connect 45 0 9 2;
+#X connect 46 0 13 0;
+#X connect 46 1 29 0;
+#X connect 46 2 41 0;
+#X connect 46 3 40 0;
+#X connect 46 4 28 0;
+#X connect 46 5 47 0;
+#X connect 46 6 39 0;
+#X connect 48 0 46 0;
+#X coords 0 -1 1 1 200 170 1 10 10;
