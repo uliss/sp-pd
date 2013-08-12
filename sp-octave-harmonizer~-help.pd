@@ -1,0 +1,18 @@
+#N canvas 330 218 450 300 10;
+#X obj 109 139 sp-octave-harmonizer~;
+#X obj 109 185 +dsp;
+#X obj 109 72 mtof;
+#X floatatom 109 41 5 0 0 0 - - -;
+#X obj 109 102 bl-pulse.mmb~ 0.5;
+#X msg 168 65 0.5;
+#X obj 266 32 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 7000 1;
+#X obj 263 62 scale 0 127 1 2 0;
+#X connect 0 0 1 0;
+#X connect 0 0 1 1;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 0 0;
+#X connect 5 0 4 1;
+#X connect 6 0 7 0;
+#X connect 7 0 0 1;

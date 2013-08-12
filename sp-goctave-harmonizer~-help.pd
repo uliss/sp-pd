@@ -1,0 +1,9 @@
+#N canvas 0 22 758 401 10;
+#X obj 149 56 adc~ 1;
+#X obj 149 213 +dsp;
+#X msg 342 58 volume 0.3 \, stereo-width 0;
+#X obj 149 88 sp-goctave-harmonizer~;
+#X connect 0 0 3 0;
+#X connect 2 0 3 1;
+#X connect 3 0 1 0;
+#X connect 3 1 1 2;

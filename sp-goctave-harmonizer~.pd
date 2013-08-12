@@ -1,0 +1,57 @@
+#N canvas 80 88 1038 489 10;
+#X obj 11 28 cnv 15 198 80 empty empty empty 20 12 0 14 -128992 -66577
+0;
+#X obj 293 44 inlet~;
+#X obj 596 77 inlet;
+#X obj 262 383 outlet~;
+#X obj 731 283 outlet;
+#X obj 596 111 route octave-harmonizer;
+#X obj 21 88 hsl 130 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r dry-wet:
+-2 -8 0 10 -262144 -1 -262144 12900 1;
+#X obj 163 88 nbx 3 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r empty
+0 -8 0 10 -262144 -1 -1 100 256;
+#X obj 217 87 change;
+#X obj 643 205 s \$0-dry-wet-r;
+#X obj 188 33 tgl 12 0 \$0-pass-s \$0-pass-r pass: -35 6 0 10 -262130
+-1 -262144 0 1;
+#X obj 22 57 hsl 130 12 1 2 0 0 \$0-freq-s \$0-freq-r speed: -2 -8
+0 10 -262144 -1 -262144 12900 1;
+#X obj 164 57 nbx 3 12 1 2 0 0 \$0-freq-s \$0-freq-r empty 0 -8 0 10
+-262144 -1 -1 2 256;
+#X obj 216 56 change;
+#X obj 262 252 sp-dry-wet~;
+#X obj 293 189 sp-octave-harmonizer~;
+#X obj 325 216 r \$0-dry-wet-s;
+#X obj 262 304 sp-pass~;
+#X obj 307 277 r \$0-pass-s;
+#X obj 596 177 s \$0-pass-r;
+#X obj 687 48 loadbang;
+#X obj 416 145 r \$0-freq-s;
+#X obj 690 234 s \$0-freq-r;
+#X obj 738 180 print [sp-goctave-harmonizer~] unknown command;
+#X obj 596 143 route pass dry-wet speed;
+#X msg 687 76 dry-wet 100 \, speed 2;
+#X connect 1 0 15 0;
+#X connect 1 0 14 0;
+#X connect 1 0 17 1;
+#X connect 2 0 5 0;
+#X connect 5 0 24 0;
+#X connect 5 1 4 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 6 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 13 0 11 0;
+#X connect 14 0 17 0;
+#X connect 15 0 14 1;
+#X connect 16 0 14 2;
+#X connect 17 0 3 0;
+#X connect 18 0 17 2;
+#X connect 20 0 25 0;
+#X connect 21 0 15 1;
+#X connect 24 0 19 0;
+#X connect 24 1 9 0;
+#X connect 24 2 22 0;
+#X connect 25 0 24 0;
+#X coords 0 -1 1 1 200 100 1 10 10;
