@@ -1,6 +1,5 @@
-#N canvas 77 130 948 523 10;
+#N canvas 77 58 950 604 10;
 #X obj 670 395 +dsp;
-#X obj 20 246 sp-osc 8000;
 #N canvas 0 22 450 278 (subpatch) 0;
 #X array tatata 1.41097e+07 float 2;
 #X coords 0 1 1.41097e+07 -1 900 100 1 0 0;
@@ -11,37 +10,11 @@
 #X obj 481 209 bng 48 203 51 0 \$0-tempo-s empty empty 17 7 0 10 -262144
 -261234 -1;
 #X obj 481 180 metro 405;
-#N canvas 342 165 375 220 osc 0;
-#X msg 29 85 \; pd dsp \$1;
-#X obj 210 79 str to_float;
-#X obj 210 103 / 100;
-#X obj 150 182 s stop;
-#X obj 89 149 s play;
-#X obj 210 128 s vol;
-#X obj 100 127 sp-key p;
-#X obj 183 156 sp-key s;
-#X obj 29 52 routeOSC /dsp /btn_play /btn_stop /volume /btn_init;
-#X obj 271 105 s init;
-#X obj 29 17 inlet;
-#X obj 248 156 sp-key Space;
-#X connect 1 0 2 0;
-#X connect 2 0 5 0;
-#X connect 6 0 4 0;
-#X connect 7 0 3 0;
-#X connect 8 0 0 0;
-#X connect 8 1 4 0;
-#X connect 8 2 3 0;
-#X connect 8 3 1 0;
-#X connect 8 4 9 0;
-#X connect 10 0 8 0;
-#X connect 11 0 3 0;
-#X restore 20 378 pd osc;
-#X obj 18 150 cnv 15 100 60 empty empty empty 20 12 0 14 -233017 -66577
+#X obj 18 150 cnv 15 100 40 empty empty empty 20 12 0 14 -233017 -66577
 0;
-#X text 27 171 Play: p;
-#X text 26 155 Init: i;
-#X text 27 186 Stop: s \, Space;
-#X obj 21 416 table tatata-r;
+#X text 26 153 Play: p;
+#X text 26 168 Stop: s \, Space;
+#X obj 826 225 table tatata-r;
 #N canvas 539 158 475 378 loadfile 0;
 #X obj 124 82 soundfiler;
 #X obj 109 152 f;
@@ -73,7 +46,7 @@
 #X connect 11 0 13 0;
 #X connect 12 0 4 0;
 #X connect 13 0 0 0;
-#X restore 20 456 pd loadfile;
+#X restore 826 285 pd loadfile;
 #N canvas 157 132 340 280 input 0;
 #X obj 52 223 outlet~;
 #X obj 181 224 outlet~;
@@ -83,7 +56,11 @@
 #X msg 181 130 stop;
 #X msg 52 130 0;
 #X obj 52 93 r play;
+#X obj 139 247 s stop;
+#X obj 47 30 adc~ 1;
+#X obj 47 55 s~ \$0-viola-in;
 #X connect 2 0 0 0;
+#X connect 2 1 8 0;
 #X connect 3 0 1 0;
 #X connect 4 0 5 0;
 #X connect 5 0 3 0;
@@ -91,6 +68,7 @@
 #X connect 6 0 2 0;
 #X connect 6 0 3 0;
 #X connect 7 0 6 0;
+#X connect 9 0 10 0;
 #X restore 670 350 pd input;
 #X obj 210 175 bng 48 250 50 0 init init-r init 0 -16 0 20 -260097
 -1 -1;
@@ -101,14 +79,50 @@
 #X msg 44 87 volume 0.6;
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
-#X restore 20 485 pd init;
+#X restore 826 255 pd init;
 #X obj 280 175 bng 48 250 50 0 play play-r play 0 -16 0 22 -4034 -1
 -1;
 #X obj 350 175 bng 48 250 50 0 stop stop-r stop 0 -16 0 22 -99865 -1
 -1;
-#X connect 1 0 7 0;
-#X connect 3 0 6 0;
-#X connect 6 0 5 0;
-#X connect 14 0 0 0;
-#X connect 14 1 0 1;
-#X connect 16 0 0 2;
+#X obj 20 379 sp-gtuner~ 415;
+#N canvas 293 165 228 165 control 0;
+#X obj 20 26 sp-osc 8000;
+#N canvas 342 165 375 220 osc 0;
+#X msg 29 85 \; pd dsp \$1;
+#X obj 210 79 str to_float;
+#X obj 210 103 / 100;
+#X obj 150 182 s stop;
+#X obj 89 149 s play;
+#X obj 210 128 s vol;
+#X obj 100 127 sp-key p;
+#X obj 183 156 sp-key s;
+#X obj 29 52 routeOSC /dsp /btn_play /btn_stop /volume /btn_init;
+#X obj 271 105 s init;
+#X obj 29 17 inlet;
+#X obj 248 156 sp-key Space;
+#X connect 1 0 2 0;
+#X connect 2 0 5 0;
+#X connect 6 0 4 0;
+#X connect 7 0 3 0;
+#X connect 8 0 0 0;
+#X connect 8 1 4 0;
+#X connect 8 2 3 0;
+#X connect 8 3 1 0;
+#X connect 8 4 9 0;
+#X connect 10 0 8 0;
+#X connect 11 0 3 0;
+#X restore 20 121 pd osc;
+#X connect 0 0 1 0;
+#X restore 826 315 pd control;
+#X obj 20 362 r~ \$0-viola-in;
+#X obj 16 228 cnv 15 140 100 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 23 231 comment 130 12 Verdana ? 0 0 0 0 Legend \; 1 check DSP
+\; 2 tune viola 415hz \; 3 init patch \; 4 play \; 5 tune to 440hz
+\;;
+#X connect 2 0 5 0;
+#X connect 5 0 4 0;
+#X connect 11 0 0 0;
+#X connect 11 1 0 1;
+#X connect 13 0 0 2;
+#X connect 19 0 17 0;
