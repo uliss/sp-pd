@@ -74,7 +74,7 @@
 #X obj 210 255 bng 48 250 50 0 init init-r init 0 -16 0 20 -260097
 -1 -1;
 #X obj 863 445 r \$0-bus;
-#N canvas 273 315 386 202 init 1;
+#N canvas 273 315 386 202 init 0;
 #X obj 44 112 s \$0-bus;
 #X obj 44 63 r init;
 #X obj 206 33 loadbang;
@@ -134,8 +134,8 @@
 \;;
 #X obj 826 305 table \$0-right;
 #X obj 856 238 sp-gcpu;
-#X obj 19 30 cnv 15 900 30 empty \$0-title-r Jacob ter Veldhuis: Tatatata
-20 15 0 20 -204800 -66577 0;
+#X obj 19 30 cnv 15 900 30 empty \$0-title-r Tatatata 20 15 0 20 -204800
+-66577 0;
 #X connect 2 0 5 0;
 #X connect 5 0 4 0;
 #X connect 10 0 0 0;
