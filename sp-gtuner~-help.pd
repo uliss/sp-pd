@@ -1,0 +1,4 @@
+#N canvas 0 22 450 300 10;
+#X obj 96 26 adc~ 1;
+#X obj 96 69 sp-gtuner~ 415;
+#X connect 0 0 1 0;
