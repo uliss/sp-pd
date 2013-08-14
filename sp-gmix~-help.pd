@@ -1,18 +1,18 @@
 #N canvas 600 157 454 419 10;
 #X obj 99 103 osc~ 440;
-#X obj 99 316 env~;
-#X floatatom 99 357 5 0 0 0 - - -;
+#X obj 99 336 env~;
+#X floatatom 99 377 5 0 0 0 - - -;
 #X obj 99 141 sp-gmix~;
 #X obj 164 104 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 164 124 mute \$1;
 #X msg 244 124 volume \$1;
 #X obj 247 95 hsl 128 15 0 3 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 2300 1;
-#X obj 37 333 dbtorms;
-#X floatatom 37 357 5 0 0 0 - - -;
+-1 -1 2800 1;
+#X obj 37 353 dbtorms;
+#X floatatom 37 377 5 0 0 0 - - -;
 #X obj 168 23 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 6600 1;
+-1 -1 100 1;
 #X floatatom 107 52 5 0 0 0 - - -;
 #X msg 237 63 label 2 d;
 #X msg 165 45 color \$1 3;
