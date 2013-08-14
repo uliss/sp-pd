@@ -1,7 +1,10 @@
-#N canvas 0 22 450 300 10;
+#N canvas 190 180 570 322 10;
 #X obj 138 147 ctlout 64;
 #X obj 212 114 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 137 60 ctlin 102;
+#X obj 138 60 ctlin 102;
+#X obj 256 45 comment 200 15 Check MIDI 0 255 0 0 Check input MIDI
+device set to "MBOX Pro Controlo"!!! If no such device - restart PureData.
+;
 #X connect 2 0 0 0;
 #X connect 2 0 1 0;

@@ -48,5 +48,5 @@
 35 14 0 18 -4034 -1 -1;
 #X obj 41 38 bng 30 250 50 0 open-reich open-reich-r 1.Reich-Vermont
 35 14 0 18 -260097 -1 -1;
-#X obj 78 235 comment 100 20 helvetica ? 0 0 0 0 5 Klark;
-#X obj 78 265 comment 100 20 helvetica ? 0 0 0 0 6 Knox;
+#X obj 76 266 comment 100 20 helvetica ? 0 0 0 0 6 Knox;
+#X obj 75 231 comment 100 20 helvetica ? 0 0 0 0 5 Klark;

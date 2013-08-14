@@ -1,36 +1,36 @@
-#N canvas 77 58 950 604 10;
-#X obj 670 395 +dsp;
+#N canvas 78 22 942 621 10;
+#X obj 670 475 +dsp;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array tatata 1.41097e+07 float 2;
+#X array \$0-left 1.41097e+07 float 2;
 #X coords 0 1 1.41097e+07 -1 900 100 1 0 0;
-#X restore 20 31 graph;
-#X obj 481 151 loadbang;
-#X obj 20 31 hsl 900 100 0 44100 0 0 empty play_ind empty -2 -8 0 10
--262144 -4160 -1 0 1;
-#X obj 481 209 bng 48 203 51 0 \$0-tempo-s empty empty 17 7 0 10 -262144
+#X restore 20 111 graph;
+#X obj 481 231 loadbang;
+#X obj 20 111 hsl 900 100 0 44100 0 0 empty play_ind empty -2 -8 0
+10 -262144 -4160 -1 0 1;
+#X obj 481 289 bng 48 203 51 0 \$0-tempo-s empty empty 17 7 0 10 -262144
 -261234 -1;
-#X obj 481 180 metro 405;
-#X obj 18 150 cnv 15 100 40 empty empty empty 20 12 0 14 -233017 -66577
+#X obj 481 260 metro 405;
+#X obj 18 230 cnv 15 100 40 empty empty empty 20 12 0 14 -233017 -66577
 0;
-#X text 26 153 Play: p;
-#X text 26 168 Stop: s \, Space;
-#X obj 826 225 table tatata-r;
-#N canvas 539 158 475 378 loadfile 0;
-#X obj 124 82 soundfiler;
-#X obj 109 152 f;
-#X obj 109 182 expr 44100 / $f1;
-#X obj 109 212 phasor~;
-#X obj 109 272 * 44100;
-#X floatatom 109 302 10 0 0 0 - - -;
-#X obj 109 331 s play_ind;
-#X obj 37 162 r stop;
-#X msg 37 188 0;
-#X obj 82 104 r play;
-#X obj 82 137 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X text 26 233 Play: p;
+#X text 26 248 Stop: s \, Space;
+#N canvas 539 158 483 416 loadfile 0;
+#X obj 124 102 soundfiler;
+#X obj 109 172 f;
+#X obj 109 202 expr 44100 / $f1;
+#X obj 109 232 phasor~;
+#X obj 109 292 * 44100;
+#X floatatom 109 322 10 0 0 0 - - -;
+#X obj 109 351 s play_ind;
+#X obj 37 182 r stop;
+#X msg 37 208 0;
+#X obj 82 124 r play;
+#X obj 82 157 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 124 21 r init;
-#X obj 109 242 unsig~ 20;
-#X msg 124 50 read -resize tatata.wav tatata tatata-r;
+#X obj 109 262 unsig~ 20;
+#X obj 124 45 f \$0;
+#X msg 124 70 read -resize tatata.wav \$1-left \$1-right;
 #X connect 0 0 1 1;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
@@ -45,46 +45,58 @@
 #X connect 10 0 1 0;
 #X connect 11 0 13 0;
 #X connect 12 0 4 0;
-#X connect 13 0 0 0;
-#X restore 826 285 pd loadfile;
+#X connect 13 0 14 0;
+#X connect 14 0 0 0;
+#X restore 826 365 pd loadfile;
 #N canvas 157 132 340 280 input 0;
 #X obj 52 223 outlet~;
 #X obj 181 224 outlet~;
-#X obj 52 170 tabplay~ tatata;
-#X obj 181 171 tabplay~ tatata-r;
 #X obj 181 91 r stop;
 #X msg 181 130 stop;
 #X msg 52 130 0;
 #X obj 52 93 r play;
-#X obj 139 247 s stop;
+#X obj 145 247 s stop;
 #X obj 47 30 adc~ 1;
 #X obj 47 55 s~ \$0-viola-in;
-#X connect 2 0 0 0;
-#X connect 2 1 8 0;
-#X connect 3 0 1 0;
-#X connect 4 0 5 0;
-#X connect 5 0 3 0;
-#X connect 5 0 2 0;
-#X connect 6 0 2 0;
-#X connect 6 0 3 0;
-#X connect 7 0 6 0;
-#X connect 9 0 10 0;
-#X restore 670 350 pd input;
-#X obj 210 175 bng 48 250 50 0 init init-r init 0 -16 0 20 -260097
+#X obj 181 171 tabplay~ \$0-right;
+#X obj 52 170 tabplay~ \$0-left;
+#X connect 2 0 3 0;
+#X connect 3 0 9 0;
+#X connect 3 0 10 0;
+#X connect 4 0 9 0;
+#X connect 4 0 10 0;
+#X connect 5 0 4 0;
+#X connect 7 0 8 0;
+#X connect 9 0 1 0;
+#X connect 10 0 0 0;
+#X connect 10 1 6 0;
+#X restore 670 430 pd input;
+#X obj 210 255 bng 48 250 50 0 init init-r init 0 -16 0 20 -260097
 -1 -1;
-#X obj 863 365 r \$0-bus;
-#N canvas 273 315 157 176 init 0;
+#X obj 863 445 r \$0-bus;
+#N canvas 273 315 386 202 init 1;
 #X obj 44 112 s \$0-bus;
 #X obj 44 63 r init;
-#X msg 44 87 volume 0.6;
-#X connect 1 0 2 0;
-#X connect 2 0 0 0;
-#X restore 826 255 pd init;
-#X obj 280 175 bng 48 250 50 0 play play-r play 0 -16 0 22 -4034 -1
+#X obj 206 33 loadbang;
+#X obj 206 61 del 500;
+#X msg 206 88 Jacob ter Veldhuis: Tatatata;
+#X obj 206 167 s \$0-title-r;
+#X obj 206 115 l2s;
+#X msg 206 141 label \$1;
+#X msg 44 87 volume 0.5;
+#X connect 1 0 8 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 5 0;
+#X connect 8 0 0 0;
+#X restore 826 335 pd init;
+#X obj 280 255 bng 48 250 50 0 play play-r play 0 -16 0 22 -4034 -1
 -1;
-#X obj 350 175 bng 48 250 50 0 stop stop-r stop 0 -16 0 22 -99865 -1
+#X obj 350 255 bng 48 250 50 0 stop stop-r stop 0 -16 0 22 -99865 -1
 -1;
-#X obj 20 379 sp-gtuner~ 415;
+#X obj 17 403 sp-gtuner~ 415;
 #N canvas 293 165 228 165 control 0;
 #X obj 20 26 sp-osc 8000;
 #N canvas 342 165 375 220 osc 0;
@@ -113,16 +125,20 @@
 #X connect 11 0 3 0;
 #X restore 20 121 pd osc;
 #X connect 0 0 1 0;
-#X restore 826 315 pd control;
-#X obj 20 362 r~ \$0-viola-in;
-#X obj 16 228 cnv 15 140 100 empty empty empty 20 12 0 14 -233017 -66577
+#X restore 826 395 pd control;
+#X obj 17 386 r~ \$0-viola-in;
+#X obj 17 278 cnv 15 140 100 empty empty empty 20 12 0 14 -233017 -66577
 0;
-#X obj 23 231 comment 130 12 Verdana ? 0 0 0 0 Legend \; 1 check DSP
+#X obj 24 281 comment 130 12 Verdana ? 0 0 0 0 Legend \; 1 check DSP
 \; 2 tune viola 415hz \; 3 init patch \; 4 play \; 5 tune to 440hz
 \;;
+#X obj 826 305 table \$0-right;
+#X obj 856 238 sp-gcpu;
+#X obj 19 30 cnv 15 900 30 empty \$0-title-r Jacob ter Veldhuis: Tatatata
+20 15 0 20 -204800 -66577 0;
 #X connect 2 0 5 0;
 #X connect 5 0 4 0;
-#X connect 11 0 0 0;
-#X connect 11 1 0 1;
-#X connect 13 0 0 2;
-#X connect 19 0 17 0;
+#X connect 10 0 0 0;
+#X connect 10 1 0 1;
+#X connect 12 0 0 2;
+#X connect 18 0 16 0;
