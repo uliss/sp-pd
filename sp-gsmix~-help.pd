@@ -1,0 +1,7 @@
+#N canvas 0 22 554 344 10;
+#X msg 223 54 label test;
+#X obj 163 91 sp-gsmix~;
+#X obj 162 44 osc~ 440;
+#X connect 0 0 1 2;
+#X connect 2 0 1 0;
+#X connect 2 0 1 1;
