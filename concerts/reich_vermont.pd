@@ -1,8 +1,8 @@
-#N canvas 273 82 740 614 10;
+#N canvas 212 110 740 614 10;
 #X obj 450 494 +dsp;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array \$0-left 2.16308e+07 float 2;
-#X coords 0 1 2.16308e+07 -1 700 100 1 0 0;
+#X array \$0-left 2.31554e+07 float 2;
+#X coords 0 1 2.31554e+07 -1 700 100 1 0 0;
 #X restore 20 111 graph;
 #X obj 20 111 hsl 700 100 0 44100 0 0 empty play_ind empty -2 -8 0
 10 -262144 -4160 -1 0 1;
@@ -31,9 +31,7 @@
 #X connect 10 0 8 0;
 #X connect 11 0 3 0;
 #X restore 640 309 pd osc;
-#X text 20 244 Play: p;
-#X text 27 272 Stop: s \, Space;
-#N canvas 539 158 475 378 loadfile 1;
+#N canvas 539 158 475 378 loadfile 0;
 #X obj 124 104 soundfiler;
 #X obj 109 152 f;
 #X obj 109 182 expr 44100 / $f1;
@@ -111,17 +109,19 @@
 #X obj 44 112 s \$0-bus;
 #X obj 44 63 r init;
 #X msg 44 87 volume 0.6;
-#X obj 178 41 loadbang;
+#X obj 178 21 loadbang;
 #X msg 178 146 label \$1;
 #X obj 178 116 l2s;
 #X obj 178 179 s \$0-title-r;
 #X msg 178 79 Reich: Vermont Counterpoint;
+#X obj 178 51 del 500;
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
-#X connect 3 0 7 0;
+#X connect 3 0 8 0;
 #X connect 4 0 6 0;
 #X connect 5 0 4 0;
 #X connect 7 0 5 0;
+#X connect 8 0 7 0;
 #X restore 640 338 pd init;
 #X obj 280 255 bng 48 250 50 0 play play-r play 0 -16 0 22 -4034 -1
 -1;
@@ -167,20 +167,24 @@
 #X connect 5 0 6 0;
 #X connect 6 0 0 2;
 #X restore 640 396 pd reverb;
-#X obj 18 230 cnv 15 100 60 empty empty empty 20 12 0 14 -233017 -66577
+#X obj 20 232 cnv 15 150 100 empty empty empty 20 12 0 14 -233017 -66577
 0;
-#X text 26 241 Play: p;
-#X text 26 261 Stop: s \, Space;
-#X obj 20 15 cnv 15 700 30 empty \$0-title-r Reich: Vermont Counterpoint
-20 15 0 20 -204800 -1 0;
-#X connect 7 0 13 0;
-#X connect 7 1 13 1;
-#X connect 7 2 15 0;
-#X connect 7 3 15 1;
-#X connect 7 4 15 2;
-#X connect 9 0 0 2;
-#X connect 13 0 16 0;
-#X connect 15 0 16 1;
-#X connect 15 1 16 2;
-#X connect 16 0 0 0;
-#X connect 16 1 0 1;
+#X text 29 253 Stop: s \, Space;
+#X obj 20 15 cnv 15 700 30 empty \$0-title-r Reich 20 15 0 20 -204800
+-66577 0;
+#X obj 653 65 sp-gcpu;
+#X text 30 237 Play: p;
+#X text 31 272 1 Check DSP;
+#X text 31 292 2 Press init;
+#X text 31 312 3 Press play;
+#X connect 5 0 11 0;
+#X connect 5 1 11 1;
+#X connect 5 2 13 0;
+#X connect 5 3 13 1;
+#X connect 5 4 13 2;
+#X connect 7 0 0 2;
+#X connect 11 0 14 0;
+#X connect 13 0 14 1;
+#X connect 13 1 14 2;
+#X connect 14 0 0 0;
+#X connect 14 1 0 1;
