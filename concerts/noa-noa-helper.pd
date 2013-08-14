@@ -1,4 +1,4 @@
-#N canvas 190 180 570 322 10;
+#N canvas 139 98 599 432 10;
 #X obj 138 147 ctlout 64;
 #X obj 212 114 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
@@ -6,5 +6,9 @@
 #X obj 256 45 comment 200 15 Check MIDI 0 255 0 0 Check input MIDI
 device set to "MBOX Pro Controlo"!!! If no such device - restart PureData.
 ;
+#X obj 261 156 comment 250 16 Legend: ? 0 0 0 0 Legend \; 1 run from
+Desktop \; if fails - clean preferences \; 2 init \; 3 select stereo
+\; 4 fadout harmonizers \; 5 choose audio endgine \; 6 map input on
+2 channel \; 7 turn on DSP;
 #X connect 2 0 0 0;
 #X connect 2 0 1 0;
