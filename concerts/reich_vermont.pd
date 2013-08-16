@@ -80,10 +80,10 @@
 #X obj 53 452 outlet~;
 #X obj 527 450 outlet;
 #X obj 164 448 outlet;
-#X msg 527 346 volume 1.2 \, label tape;
 #X msg 164 382 volume 0.5 \, label flt;
 #X obj 164 279 loadbang;
 #X obj 395 284 s stop;
+#X msg 527 346 volume 1.4 \, label tape;
 #X connect 1 0 2 0;
 #X connect 2 0 5 0;
 #X connect 2 0 6 0;
@@ -91,16 +91,16 @@
 #X connect 3 0 6 0;
 #X connect 4 0 3 0;
 #X connect 5 0 8 0;
-#X connect 5 1 17 0;
+#X connect 5 1 16 0;
 #X connect 6 0 9 0;
-#X connect 6 1 17 0;
+#X connect 6 1 16 0;
 #X connect 8 0 7 0;
 #X connect 9 0 0 0;
 #X connect 10 0 11 0;
-#X connect 14 0 12 0;
-#X connect 15 0 13 0;
-#X connect 16 0 15 0;
-#X connect 16 0 14 0;
+#X connect 14 0 13 0;
+#X connect 15 0 14 0;
+#X connect 15 0 17 0;
+#X connect 17 0 12 0;
 #X restore 450 239 pd input;
 #X obj 210 255 bng 48 250 50 0 init init-r init 0 -16 0 20 -260097
 -1 -1;
@@ -170,13 +170,16 @@
 #X obj 20 232 cnv 15 150 100 empty empty empty 20 12 0 14 -233017 -66577
 0;
 #X text 29 253 Stop: s \, Space;
-#X obj 20 15 cnv 15 700 30 empty \$0-title-r Reich 20 15 0 20 -204800
--66577 0;
+#X obj 20 15 cnv 15 700 30 empty \$0-title-r Reich: Vermont Counterpoint
+20 15 0 20 -204800 -66577 0;
 #X obj 653 65 sp-gcpu;
 #X text 30 237 Play: p;
 #X text 31 272 1 Check DSP;
 #X text 31 292 2 Press init;
 #X text 31 312 3 Press play;
+#X msg 544 229 volume 0.4;
+#X msg 621 229 volume 0.5;
+#X msg 566 273 volume 0.7;
 #X connect 5 0 11 0;
 #X connect 5 1 11 1;
 #X connect 5 2 13 0;
@@ -188,3 +191,6 @@
 #X connect 13 1 14 2;
 #X connect 14 0 0 0;
 #X connect 14 1 0 1;
+#X connect 24 0 11 1;
+#X connect 25 0 11 1;
+#X connect 26 0 11 1;

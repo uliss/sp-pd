@@ -16,7 +16,7 @@
 #X connect 6 0 4 0;
 #X restore 32 17 pd input;
 #X obj 761 186 +dsp;
-#N canvas 177 50 849 348 init 0;
+#N canvas 275 45 849 348 init 0;
 #X obj 48 163 loadbang;
 #X obj 643 45 table t-flute;
 #X msg 487 178 \; t-flute resize \$1 \; t-viola resize \$1 \;;
@@ -45,12 +45,12 @@
 -1;
 #X obj 280 304 s \$0-bus;
 #X msg 280 281 volume 0.7;
-#X msg 368 100 \; \$1-v1-order-r 0 \; \$1-v2-order-r 2 \; \$1-v3-order-r
-3 \; \$1-v4-order-r 4 \; \$1-f1-order-r 1 \; \$1-f2-order-r 2 \; \$1-f3-order-r
-3 \; \$1-f4-order-r 5 \;;
 #X msg 48 193 volume 0.2 \, limiter threshold 99 \, spectrum plot 0
 ;
-#X connect 0 0 27 0;
+#X msg 368 100 \; \$1-v1-order-r 0 \; \$1-v2-order-r 2 \; \$1-v3-order-r
+3 \; \$1-v4-order-r 4 \; \$1-f1-order-r 7 \; \$1-f2-order-r 1 \; \$1-f3-order-r
+7 \; \$1-f4-order-r 5 \;;
+#X connect 0 0 26 0;
 #X connect 3 0 6 0;
 #X connect 4 0 5 1;
 #X connect 5 0 7 0;
@@ -66,10 +66,10 @@
 #X connect 19 0 25 0;
 #X connect 20 0 18 0;
 #X connect 21 0 22 0;
-#X connect 22 0 26 0;
+#X connect 22 0 27 0;
 #X connect 23 0 22 0;
 #X connect 25 0 24 0;
-#X connect 27 0 17 0;
+#X connect 26 0 17 0;
 #X restore 32 47 pd init;
 #X obj 242 46 bng 48 250 50 0 \$0-init-s \$0-init-r I 18 22 0 22 -260097
 -1 -262144;
@@ -83,7 +83,7 @@
 #X msg 551 164 mix solo \$1;
 #X obj 280 214 sp-gmix12~;
 #X obj 33 100 nbx 3 32 0 200 0 0 empty \$0-init-bpm empty 0 -8 0 24
--262144 -1 -1 0 256;
+-262144 -1 -1 180 256;
 #X obj 175 467 sp-midipedal;
 #N canvas 286 200 545 464 pedal 0;
 #X obj 45 53 inlet;
@@ -115,11 +115,11 @@
 #X obj 304 511 hradio 15 1 0 8 \$0-v4-order-s \$0-v4-order-r V4 -16
 8 0 10 -262144 -1 -1 4;
 #X obj 304 536 hradio 15 1 0 8 \$0-f1-order-s \$0-f1-order-r F1 -16
-8 0 10 -262144 -1 -1 1;
+8 0 10 -262144 -1 -1 7;
 #X obj 304 551 hradio 15 1 0 8 \$0-f2-order-s \$0-f2-order-r F2 -16
-8 0 10 -262144 -1 -1 2;
+8 0 10 -262144 -1 -1 1;
 #X obj 304 566 hradio 15 1 0 8 \$0-f3-order-s \$0-f3-order-r F3 -16
-8 0 10 -262144 -1 -1 3;
+8 0 10 -262144 -1 -1 7;
 #X obj 304 581 hradio 15 1 0 8 \$0-f4-order-s \$0-f4-order-r F4 -16
 8 0 10 -262144 -1 -1 5;
 #X text 304 444 Result delay order:;
@@ -131,7 +131,7 @@
 #X text 435 481 moog;
 #X text 435 567 low;
 #X text 437 583 natural;
-#N canvas 49 280 1017 366 levels_after_effects 0;
+#N canvas 52 494 1017 366 levels_after_effects 0;
 #X obj 39 323 outlet~;
 #X obj 112 323 outlet~;
 #X obj 184 323 outlet~;
@@ -169,10 +169,6 @@ color 0 -1 \, mix 11 label inC \, mix 8 mute 0 \, mix 9 mute 0 \, mix
 \$1 0 \, mix 3 color \$1 0 \, mix 4 color \$1 0 \, mix 5 color \$2
 0 \, mix 6 color \$2 0 \, mix 7 color \$2 0 \, mix 8 color \$2 0 \,
 mix 9 color \$2 0 \, mix 10 label;
-#X msg 228 62 mix 0 volume 0.5 \, mix 1 volume 0.5 \, mix 2 volume
-0.5 \, mix 3 volume 0.5 \, mix 4 volume 0.5 \, mix 5 volume 1 \, mix
-6 volume 1.7 \, mix 7 volume 0.8 \, mix 8 volume 0.4 \, mix 9 volume
-0.5 \, mix 10 volume 0 \, mix 11 volume 0.5;
 #X obj 32 54 inlet;
 #X obj 32 82 route mute;
 #X obj 32 109 route flute viola;
@@ -180,17 +176,21 @@ mix 9 color \$2 0 \, mix 10 label;
 mix 3 mute \$1 \, mix 4 mute \$1;
 #X msg 81 178 mix 5 mute \$1 \, mix 6 mute \$1 \, mix 7 mute \$1 \,
 mix 8 mute \$1 \, mix 9 mute \$1;
+#X msg 228 62 mix 0 volume 0.7 \, mix 1 volume 0.5 \, mix 2 volume
+0.7 \, mix 3 volume 0.5 \, mix 4 volume 0.5 \, mix 5 volume 1 \, mix
+6 volume 1.5 \, mix 7 volume 0.9 \, mix 8 volume 0.7 \, mix 9 volume
+0.5 \, mix 10 volume 0 \, mix 11 volume 0.5;
 #X connect 8 0 1 0;
 #X connect 9 0 2 0;
 #X connect 10 0 3 0;
 #X connect 11 0 0 0;
 #X connect 13 0 12 0;
 #X connect 14 0 20 0;
-#X connect 14 0 29 0;
+#X connect 14 0 34 0;
 #X connect 19 0 18 0;
 #X connect 20 0 28 0;
 #X connect 21 0 20 0;
-#X connect 21 0 29 0;
+#X connect 21 0 34 0;
 #X connect 22 0 4 0;
 #X connect 23 0 5 0;
 #X connect 24 0 6 0;
@@ -198,11 +198,11 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X connect 26 0 15 0;
 #X connect 27 0 16 0;
 #X connect 28 0 12 0;
-#X connect 29 0 12 0;
+#X connect 29 0 30 0;
 #X connect 30 0 31 0;
 #X connect 31 0 32 0;
-#X connect 32 0 33 0;
-#X connect 32 1 34 0;
+#X connect 31 1 33 0;
+#X connect 32 0 12 0;
 #X connect 33 0 12 0;
 #X connect 34 0 12 0;
 #X coords 0 -1 1 1 408 20 1 10 10;
@@ -243,12 +243,12 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X obj 318 56 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 318 28 sp-key @;
-#X msg 146 130 label flt \, color 164 0 \, volume 0.4;
 #X msg 307 108 label vla \, color 357 0 \, volume 0.8;
+#X msg 146 130 label flt \, color 164 0 \, volume 0.2;
 #X connect 4 0 0 0;
 #X connect 5 0 2 0;
-#X connect 6 0 15 0;
 #X connect 6 0 16 0;
+#X connect 6 0 15 0;
 #X connect 7 0 1 0;
 #X connect 8 0 7 0;
 #X connect 9 0 10 0;
@@ -258,8 +258,8 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X connect 12 0 3 0;
 #X connect 13 0 12 0;
 #X connect 14 0 13 0;
-#X connect 15 0 1 0;
-#X connect 16 0 3 0;
+#X connect 15 0 3 0;
+#X connect 16 0 1 0;
 #X coords 0 -1 1 1 70 20 1 100 100;
 #X restore 34 161 pd src_in;
 #N canvas 324 285 374 200 src_out 0;
@@ -292,7 +292,7 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X connect 7 0 3 0;
 #X connect 7 0 1 0;
 #X restore 33 434 pd delay_common;
-#N canvas 430 91 651 301 delay_flute 0;
+#N canvas 257 166 651 301 delay_flute 0;
 #X obj 29 43 r \$0-start;
 #N canvas 770 245 426 288 delay_flute1 0;
 #X obj 26 81 inlet;
@@ -381,8 +381,6 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X restore 29 170 pd delay_flute3;
 #X obj 29 200 s~ \$0-flute-out-3;
 #X obj 399 137 * 24;
-#X obj 134 62 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
 #N canvas 114 267 382 268 delay_flute4 0;
 #X obj 26 71 inlet;
 #X obj 26 153 del;
@@ -412,15 +410,13 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X msg 468 100 \; \$1-delay-flute-1-comp 40 \; \$1-init-bpm 180 \;
 \$1-delay-flute-2-comp 40 \; \$1-delay-flute-3-comp 60 \; \$1-delay-flute-4-comp
 15 \;;
-#X connect 0 0 1 0;
+#X connect 0 0 16 0;
 #X connect 0 0 11 0;
-#X connect 0 0 13 0;
-#X connect 0 0 17 0;
 #X connect 1 0 9 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
 #X connect 3 0 8 0;
-#X connect 4 0 19 0;
+#X connect 4 0 18 0;
 #X connect 6 0 5 0;
 #X connect 7 0 15 0;
 #X connect 8 0 6 0;
@@ -429,11 +425,7 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X connect 11 0 12 0;
 #X connect 13 0 14 0;
 #X connect 15 0 6 1;
-#X connect 16 0 1 0;
-#X connect 16 0 11 0;
-#X connect 16 0 13 0;
 #X connect 16 0 17 0;
-#X connect 17 0 18 0;
 #X restore 33 461 pd delay_flute;
 #N canvas 150 336 615 372 metro 0;
 #X obj 194 18 r \$0-start;
@@ -816,7 +808,7 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X connect 18 0 17 0;
 #X restore 33 488 pd delay_viola;
 #X msg 280 157 mute flute \$1;
-#X obj 280 132 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 280 132 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 370 132 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -848,7 +840,7 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X obj 105 63 osc~;
 #X obj 105 85 unsig~ 500;
 #X obj 117 172 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 -32.8057 256;
+-262144 -1 -1 -40.0949 256;
 #X obj 105 109 scale -1 1 -45 45 0;
 #X obj 105 41 f 0.03;
 #X connect 0 0 1 0;
@@ -884,7 +876,7 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X obj 105 63 osc~;
 #X obj 105 85 unsig~ 500;
 #X obj 117 172 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 26.1048 256;
+-262144 -1 -1 -7.91473 256;
 #X obj 105 41 f 0.017;
 #X obj 105 109 scale -1 1 -30 30 0;
 #X connect 0 0 1 0;
@@ -965,7 +957,7 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X obj 25 431 r~ \$0-viola-out-4;
 #X obj 25 494 s~ \$0-viola-eff-4;
 #N canvas 499 230 677 425 viola-eff-4 0;
-#X obj 36 104 inlet~;
+#X obj 36 54 inlet~;
 #X obj 36 139 sp-gfreeverb~;
 #X obj 229 21 r \$0-init;
 #X obj 36 355 outlet~;
@@ -973,14 +965,16 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X msg 229 43 freeverb pass 0 \, freeverb roomsize 64 \, freeverb damping
 12 \, freeverb wet 15 \, freeverb dry 98 \, freeverb stereo-width 100
 \, freeverb freeze 0;
-#X connect 0 0 1 0;
+#X obj 36 93 *~ 0.5;
+#X connect 0 0 6 0;
 #X connect 1 0 3 0;
 #X connect 2 0 5 0;
 #X connect 4 0 5 0;
 #X connect 5 0 1 2;
+#X connect 6 0 1 0;
 #X restore 35 464 pd viola-eff-4;
 #N canvas 499 230 677 425 viola-eff-0 0;
-#X obj 36 104 inlet~;
+#X obj 36 64 inlet~;
 #X obj 36 139 sp-gfreeverb~;
 #X obj 229 21 r \$0-init;
 #X obj 36 355 outlet~;
@@ -988,11 +982,13 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X msg 229 43 freeverb pass 0 \, freeverb roomsize 64 \, freeverb damping
 12 \, freeverb wet 15 \, freeverb dry 98 \, freeverb stereo-width 100
 \, freeverb freeze 0;
-#X connect 0 0 1 0;
+#X obj 36 95 *~ 0.5;
+#X connect 0 0 6 0;
 #X connect 1 0 3 0;
 #X connect 2 0 5 0;
 #X connect 4 0 5 0;
 #X connect 5 0 1 2;
+#X connect 6 0 1 0;
 #X restore 35 64 pd viola-eff-0;
 #N canvas 263 214 823 371 viola-eff2 0;
 #X obj 51 24 inlet~;
@@ -1012,7 +1008,7 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X obj 321 325 s \$0-moog;
 #X obj 625 148 scale 0 20 0.1 0.9;
 #X obj 625 204 spigot;
-#X obj 581 171 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 581 171 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X msg 543 138 1;
 #X msg 507 138 0;
@@ -1091,6 +1087,15 @@ level 4 \, crossfade 50 \, gate pass 1 \, compr pass 1;
 #X connect 13 0 6 0;
 #X connect 14 0 2 0;
 #X restore 33 542 pd viola_effects;
+#X obj 507 463 cnv 15 200 120 empty empty empty 20 12 0 14 -233017
+-66577 0;
+#X obj 761 300 sp-grecord~ in_c_flute.wav;
+#X text 516 467 Legend:;
+#X text 515 502 1 Check DSP;
+#X text 515 522 2 Press Init;
+#X text 515 542 3 Press Start;
+#X text 515 562 4 Play;
+#X text 515 484 0 Renice PD process (!);
 #N canvas 185 60 171 514 flute_effects 0;
 #X obj 25 120 r~ \$0-flute-out-1;
 #X obj 25 176 s~ \$0-flute-eff-1;
@@ -1102,8 +1107,8 @@ level 4 \, crossfade 50 \, gate pass 1 \, compr pass 1;
 #X obj 25 21 r~ \$0-flute-out-0;
 #X obj 25 401 r~ \$0-flute-out-4;
 #X obj 25 464 s~ \$0-flute-eff-4;
-#N canvas 499 230 677 425 flute-eff-4 0;
-#X obj 36 104 inlet~;
+#N canvas 501 56 677 425 flute-eff-4 0;
+#X obj 36 64 inlet~;
 #X obj 36 139 sp-gfreeverb~;
 #X obj 229 21 r \$0-init;
 #X obj 36 355 outlet~;
@@ -1111,11 +1116,13 @@ level 4 \, crossfade 50 \, gate pass 1 \, compr pass 1;
 #X msg 229 43 freeverb pass 0 \, freeverb roomsize 64 \, freeverb damping
 12 \, freeverb wet 15 \, freeverb dry 98 \, freeverb stereo-width 100
 \, freeverb freeze 0;
-#X connect 0 0 1 0;
+#X obj 36 97 *~ 0.5;
+#X connect 0 0 6 0;
 #X connect 1 0 3 0;
 #X connect 2 0 5 0;
 #X connect 4 0 5 0;
 #X connect 5 0 1 2;
+#X connect 6 0 1 0;
 #X restore 35 434 pd flute-eff-4;
 #N canvas 93 74 762 630 flute-eff3 0;
 #X obj 94 84 inlet~;
@@ -1158,20 +1165,6 @@ level 4 \, crossfade 50 \, gate pass 1 \, compr pass 1;
 #X connect 11 0 2 1;
 #X connect 12 0 11 0;
 #X restore 36 250 pd flute-eff2;
-#N canvas 121 255 663 400 flute-eff1 0;
-#X obj 32 33 inlet~;
-#X obj 32 360 outlet~;
-#X obj 32 176 sp-goctaver~ 3;
-#X obj 225 102 r \$0-init;
-#X obj 32 311 *~ 2;
-#X msg 225 128 octaver dry-wet 70 \, octaver octave 2 \, octaver shape
-0 \, octaver pass 1;
-#X connect 0 0 2 0;
-#X connect 2 0 4 0;
-#X connect 3 0 5 0;
-#X connect 4 0 1 0;
-#X connect 5 0 2 1;
-#X restore 35 148 pd flute-eff1;
 #N canvas 499 230 677 425 flute-eff-0 0;
 #X obj 36 104 inlet~;
 #X obj 36 139 sp-gfreeverb~;
@@ -1187,29 +1180,16 @@ level 4 \, crossfade 50 \, gate pass 1 \, compr pass 1;
 #X connect 4 0 5 0;
 #X connect 5 0 1 2;
 #X restore 35 54 pd flute-eff-0;
-#X connect 0 0 13 0;
 #X connect 3 0 12 0;
-#X connect 4 0 11 0;
-#X connect 7 0 14 0;
+#X connect 7 0 13 0;
 #X connect 8 0 10 0;
 #X connect 10 0 9 0;
-#X connect 11 0 5 0;
 #X connect 12 0 2 0;
-#X connect 13 0 1 0;
-#X connect 14 0 6 0;
+#X connect 13 0 6 0;
 #X restore 33 515 pd flute_effects;
-#X obj 507 463 cnv 15 200 120 empty empty empty 20 12 0 14 -233017
--66577 0;
-#X obj 761 300 sp-grecord~ in_c_flute.wav;
-#X text 516 467 Legend:;
-#X text 515 502 1 Check DSP;
-#X text 515 522 2 Press Init;
-#X text 515 542 3 Press Start;
-#X text 515 562 4 Play;
-#X text 515 484 0 Renice PD process (!);
-#X connect 1 0 52 0;
-#X connect 1 1 52 1;
-#X connect 1 2 52 2;
+#X connect 1 0 51 0;
+#X connect 1 1 51 1;
+#X connect 1 2 51 2;
 #X connect 7 0 8 0;
 #X connect 8 0 9 12;
 #X connect 9 0 48 0;

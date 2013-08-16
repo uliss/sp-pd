@@ -83,7 +83,7 @@
 #X obj 206 167 s \$0-title-r;
 #X obj 206 115 l2s;
 #X msg 206 141 label \$1;
-#X msg 44 87 volume 0.5;
+#X msg 44 87 volume 0.62;
 #X connect 1 0 8 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
@@ -134,11 +134,21 @@
 \;;
 #X obj 826 305 table \$0-right;
 #X obj 856 238 sp-gcpu;
-#X obj 19 30 cnv 15 900 30 empty \$0-title-r Tatatata 20 15 0 20 -204800
--66577 0;
+#X obj 19 30 cnv 15 900 30 empty \$0-title-r Jacob ter Veldhuis: Tatatata
+20 15 0 20 -204800 -66577 0;
+#X obj 499 379 sp-midipedal;
+#X obj 499 566 + 0.63;
+#X msg 499 591 volume \$1;
+#X floatatom 561 569 5 0 0 0 - - -;
+#X obj 499 536 scale 0 127 0 0.15 0;
 #X connect 2 0 5 0;
 #X connect 5 0 4 0;
 #X connect 10 0 0 0;
 #X connect 10 1 0 1;
 #X connect 12 0 0 2;
 #X connect 18 0 16 0;
+#X connect 24 1 28 0;
+#X connect 25 0 26 0;
+#X connect 26 0 0 2;
+#X connect 28 0 25 0;
+#X connect 28 0 27 0;
