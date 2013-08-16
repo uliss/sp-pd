@@ -3,7 +3,7 @@
 #X obj 223 124 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 247 175 hsl 128 15 0 3 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 1400 1;
+-1 -1 0 1;
 #X obj 95 230 sp-gmix4~;
 #X msg 223 149 mix4 mute \$1;
 #X msg 244 204 mix4 volume \$1;
@@ -14,6 +14,9 @@
 #X msg 530 173 mix4 save;
 #X msg 610 173 mix4 restore;
 #X text 399 146 Named mixer can save and restore settings.;
+#X obj 277 98 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
+-1 1;
+#X msg 277 120 mix4 solo \$1;
 #X connect 0 0 3 0;
 #X connect 0 0 3 1;
 #X connect 1 0 4 0;
@@ -22,3 +25,5 @@
 #X connect 5 0 3 4;
 #X connect 10 0 6 4;
 #X connect 11 0 6 4;
+#X connect 13 0 14 0;
+#X connect 14 0 3 4;

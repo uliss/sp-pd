@@ -6,7 +6,7 @@
 #X obj 21 21 cnv 15 30 178 empty \$0-cnv-r empty 20 12 0 14 -99865
 -262144 0;
 #X obj 26 45 vsl 10 119 0 2 0 0 \$0-vol-s \$0-vol-r empty 0 -9 0 10
--228856 -257985 -262144 697 1;
+-228856 -257985 -262144 1200 1;
 #X obj 37 45 vu 8 120 \$0-vu-r empty -1 -8 0 10 -66577 -1 0 0;
 #X obj 604 45 sel 0;
 #X obj 304 19 loadbang;
@@ -23,7 +23,7 @@
 #X msg 670 72 color 13;
 #X obj 202 180 - 100;
 #X obj 387 293 s \$0-cnv-r;
-#X obj 21 184 cnv 15 30 15 empty \$0-cnv-label-r mono 5 5 0 10 -99865
+#X obj 21 184 cnv 15 30 15 empty \$0-cnv-label-r ch1 5 5 0 10 -99865
 -262144 0;
 #X obj 459 293 s \$0-cnv-label-r;
 #X obj 428 222 s \$0-cnv-label-r;
@@ -34,7 +34,7 @@
 #X obj 18 257 sprintf %03.1f;
 #X msg 18 314 label \$1;
 #X obj 18 284 l2s;
-#X obj 24 169 cnv 12 20 12 empty \$0-ind-r 0.1 3 6 0 10 -99865 -262144
+#X obj 24 169 cnv 12 20 12 empty \$0-ind-r 0.2 3 6 0 10 -99865 -262144
 0;
 #X obj 18 339 s \$0-ind-r;
 #X obj 315 293 s \$0-ind-r;
@@ -52,9 +52,9 @@
 #X obj 18 499 s \$0-mute-r;
 #X obj 153 452 change;
 #X obj 153 430 r \$0-mute-s;
-#X obj 511 117 t b b b;
 #X obj 18 396 tof/param /gmix/\$1/volume;
 #X obj 18 475 tof/param /gmix/\$1/mute;
+#X obj 511 117 bang;
 #X connect 0 0 3 0;
 #X connect 2 0 42 0;
 #X connect 3 0 1 0;
@@ -84,18 +84,18 @@
 #X connect 36 0 6 1;
 #X connect 37 0 7 0;
 #X connect 39 0 41 0;
-#X connect 41 0 49 1;
+#X connect 41 0 48 1;
 #X connect 42 0 10 0;
 #X connect 42 1 11 0;
 #X connect 42 2 26 0;
 #X connect 42 3 25 0;
 #X connect 42 4 43 0;
-#X connect 42 5 48 0;
+#X connect 42 5 50 0;
 #X connect 42 6 44 0;
 #X connect 43 0 40 0;
-#X connect 46 0 50 1;
+#X connect 46 0 49 1;
 #X connect 47 0 46 0;
-#X connect 48 2 40 1;
-#X connect 49 0 38 0;
-#X connect 50 0 45 0;
+#X connect 48 0 38 0;
+#X connect 49 0 45 0;
+#X connect 50 0 40 1;
 #X coords 0 -1 1 1 32 180 2 20 20;
