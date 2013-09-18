@@ -1,0 +1,14 @@
+#N canvas 239 55 881 659 10;
+#X obj 138 318 +dsp;
+#X text -10 148 Draw spektral delay =>;
+#X text 343 66 <= Click to fill with random pattern;
+#X obj 138 56 sp-filter-specktral~;
+#X obj 138 242 sp-glimiter~;
+#X obj 184 18 phasor~ 200;
+#X connect 3 0 4 1;
+#X connect 3 0 4 0;
+#X connect 3 1 4 2;
+#X connect 4 0 0 0;
+#X connect 4 1 0 1;
+#X connect 4 2 0 2;
+#X connect 5 0 3 0;
