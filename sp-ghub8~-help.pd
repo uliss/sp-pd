@@ -1,4 +1,4 @@
-#N canvas 0 22 1051 454 10;
+#N canvas 103 267 1051 454 10;
 #X obj 172 145 osc~ 440;
 #X obj 172 231 env~;
 #X floatatom 172 254 5 0 0 0 - - -;
@@ -43,6 +43,10 @@
 #X msg 697 147 hub8 6 \$1;
 #X msg 767 147 hub8 7 \$1;
 #X msg 837 147 hub8 8 \$1;
+#X msg 549 38 hub8 save;
+#X msg 626 38 hub8 restore;
+#X obj 470 281 sp-ghub8~ hub8;
+#X msg 716 261 \; sp-hub8 invert;
 #X connect 0 0 26 0;
 #X connect 0 0 26 1;
 #X connect 0 0 26 2;
@@ -92,3 +96,5 @@
 #X connect 33 0 26 8;
 #X connect 34 0 26 8;
 #X connect 35 0 26 8;
+#X connect 36 0 26 8;
+#X connect 37 0 26 8;
