@@ -5,20 +5,20 @@
 #X obj 80 452 outlet~;
 #X obj 151 23 cnv 10 248 14 \$0-cnv-s \$0-cnv-r empty 20 12 0 14 -128992
 -66577 0;
-#X obj 150 24 tgl 12 0 \$0-ch1-s \$0-ch1-r empty 17 7 0 10 -258699
--1 -262144 0 1;
-#X obj 170 24 tgl 12 0 \$0-ch2-s \$0-ch2-r empty 17 7 0 10 -258699
--1 -262144 0 1;
+#X obj 150 24 tgl 12 0 \$0-ch1-s \$0-ch1-r empty 17 7 0 10 -225271
+-1 -262144 1 1;
+#X obj 170 24 tgl 12 0 \$0-ch2-s \$0-ch2-r empty 17 7 0 10 -225271
+-1 -262144 1 1;
 #X obj 389 26 bng 8 250 50 0 \$0-tgl-s \$0-tgl-r empty 17 7 0 10 -203904
 -1 -1;
 #X obj 107 365 inlet~;
 #X obj 136 335 inlet~;
 #X obj 112 422 outlet~;
 #X obj 144 452 outlet~;
-#X obj 189 24 tgl 12 0 \$0-ch3-s \$0-ch3-r empty 17 7 0 10 -258699
--1 -262144 0 1;
-#X obj 209 24 tgl 12 0 \$0-ch4-s \$0-ch4-r empty 17 7 0 10 -258699
--1 -262144 0 1;
+#X obj 189 24 tgl 12 0 \$0-ch3-s \$0-ch3-r empty 17 7 0 10 -225271
+-1 -262144 1 1;
+#X obj 209 24 tgl 12 0 \$0-ch4-s \$0-ch4-r empty 17 7 0 10 -225271
+-1 -262144 1 1;
 #X obj 166 365 inlet~;
 #X obj 195 338 inlet~;
 #X obj 224 364 inlet~;
@@ -27,10 +27,10 @@
 #X obj 240 422 outlet~;
 #X obj 272 452 outlet~;
 #X obj 253 338 inlet~;
-#X obj 230 24 tgl 12 0 \$0-ch5-s \$0-ch5-r empty 17 7 0 10 -258699
--1 -262144 0 1;
-#X obj 250 24 tgl 12 0 \$0-ch6-s \$0-ch6-r empty 17 7 0 10 -258699
--1 -262144 0 1;
+#X obj 230 24 tgl 12 0 \$0-ch5-s \$0-ch5-r empty 17 7 0 10 -225271
+-1 -262144 1 1;
+#X obj 250 24 tgl 12 0 \$0-ch6-s \$0-ch6-r empty 17 7 0 10 -225271
+-1 -262144 1 1;
 #X obj 270 24 tgl 12 0 \$0-ch7-s \$0-ch7-r empty 17 7 0 10 -225271
 -1 -262144 1 1;
 #X obj 290 24 tgl 12 0 \$0-ch8-s \$0-ch8-r empty 17 7 0 10 -225271
@@ -218,6 +218,7 @@
 #X connect 45 0 35 0;
 #X connect 46 0 47 0;
 #X restore 839 34 pd attrs;
+#X obj 700 70 r sp-\$1;
 #X connect 0 0 26 0;
 #X connect 1 0 26 1;
 #X connect 8 0 26 2;
@@ -290,4 +291,5 @@
 #X connect 77 3 43 0;
 #X connect 80 0 81 0;
 #X connect 82 0 81 1;
+#X connect 84 0 77 0;
 #X coords 0 -1 1 1 250 19 2 150 20;
