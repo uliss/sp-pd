@@ -1,26 +1,29 @@
-#N canvas 371 78 546 454 10;
-#X obj 107 333 +dsp;
-#X obj 76 34 osc~ 220;
-#X obj 213 15 hsl 128 15 0 30 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 3000 1;
-#X msg 210 56 chop freq \$1;
-#X msg 389 131 \; sp-ch1 factor 2;
-#X obj 107 175 sp-gchop~ ch1;
-#X obj 203 142 osc~;
-#X msg 364 100 volume 0.5;
-#X msg 300 48 chop factor -2;
-#X msg 342 68 chop factor -1;
-#X obj 389 170 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#N canvas 160 75 663 561 10;
+#X obj 77 403 +dsp;
+#X obj 46 104 osc~ 220;
+#X obj 183 85 hsl 128 15 0 30 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 180 126 chop freq \$1;
+#X msg 359 201 \; sp-ch1 factor 2;
+#X obj 77 245 sp-gchop~ ch1;
+#X obj 173 212 osc~;
+#X msg 334 170 volume 0.5;
+#X msg 270 118 chop factor -2;
+#X msg 312 138 chop factor -1;
+#X obj 359 240 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X msg 389 193 chop source \$1;
-#X obj 148 108 hsl 128 15 0 22000 0 0 empty empty empty -2 -8 0 10
+#X msg 359 263 chop source \$1;
+#X obj 118 178 hsl 128 15 0 22000 0 0 empty empty empty -2 -8 0 10
 -262144 -1 -1 0 1;
-#X obj 266 351 delwrite~ b1 5000;
-#X obj 246 153 osc~ 10;
-#X obj 113 81 delread~ b1 2000;
-#X obj 144 10 osc~ 0.5;
-#X obj 146 61 * 10000;
-#X obj 146 34 unsig~ 10;
+#X obj 326 401 delwrite~ b1 5000;
+#X obj 216 223 osc~ 10;
+#X obj 83 151 delread~ b1 2000;
+#X obj 114 80 osc~ 0.5;
+#X obj 116 131 * 10000;
+#X obj 116 104 unsig~ 10;
+#X msg 377 82 chop save;
+#X msg 449 81 chop restore;
+#X msg 478 130 restore;
 #X connect 1 0 5 0;
 #X connect 2 0 3 0;
 #X connect 3 0 5 2;
@@ -40,3 +43,6 @@
 #X connect 16 0 18 0;
 #X connect 17 0 12 0;
 #X connect 18 0 17 0;
+#X connect 19 0 5 2;
+#X connect 20 0 5 2;
+#X connect 21 0 5 2;
