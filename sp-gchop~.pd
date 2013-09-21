@@ -8,7 +8,7 @@
 #X obj 11 27 cnv 15 198 100 empty empty empty 20 12 0 14 -99865 -66577
 0;
 #X obj 69 90 hsl 85 12 0 10000 0 0 \$0-freq-s \$0-freq-r freq: -52
-6 0 10 -262144 -1 -262144 802 1;
+6 0 10 -262144 -1 -262144 2 1;
 #X obj 498 208 s \$0-freq-r;
 #X obj 330 76 r \$0-freq-s;
 #X obj 66 32 hradio 12 1 0 5 \$0-mode-s \$0-mode-r factor: -50 6 0
@@ -21,12 +21,12 @@
 #X obj 192 32 tgl 12 0 \$0-pass-s \$0-pass-r pass: -35 5 0 10 -262130
 -1 -262144 0 1;
 #X obj 161 90 nbx 4 12 0 10000 0 0 \$0-freq-s \$0-freq-r empty 0 -8
-0 10 -262144 -1 -1 954.762 256;
+0 10 -262144 -1 -1 2.38095 256;
 #X obj 555 367 outlet;
 #X obj 69 108 hsl 85 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r dry/wet:
--52 6 0 10 -262144 -1 -262144 6400 1;
+-52 6 0 10 -262144 -1 -262144 8400 1;
 #X obj 162 108 nbx 3 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r empty
-0 -8 0 10 -262144 -1 -1 76.1905 256;
+0 -8 0 10 -262144 -1 -1 100 256;
 #X obj 262 349 sp-pass~;
 #X obj 262 290 sp-dry-wet~;
 #X obj 325 264 r \$0-dry-wet-s;
@@ -34,7 +34,7 @@
 #X obj 352 22 inlet~;
 #X obj 795 143 print [sp-gchop~] unknown command;
 #X obj 67 51 vradio 12 1 0 2 \$0-source-s \$0-source-r source: -50
-6 0 10 -262144 -1 -262144 1;
+6 0 10 -262144 -1 -262144 0;
 #X text 82 48 internal;
 #X text 83 61 external;
 #X obj 330 147 sp-pass~;
@@ -46,10 +46,7 @@
 #X obj 625 289 s \$0-dry-wet-r;
 #X obj 667 167 s \$0-source-r;
 #X obj 498 119 route freq factor pass dry-wet source save restore;
-#X obj 710 215 tof/param file;
-#X msg 710 192 bang;
-#X msg 791 192 bang;
-#N canvas 470 240 642 481 param 1;
+#N canvas 470 240 642 481 param 0;
 #X obj 156 173 r \$0-freq-s;
 #X obj 156 198 change;
 #X obj 21 235 tof/param /chop/\$1/freq;
@@ -91,6 +88,7 @@
 #X obj 307 323 r \$0-pass-s;
 #X msg 613 47 factor 2 \, freq 2 \, source 0 \, dry-wet 100 \, pass
 0;
+#X obj 710 195 sp-param-file;
 #X connect 0 0 22 1;
 #X connect 1 0 22 0;
 #X connect 1 0 0 0;
@@ -105,9 +103,9 @@
 #X connect 12 0 0 2;
 #X connect 13 0 14 0;
 #X connect 14 0 15 0;
-#X connect 17 0 44 0;
+#X connect 17 0 41 0;
 #X connect 19 0 20 0;
-#X connect 20 0 43 0;
+#X connect 20 0 40 0;
 #X connect 21 0 2 0;
 #X connect 22 0 21 0;
 #X connect 23 0 22 2;
@@ -117,20 +115,18 @@
 #X connect 30 0 0 1;
 #X connect 31 0 30 0;
 #X connect 32 0 30 2;
-#X connect 33 0 46 0;
+#X connect 33 0 43 0;
 #X connect 34 0 38 0;
 #X connect 38 0 5 0;
 #X connect 38 1 4 0;
 #X connect 38 2 35 0;
 #X connect 38 3 36 0;
 #X connect 38 4 37 0;
-#X connect 38 5 40 0;
-#X connect 38 6 41 0;
+#X connect 38 5 44 0;
+#X connect 38 6 44 1;
 #X connect 38 7 26 0;
-#X connect 40 0 39 0;
-#X connect 41 0 39 1;
-#X connect 43 0 19 0;
-#X connect 44 0 7 0;
-#X connect 45 0 21 2;
-#X connect 46 0 38 0;
+#X connect 40 0 19 0;
+#X connect 41 0 7 0;
+#X connect 42 0 21 2;
+#X connect 43 0 38 0;
 #X coords 0 -1 1 1 200 120 1 10 10;

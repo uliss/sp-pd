@@ -7,9 +7,9 @@
 #X obj 469 16 inlet;
 #X obj 562 275 outlet;
 #X obj 21 47 hsl 120 12 -100 100 0 0 \$0-cross-s \$0-cross-r crossfade:
--2 -8 0 10 -262144 -1 -262144 5831 1;
+-2 -8 0 10 -262144 -1 -262144 5950 1;
 #X obj 156 47 nbx 4 12 -100 100 0 0 \$0-cross-s \$0-cross-r empty 0
--8 0 10 -262144 -1 -1 -2 256;
+-8 0 10 -262144 -1 -1 0 256;
 #X obj 574 126 clip -100 100;
 #X obj 574 153 s \$0-cross-r;
 #X obj 583 21 r sp-\$1;
@@ -20,9 +20,6 @@
 #X obj 318 175 scale -100 100 0 1 0;
 #X obj 217 45 change;
 #X obj 469 93 route save restore;
-#X obj 469 203 tof/param file;
-#X msg 469 178 bang;
-#X msg 550 177 bang;
 #N canvas 190 384 294 139 param 0;
 #X obj 21 72 tof/param /crossfade1/\$1/level;
 #X obj 21 103 s \$0-cross-r;
@@ -33,9 +30,10 @@
 #X connect 3 0 0 1;
 #X restore 56 184 pd param;
 #X obj 469 51 route crossfade1;
+#X obj 469 126 sp-param-file;
 #X connect 1 0 13 0;
 #X connect 2 0 13 1;
-#X connect 4 0 22 0;
+#X connect 4 0 19 0;
 #X connect 6 0 7 0;
 #X connect 7 0 16 0;
 #X connect 8 0 9 0;
@@ -46,11 +44,9 @@
 #X connect 14 0 15 0;
 #X connect 15 0 13 2;
 #X connect 16 0 6 0;
-#X connect 17 0 19 0;
-#X connect 17 1 20 0;
+#X connect 17 0 20 0;
+#X connect 17 1 20 1;
 #X connect 17 2 8 0;
-#X connect 19 0 18 0;
-#X connect 20 0 18 1;
-#X connect 22 0 17 0;
-#X connect 22 1 5 0;
+#X connect 19 0 17 0;
+#X connect 19 1 5 0;
 #X coords 0 -1 1 1 200 60 1 10 10;
