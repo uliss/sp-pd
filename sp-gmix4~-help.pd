@@ -15,8 +15,10 @@
 #X msg 610 173 mix4 restore;
 #X text 399 146 Named mixer can save and restore settings.;
 #X obj 277 98 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
--1 1;
+-1 0;
 #X msg 277 120 mix4 solo \$1;
+#X msg 530 203 mix4 save 1;
+#X msg 610 203 mix4 restore 1;
 #X connect 0 0 3 0;
 #X connect 0 0 3 1;
 #X connect 1 0 4 0;
@@ -27,3 +29,5 @@
 #X connect 11 0 6 4;
 #X connect 13 0 14 0;
 #X connect 14 0 3 4;
+#X connect 15 0 6 4;
+#X connect 16 0 6 4;

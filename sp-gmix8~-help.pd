@@ -37,7 +37,9 @@
 #X msg 433 66 mix8 volume \$1;
 #X obj 473 280 sp-gmix8~ m8;
 #X msg 738 232 mix8 save;
-#X msg 808 232 mix8 restore;
+#X msg 818 232 mix8 restore;
+#X msg 818 202 mix8 restore 1;
+#X msg 738 202 mix8 save 1;
 #X connect 0 0 1 0;
 #X connect 0 1 1 0;
 #X connect 0 2 1 0;
@@ -85,3 +87,5 @@
 #X connect 31 0 0 8;
 #X connect 33 0 32 8;
 #X connect 34 0 32 8;
+#X connect 35 0 32 8;
+#X connect 36 0 32 8;
