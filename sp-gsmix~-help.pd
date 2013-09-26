@@ -1,7 +1,12 @@
-#N canvas 0 22 554 344 10;
-#X msg 223 54 label test;
+#N canvas 98 107 554 344 10;
+#X msg 223 52 label test;
 #X obj 163 91 sp-gsmix~;
 #X obj 162 44 osc~ 440;
+#X text 319 15 Stereo channel mixer;
+#X msg 300 52 save;
+#X msg 343 52 restore;
 #X connect 0 0 1 2;
 #X connect 2 0 1 0;
 #X connect 2 0 1 1;
+#X connect 4 0 1 2;
+#X connect 5 0 1 2;
