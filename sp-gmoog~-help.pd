@@ -1,4 +1,4 @@
-#N canvas 0 22 530 511 10;
+#N canvas 0 22 590 536 10;
 #X declare -lib ggee;
 #X msg 310 135 moog pass \$1;
 #X obj 310 114 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
@@ -7,12 +7,16 @@
 #X msg 243 91 volume 0.6;
 #X obj 117 124 phasor~;
 #X obj 121 60 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 5600 1;
+-1 -1 0 1;
 #X obj 118 95 mtof;
 #X obj 117 176 sp-gmoog~ mg1;
 #X msg 337 86 moog unknown;
 #X msg 370 200 \; sp-mg1 pass 1 \; sp-mg1 q 2 \; sp-mg1 freq 0.2 \;
 sp-mg1 low 200 \; sp-mg1 high 3000 \;;
+#X msg 372 112 moog save;
+#X msg 448 112 moog restore;
+#X msg 448 52 moog restore 1;
+#X msg 372 52 moog save 1;
 #X connect 0 0 7 1;
 #X connect 1 0 0 0;
 #X connect 3 0 7 1;
@@ -23,3 +27,7 @@ sp-mg1 low 200 \; sp-mg1 high 3000 \;;
 #X connect 7 0 2 1;
 #X connect 7 1 2 2;
 #X connect 8 0 7 1;
+#X connect 10 0 7 1;
+#X connect 11 0 7 1;
+#X connect 12 0 7 1;
+#X connect 13 0 7 1;
