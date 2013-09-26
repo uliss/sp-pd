@@ -1,0 +1,22 @@
+#N canvas 309 45 598 638 10;
+#X obj 105 333 +dsp;
+#X obj 105 104 osc~ 440;
+#X msg 298 123 gshape pass \$1;
+#X obj 298 97 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 105 165 sp-gshape~ sh1;
+#X msg 338 88 gshape save;
+#X msg 429 87 gshape restore;
+#X msg 245 62 gshape shape \$1;
+#X obj 248 35 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 4600 1;
+#X msg 366 240 \; sp-sh1 shape 1.6;
+#X connect 1 0 4 0;
+#X connect 2 0 4 1;
+#X connect 3 0 2 0;
+#X connect 4 0 0 0;
+#X connect 4 0 0 1;
+#X connect 5 0 4 1;
+#X connect 6 0 4 1;
+#X connect 7 0 4 1;
+#X connect 8 0 7 0;
