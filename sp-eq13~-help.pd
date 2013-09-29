@@ -1,0 +1,10 @@
+#N canvas 306 265 666 492 10;
+#X obj 99 80 sp-eq13~;
+#X obj 99 30 noise~;
+#X obj 170 34 osc~ 440;
+#X obj 99 256 +dsp;
+#X obj 362 233 sp-gspectrum~;
+#X connect 0 0 3 0;
+#X connect 0 0 3 1;
+#X connect 0 0 4 0;
+#X connect 1 0 0 0;
