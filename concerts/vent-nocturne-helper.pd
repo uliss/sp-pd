@@ -1,0 +1,10 @@
+#N canvas 435 296 450 300 10;
+#X obj 65 70 ctlin 102;
+#X floatatom 65 120 5 0 0 0 - - -;
+#X obj 65 159 ctlout 64;
+#X obj 185 62 sp-gtuner~ 442;
+#X obj 185 37 adc~ 1;
+#X text 65 42 MIDI routing;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 4 0 3 0;
