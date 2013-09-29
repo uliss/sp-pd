@@ -16,7 +16,7 @@
 #X connect 6 0 4 0;
 #X restore 32 17 pd input;
 #X obj 761 186 +dsp;
-#N canvas 275 45 849 348 init 0;
+#N canvas 275 45 849 348 init 1;
 #X obj 48 163 loadbang;
 #X obj 643 45 table t-flute;
 #X msg 487 178 \; t-flute resize \$1 \; t-viola resize \$1 \;;
@@ -50,6 +50,7 @@
 #X msg 368 100 \; \$1-v1-order-r 0 \; \$1-v2-order-r 2 \; \$1-v3-order-r
 3 \; \$1-v4-order-r 4 \; \$1-f1-order-r 7 \; \$1-f2-order-r 1 \; \$1-f3-order-r
 7 \; \$1-f4-order-r 5 \;;
+#X obj 64 49 block~ 4096 1;
 #X connect 0 0 26 0;
 #X connect 3 0 6 0;
 #X connect 4 0 5 1;
@@ -83,7 +84,7 @@
 #X msg 551 164 mix solo \$1;
 #X obj 280 214 sp-gmix12~;
 #X obj 33 100 nbx 3 32 0 200 0 0 empty \$0-init-bpm empty 0 -8 0 24
--262144 -1 -1 180 256;
+-262144 -1 -1 0 256;
 #X obj 175 467 sp-midipedal;
 #N canvas 286 200 545 464 pedal 0;
 #X obj 45 53 inlet;
@@ -808,7 +809,7 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X connect 18 0 17 0;
 #X restore 33 488 pd delay_viola;
 #X msg 280 157 mute flute \$1;
-#X obj 280 132 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 280 132 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 370 132 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -840,7 +841,7 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X obj 105 63 osc~;
 #X obj 105 85 unsig~ 500;
 #X obj 117 172 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 -40.0949 256;
+-262144 -1 -1 -44.2021 256;
 #X obj 105 109 scale -1 1 -45 45 0;
 #X obj 105 41 f 0.03;
 #X connect 0 0 1 0;
@@ -876,7 +877,7 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X obj 105 63 osc~;
 #X obj 105 85 unsig~ 500;
 #X obj 117 172 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 -7.91473 256;
+-262144 -1 -1 14.9452 256;
 #X obj 105 41 f 0.017;
 #X obj 105 109 scale -1 1 -30 30 0;
 #X connect 0 0 1 0;
@@ -1008,7 +1009,7 @@ mix 8 mute \$1 \, mix 9 mute \$1;
 #X obj 321 325 s \$0-moog;
 #X obj 625 148 scale 0 20 0.1 0.9;
 #X obj 625 204 spigot;
-#X obj 581 171 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 581 171 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 543 138 1;
 #X msg 507 138 0;
