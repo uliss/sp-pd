@@ -5,9 +5,9 @@
 #X obj 277 76 inlet~;
 #X obj 252 146 sp-cross~;
 #X obj 303 111 inlet;
-#X obj 21 22 cnv 15 68 16 empty empty empty 20 12 0 14 -99865 -66577
+#X obj 21 22 cnv 15 98 16 empty empty empty 20 12 0 14 -99865 -66577
 0;
-#X obj 72 24 tgl 12 0 \$0-cross-s \$0-cross-r cross -35 6 0 10 -262144
+#X obj 102 24 tgl 12 0 \$0-cross-s \$0-cross-r xcross -40 6 0 10 -262144
 -1 -262144 0 1;
 #X obj 349 111 r \$0-cross-s;
 #X msg 337 146 set \$1;
@@ -20,4 +20,4 @@
 #X connect 5 0 9 0;
 #X connect 8 0 4 2;
 #X connect 9 0 10 0;
-#X coords 0 -1 1 1 70 20 1 20 20;
+#X coords 0 -1 1 1 100 20 1 20 20;
