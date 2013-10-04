@@ -1,6 +1,6 @@
 #N canvas 88 87 947 526 10;
 #X obj 188 341 +dsp;
-#N canvas 72 427 668 269 input 0;
+#N canvas 223 169 668 269 input 0;
 #X obj 152 42 env~;
 #X obj 197 109 max;
 #X obj 243 109 - 0.05;
@@ -11,15 +11,15 @@
 #X obj 72 107 r \$0-test-v1-s;
 #X obj 339 146 multiplex~ . .;
 #X obj 445 146 multiplex~ . .;
-#X obj 445 31 vradio 15 1 0 2 empty \$0-card-select-r empty 0 -8 0
-10 -262144 -1 -1 0;
-#X text 467 45 MBox;
-#X text 466 30 Saffire;
+#X obj 445 68 vradio 15 1 0 2 empty \$0-card-select-r empty 0 -8 0
+10 -262144 -1 -1 1;
+#X text 467 82 MBox;
+#X text 466 67 Saffire;
 #X obj 57 25 adc~ 1;
 #X obj 445 115 adc~ 4 6;
 #X obj 339 118 adc~ 3 5;
 #X obj 57 166 s~ \$0-viola~;
-#X obj 339 170 s~ \$0-bass~;
+#X obj 339 190 s~ \$0-bass~;
 #X obj 445 170 s~ \$0-click~;
 #X obj 287 163 env~;
 #X obj 287 191 - 100;
@@ -27,6 +27,9 @@
 #X obj 262 9 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X obj 262 37 message-ground-loop;
+#X obj 339 168 *~ 2;
+#X msg 593 51 1;
+#X obj 470 16 r \$0-signal-init;
 #X connect 0 0 3 0;
 #X connect 1 0 2 0;
 #X connect 1 0 4 1;
@@ -36,8 +39,8 @@
 #X connect 4 0 5 0;
 #X connect 6 0 16 0;
 #X connect 7 0 6 0;
-#X connect 8 0 17 0;
 #X connect 8 0 19 0;
+#X connect 8 0 24 0;
 #X connect 9 0 18 0;
 #X connect 10 0 8 0;
 #X connect 10 0 9 0;
@@ -50,6 +53,9 @@
 #X connect 19 0 20 0;
 #X connect 20 0 21 0;
 #X connect 22 0 23 0;
+#X connect 24 0 17 0;
+#X connect 25 0 10 0;
+#X connect 26 0 25 0;
 #X restore 802 258 pd input;
 #N canvas 491 100 471 313 delay 0;
 #X obj 24 132 sp-vdelay~ 4000;
@@ -71,11 +77,15 @@
 #X connect 8 0 0 0;
 #X restore 802 287 pd delay;
 #X obj 21 12 comment 200 18 Verdana ? 0 0 0 0 [Message Ground];
-#N canvas 624 277 216 259 monitor 0;
+#N canvas 624 277 307 240 monitor 0;
 #X obj 34 99 sp-monitor~;
 #X obj 34 60 r~ \$0-monitor~;
+#X obj 168 25 loadbang;
+#X msg 168 49 channel 1;
 #X connect 1 0 0 0;
 #X connect 1 0 0 1;
+#X connect 2 0 3 0;
+#X connect 3 0 0 2;
 #X restore 802 345 pd monitor;
 #X obj 422 85 sp-gmix4~;
 #N canvas 117 249 459 211 output 0;
@@ -103,7 +113,7 @@
 #X connect 9 0 6 1;
 #X connect 10 0 7 1;
 #X restore 802 374 pd output;
-#N canvas 532 153 459 457 keys 0;
+#N canvas 24 216 561 469 keys 0;
 #X obj 48 214 sp-key i;
 #X obj 49 154 sp-key s;
 #X obj 223 72 s \$0-signal-start;
@@ -123,23 +133,23 @@
 #X obj 300 308 s \$0-bar-pos-stop-r;
 #X obj 48 351 sp-key 1;
 #X obj 48 398 s \$0-v1-ctrl;
-#X msg 48 375 mute bang;
-#X msg 138 375 mute bang;
-#X obj 138 351 sp-key 2;
-#X obj 138 398 s \$0-v2-ctrl;
-#X msg 228 375 mute bang;
-#X msg 328 375 mute bang;
-#X obj 228 351 sp-key 3;
-#X obj 328 351 sp-key 4;
-#X obj 228 398 s \$0-bass-ctrl;
-#X obj 328 398 s \$0-click-ctrl;
+#X obj 157 351 sp-key 2;
+#X obj 157 398 s \$0-v2-ctrl;
+#X obj 267 351 sp-key 3;
+#X obj 377 351 sp-key 4;
+#X obj 267 398 s \$0-bass-ctrl;
+#X obj 377 398 s \$0-click-ctrl;
 #X obj 51 69 s \$0-signal-init;
 #X obj 118 130 r \$0-signal-start;
 #X msg 118 154 set \$1;
 #X obj 48 246 s \$0-btn-init-r;
-#X connect 0 0 32 0;
+#X msg 157 375 mix4 1 mute bang;
+#X msg 48 375 mix4 0 mute bang;
+#X msg 267 375 mix4 2 mute bang;
+#X msg 377 375 mix4 3 mute bang;
+#X connect 0 0 28 0;
 #X connect 1 0 10 0;
-#X connect 3 0 29 0;
+#X connect 3 0 25 0;
 #X connect 4 0 2 0;
 #X connect 5 0 6 0;
 #X connect 6 0 9 0;
@@ -149,17 +159,17 @@
 #X connect 11 0 12 0;
 #X connect 13 0 14 0;
 #X connect 15 0 16 0;
-#X connect 17 0 19 0;
-#X connect 19 0 18 0;
-#X connect 20 0 22 0;
-#X connect 21 0 20 0;
-#X connect 23 0 27 0;
-#X connect 24 0 28 0;
-#X connect 25 0 23 0;
-#X connect 26 0 24 0;
-#X connect 30 0 31 0;
-#X connect 30 0 6 0;
-#X connect 31 0 10 0;
+#X connect 17 0 30 0;
+#X connect 19 0 29 0;
+#X connect 21 0 31 0;
+#X connect 22 0 32 0;
+#X connect 26 0 27 0;
+#X connect 26 0 6 0;
+#X connect 27 0 10 0;
+#X connect 29 0 20 0;
+#X connect 30 0 18 0;
+#X connect 31 0 23 0;
+#X connect 32 0 24 0;
 #X restore 802 403 pd keys;
 #X obj 345 116 vu 10 120 \$0-vu-gameboy-r empty -1 -8 0 10 -66577 -1
 1 0;
@@ -185,7 +195,7 @@
 #X connect 3 0 4 0;
 #X coords 0 -1 1 1 135 20 1 100 100;
 #X restore 422 279 pd outconnect;
-#N canvas 81 83 742 273 inconnect 0;
+#N canvas 53 369 742 273 inconnect 0;
 #X obj 40 226 outlet~;
 #X obj 254 226 outlet~;
 #X obj 400 226 outlet~;
@@ -208,6 +218,7 @@
 #X obj 559 192 r~ \$0-click~;
 #X obj 431 43 r \$0-ctrl-all;
 #X obj 255 91 s \$0-ctrl-all;
+#X obj 614 98 r \$0-bus;
 #X connect 5 0 15 0;
 #X connect 6 0 21 0;
 #X connect 7 0 4 0;
@@ -220,6 +231,7 @@
 #X connect 18 0 2 0;
 #X connect 19 0 3 0;
 #X connect 20 0 4 0;
+#X connect 22 0 4 0;
 #X coords 0 -1 1 1 135 20 2 10 10;
 #X restore 422 54 pd inconnect;
 #X obj 426 341 hsl 128 10 -45 45 0 0 \$0-v1-pan-s \$0-v1-pan-r viola1
@@ -228,16 +240,17 @@
 -2 -8 0 10 -262144 -1 -1 4233 1;
 #X obj 426 401 hsl 128 10 -45 45 0 0 \$0-bass-pan-s \$0-bass-pan-r
 bass -2 -8 0 10 -262144 -1 -1 6350 1;
-#N canvas 33 75 415 348 init 0;
+#N canvas 33 75 415 348 init 1;
 #X obj 51 38 loadbang;
 #X obj 51 71 f \$0;
 #X obj 135 56 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X msg 51 101 \; \$1-card-select-r 0 \; \$1-latency 10 \; \$1-tempo
+#X msg 51 101 \; \$1-card-select-r 1 \; \$1-latency 10 \; \$1-tempo
 140 \; \$1-v1-pan-r 15 \; \$1-v2-pan-r -15 \; \$1-bass-pan-r 0 \; \$1-v1-ctrl
-volume 0.7 \, mute 1 \; \$1-v2-ctrl volume 1 \, mute 1 \; \$1-bass-ctrl
-volume 0.7 \, mute 1 \; \$1-click-ctrl volume 1 \, mute 1 \; \$1-attack-on-r
-0 \; \$1-autostart-level 40 \; \$1-master-level 1 \; pd dsp 1 \;;
+mix4 0 volume 0.9 \, mix4 0 mute 0 \; \$1-v2-ctrl mix4 1 volume 1 \,
+mix4 1 mute 0 \; \$1-bass-ctrl mix4 2 volume 1.9 \, mix4 2 mute 0 \;
+\$1-click-ctrl volume 1 \, mute 1 \; \$1-attack-on-r 1 \; \$1-autostart-level
+40 \; \$1-master-level 1 \; pd dsp 1 \;;
 #X connect 0 0 1 0;
 #X connect 1 0 3 0;
 #X connect 2 0 1 0;
@@ -247,7 +260,7 @@ volume 0.7 \, mute 1 \; \$1-click-ctrl volume 1 \, mute 1 \; \$1-attack-on-r
 #X restore 802 316 pd osc;
 #X obj 421 302 comment 40 15 Verdana ? 0 0 0 0 Pan:;
 #X obj 30 109 tgl 25 0 \$0-tgl-start-s \$0-tgl-start-r Start_[s] 30
-10 0 20 -258699 -1 -166441 0 1;
+10 0 20 -24198 -1 -66577 0 1;
 #X obj 30 244 tgl 15 0 \$0-attack-on-s \$0-attack-on-r start_on_attack
 20 8 0 10 -262144 -1 -1 0 1;
 #N canvas 638 48 451 498 stop-ctrl 0;
@@ -356,6 +369,12 @@ bar_sync[y] 20 7 0 10 -203904 -1 -1;
 #X obj 275 116 vu 10 120 \$0-vu-r empty -1 -8 0 10 -66577 -1 1 0;
 #X text 253 86 input level;
 #X text 336 87 Gameboy;
+#X obj 654 56 sp-gfoot-switch;
+#X obj 654 127 sel 1;
+#X obj 654 182 s \$0-bus;
+#X msg 654 154 mix4 mute 1;
+#X obj 576 26 loadbang;
+#X msg 576 50 mix4 mute 0;
 #X connect 5 0 12 0;
 #X connect 5 1 12 1;
 #X connect 5 2 12 2;
@@ -369,3 +388,8 @@ bar_sync[y] 20 7 0 10 -203904 -1 -1;
 #X connect 28 0 0 0;
 #X connect 28 1 0 1;
 #X connect 28 2 0 2;
+#X connect 32 0 33 0;
+#X connect 33 0 35 0;
+#X connect 35 0 34 0;
+#X connect 36 0 37 0;
+#X connect 37 0 5 4;
