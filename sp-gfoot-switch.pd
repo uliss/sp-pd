@@ -12,9 +12,13 @@
 #X obj 175 34 tgl 25 0 \$0-ind-s \$0-ind-r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 341 219 s \$0-ind-r;
+#X obj 438 59 inlet;
+#X obj 438 245 outlet;
+#X text 35 44 Manual [toggle];
 #X connect 1 0 7 0;
 #X connect 5 0 0 0;
 #X connect 5 0 9 0;
 #X connect 6 0 5 3;
 #X connect 7 0 5 0;
+#X connect 10 0 11 0;
 #X coords 0 -1 1 1 200 60 1 10 10;
