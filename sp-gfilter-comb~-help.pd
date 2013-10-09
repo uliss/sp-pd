@@ -1,0 +1,11 @@
+#N canvas 0 22 576 578 10;
+#X obj 86 365 +dsp;
+#X obj 86 114 adc~;
+#X obj 86 195 sp-gfilter-comb~;
+#X msg 268 123 filter-comb save;
+#X msg 391 123 filter-comb restore;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 2 0 0 1;
+#X connect 3 0 2 1;
+#X connect 4 0 2 1;

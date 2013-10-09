@@ -1,0 +1,13 @@
+#N canvas 0 22 450 300 10;
+#X obj 165 134 sp-filter-comb~;
+#X obj 165 174 *~ 0.5;
+#X obj 165 211 dac~;
+#X obj 165 89 adc~;
+#X msg 213 86 0.5;
+#X msg 258 85 0.5;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 0 2 1;
+#X connect 3 0 0 0;
+#X connect 4 0 0 1;
+#X connect 5 0 0 2;
