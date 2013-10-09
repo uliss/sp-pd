@@ -1,0 +1,20 @@
+#N canvas 75 325 646 383 10;
+#X obj 68 114 sp-gbeep~;
+#X obj 68 189 +dsp;
+#X obj 68 152 sp-filter-material~;
+#X obj 219 32 vradio 15 1 0 7 empty empty empty 0 -8 0 10 -262144 -1
+-1 1;
+#X text 241 31 cardboard;
+#X text 242 45 wood;
+#X text 242 60 plastic;
+#X obj 103 67 sp-ghub2~;
+#X obj 103 31 adc~;
+#X text 242 75 china;
+#X text 242 91 glass 1;
+#X text 242 106 glass 2;
+#X text 242 120 metal;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 1;
+#X connect 7 0 2 0;
+#X connect 8 0 7 0;

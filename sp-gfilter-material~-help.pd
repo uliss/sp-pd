@@ -1,0 +1,34 @@
+#N canvas 0 22 918 647 10;
+#X declare -lib flatgui;
+#X obj 144 205 adc~ 1;
+#X obj 144 402 +dsp;
+#X msg 317 135 filter-material color 14;
+#X obj 226 14 sp-grgb;
+#X obj 226 107 list prepend filter-material;
+#X obj 226 126 list trim;
+#X obj 337 167 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144
+-1 -1 3;
+#X msg 337 192 filter-material material \$1;
+#X msg 179 165 filter-material pass \$1;
+#X obj 179 138 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 505 133 filter-material save;
+#X msg 646 132 filter-material restore;
+#X obj 144 239 sp-gfilter-material~;
+#X obj 468 395 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144
+-1 -1 3;
+#X obj 362 61 loadbang;
+#X connect 0 0 12 0;
+#X connect 2 0 12 1;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 12 1;
+#X connect 6 0 7 0;
+#X connect 7 0 12 1;
+#X connect 8 0 12 1;
+#X connect 9 0 8 0;
+#X connect 10 0 12 1;
+#X connect 11 0 12 1;
+#X connect 12 0 1 0;
+#X connect 12 0 1 1;
+#X connect 14 0 2 0;
