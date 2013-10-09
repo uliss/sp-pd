@@ -160,9 +160,9 @@
 #X obj 74 38 bng 12 250 50 0 \$0-random-s \$0-random-r random: -50
 6 0 10 -203904 -1 -262144;
 #X obj 21 155 hsl 130 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r dry-wet:
--2 -8 0 10 -262144 -1 -262144 2322 1;
+-2 -8 0 10 -262144 -1 -262144 0 1;
 #X obj 160 155 nbx 3 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r empty
-0 -8 0 10 -262144 -1 -1 18 256;
+0 -8 0 10 -262144 -1 -1 0 256;
 #X obj 228 155 change;
 #X obj 238 391 sp-pass~;
 #X obj 238 319 sp-dry-wet~;
@@ -171,6 +171,9 @@
 #X obj 301 295 r \$0-dry-wet-s;
 #X obj 444 195 s \$0-dry-wet-r;
 #X obj 493 155 s \$0-random-r;
+#X obj 474 17 loadbang;
+#X msg 474 41 dry-wet 100;
+#X obj 548 15 r sp-\$1;
 #X connect 0 0 27 1;
 #X connect 1 0 2 0;
 #X connect 2 0 19 0;
@@ -197,4 +200,7 @@
 #X connect 27 0 26 0;
 #X connect 28 0 26 2;
 #X connect 30 0 27 2;
+#X connect 33 0 34 0;
+#X connect 34 0 17 0;
+#X connect 35 0 17 0;
 #X coords 0 -1 1 1 200 170 1 10 10;
