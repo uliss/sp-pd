@@ -10,11 +10,11 @@ M 30 7 0 14 -261681 -1 -258699 0 1;
 #X obj 474 -233 vu 15 120 \$0-viola1-ind-r empty -1 -8 0 10 -66577
 -1 1 0;
 #X obj 564 -233 vsl 15 120 0.02 2 1 0 \$0-v2_vol \$0-set_v2_vol Viola2
-0 -9 0 10 -204786 -1 -1 9187 1;
+0 -9 0 10 -204786 -1 -1 8789 1;
 #X obj 594 -233 vu 15 120 \$0-viola2-ind-r empty -1 -8 0 10 -66577
 -1 1 0;
 #X obj 688 -233 vsl 15 120 0.02 2 1 0 \$0-v3_vol \$0-set_v3_vol Viola3
-0 -9 0 10 -204786 -1 -1 9187 1;
+0 -9 0 10 -204786 -1 -1 8789 1;
 #X obj 717 -233 vu 15 120 \$0-viola3-ind-r empty -1 -8 0 10 -66577
 -1 1 0;
 #X obj 786 -233 vsl 15 120 0 0.7 0 0 \$0-feedback_vol \$0-set_fb_vol
@@ -95,7 +95,7 @@ Feedback 0 -9 0 10 -204800 -1 -1 6800 1;
 #X connect 17 0 11 0;
 #X restore 943 36 pd click;
 #X obj 335 -233 vsl 15 120 0 2 0 0 \$0-click-vol-s \$0-click-vol-r
-Click 0 -9 0 10 -261682 -1 -1 2380 1;
+Click 0 -9 0 10 -261682 -1 -1 2975 1;
 #X obj 364 -233 vu 15 120 \$0-click-vu empty -1 -8 0 10 -66577 -1 1
 0;
 #N canvas 566 125 423 335 input 0;
@@ -103,7 +103,7 @@ Click 0 -9 0 10 -261682 -1 -1 2380 1;
 #X obj 80 96 *~ 2;
 #X obj 80 131 *~;
 #X obj 142 114 line~;
-#X obj 142 45 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 142 45 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X msg 142 90 \$1 20;
 #X obj 142 18 sp-key v;
@@ -139,7 +139,7 @@ Click 0 -9 0 10 -261682 -1 -1 2380 1;
 #X obj 268 -233 vu 15 120 \$0-input-vu Input -1 -8 0 10 -66577 -1 1
 0;
 #X obj 266 -103 tgl 15 0 \$0-input-tgl-s \$0-input-tgl-r V 25 7 0 14
--262144 -1 -4160 0 1;
+-262144 -1 -4160 1 1;
 #N canvas 193 305 637 295 viola1 0;
 #X obj 25 102 *~;
 #X obj 99 16 sp-key 1;
@@ -269,7 +269,7 @@ empty 17 7 0 10 -262144 -1 -1;
 #X obj 564 -77 bng 15 250 50 0 \$0-viola2-test-s \$0-viola2-test-s
 empty 17 7 0 10 -262144 -1 -1;
 #X obj 688 -103 tgl 15 0 \$0-viola3-tgl-s \$0-viola3-tgl-r 3 25 7 0
-14 -262144 -1 -4160 0 1;
+14 -262144 -1 -4160 1 1;
 #X obj 688 -77 bng 15 250 50 0 \$0-viola3-test-s \$0-viola3-test-r
 empty 17 7 0 10 -262144 -1 -1;
 #N canvas 339 132 602 371 viola3 0;
@@ -278,7 +278,7 @@ empty 17 7 0 10 -262144 -1 -1;
 #X floatatom 61 80 7 0 0 0 - - -;
 #X obj 170 147 line~;
 #X msg 170 122 \$1 20;
-#X obj 170 98 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 170 98 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 44 199 *~;
 #X obj 133 286 pvu~;
@@ -513,7 +513,7 @@ empty -2 -6 0 8 -262144 -1 -1 7150 1;
 #X connect 41 0 39 0;
 #X restore 943 -24 pd init;
 #X obj 16 -167 tgl 30 0 \$0-tgl-start-s \$0-tgl-start-r Start[s] 35
-14 0 20 -204786 -13381 -1 0 1;
+14 0 20 -204786 -13381 -1 1 1;
 #N canvas 290 340 519 260 output 0;
 #X obj 424 22 loadbang;
 #X obj 48 114 sp-monitor~;
@@ -536,7 +536,7 @@ empty -2 -6 0 8 -262144 -1 -1 7150 1;
 #X text 858 -195 Delay and click are connected;
 #X obj 243 242 r \$0-vol;
 #X obj 17 -44 vradio 30 1 0 3 \$0-settings-s \$0-settings-r Settings:
-0 -15 0 18 -262144 -1 -1 1;
+0 -15 0 18 -262144 -1 -1 0;
 #X obj 89 105 catch~ \$0-out_right;
 #X obj 38 84 catch~ \$0-out_left;
 #X obj 59 -44 comment 100 18 Verdana s 0 0 0 0 home;
@@ -562,12 +562,12 @@ empty -2 -6 0 8 -262144 -1 -1 7150 1;
 #X connect 7 0 0 0;
 #X connect 8 0 0 0;
 #X restore 944 308 pd click-vol;
-#N canvas 228 241 450 300 keys 0;
+#N canvas 228 241 546 417 keys 0;
 #X obj 24 27 sp-key m;
 #X obj 165 31 sp-key d;
 #X obj 165 58 s \$0-key-delay;
 #X obj 284 30 sp-key s;
-#X obj 284 56 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 284 56 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 284 79 s \$0-key-start;
 #X obj 24 59 s \$0-key-click;
@@ -577,6 +577,10 @@ empty -2 -6 0 8 -262144 -1 -1 7150 1;
 #X obj 170 141 s \$0-key-test-viola2;
 #X obj 310 115 sp-key #;
 #X obj 310 141 s \$0-key-test-viola3;
+#X obj 24 193 sp-gfoot-switch;
+#X obj 24 335 s \$0-key-delay;
+#X obj 24 264 sel 1;
+#X msg 24 292 bang;
 #X connect 0 0 6 0;
 #X connect 1 0 2 0;
 #X connect 3 0 4 0;
@@ -584,6 +588,9 @@ empty -2 -6 0 8 -262144 -1 -1 7150 1;
 #X connect 7 0 8 0;
 #X connect 9 0 10 0;
 #X connect 11 0 12 0;
+#X connect 13 0 15 0;
+#X connect 15 0 16 0;
+#X connect 16 0 14 0;
 #X restore 764 185 pd keys;
 #X obj 141 235 r \$0-signal-init;
 #N canvas 206 307 456 380 video 0;
