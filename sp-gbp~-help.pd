@@ -1,0 +1,12 @@
+#N canvas 0 22 699 635 10;
+#X obj 159 94 sp-gbp~ bp1;
+#X obj 159 46 r~ \$0-out;
+#X obj 159 238 sp-filtergraph~;
+#X obj 159 526 s~ \$0-out;
+#X msg 352 46 bp save;
+#X msg 420 46 bp restore;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 4 0 0 1;
+#X connect 5 0 0 1;

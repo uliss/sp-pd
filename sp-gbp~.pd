@@ -1,0 +1,79 @@
+#N canvas 74 23 810 459 10;
+#X obj 11 27 cnv 15 198 100 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 257 23 inlet~;
+#X obj 257 353 outlet~;
+#X obj 407 26 inlet;
+#X obj 452 353 outlet;
+#X obj 257 149 bp~ 440 10;
+#X obj 20 104 hsl 120 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r dry/wet
+-2 -8 0 10 -262144 -1 -262144 0 1;
+#X obj 150 104 nbx 4 12 0 100 0 0 \$0-dry-wet-nbx-s \$0-dry-wet-nbx-r
+empty 0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 219 104 change;
+#X obj 407 59 route bp;
+#X obj 407 93 route q freq pass dry-wet save restore;
+#X obj 557 132 sp-param-file;
+#X obj 444 148 s \$0-freq-r;
+#X obj 407 120 s \$0-q-r;
+#X obj 21 76 hsl 120 12 0 50 0 0 \$0-q-s \$0-q-r Q -2 -8 0 10 -262144
+-1 -262144 0 1;
+#X obj 151 76 nbx 4 12 0 50 0 0 \$0-q-nbx-s \$0-q-nbx-r empty 0 -8
+0 10 -262144 -1 -1 0 256;
+#X obj 218 74 change;
+#X obj 226 304 sp-dry-wet~;
+#X obj 289 272 r \$0-dry-wet-s;
+#X obj 314 120 r \$0-q-s;
+#X obj 20 47 hsl 120 12 20 20000 0 0 \$0-freq-s \$0-freq-r freq -2
+-8 0 10 -262144 -1 -262144 0 1;
+#X obj 151 47 nbx 5 12 20 20000 0 0 \$0-freq-nbx-s \$0-freq-nbx-r empty
+0 -8 0 10 -262144 -1 -1 20 256;
+#X obj 216 45 change;
+#N canvas 213 222 631 281 param 1;
+#X obj 23 89 tof/param /bp/\$1/freq 20;
+#X obj 164 56 change;
+#X obj 164 27 r \$0-freq-s;
+#X obj 23 125 s \$0-freq-r;
+#X obj 23 185 tof/param /bp/\$1/q 10;
+#X obj 146 157 change;
+#X obj 146 130 r \$0-q-s;
+#X obj 23 217 s \$0-q-r;
+#X obj 283 88 tof/param /bp/\$1/dry-wet 100;
+#X obj 448 61 change;
+#X obj 448 33 r \$0-dry-wet-s;
+#X obj 283 120 s \$0-dry-wet-r;
+#X connect 0 0 3 0;
+#X connect 1 0 0 1;
+#X connect 2 0 1 0;
+#X connect 4 0 7 0;
+#X connect 5 0 4 1;
+#X connect 6 0 5 0;
+#X connect 8 0 11 0;
+#X connect 9 0 8 1;
+#X connect 10 0 9 0;
+#X restore 56 211 pd param;
+#X obj 285 89 r \$0-freq-s;
+#X connect 1 0 5 0;
+#X connect 1 0 17 0;
+#X connect 3 0 9 0;
+#X connect 5 0 17 1;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 6 0;
+#X connect 9 0 10 0;
+#X connect 9 1 4 0;
+#X connect 10 0 13 0;
+#X connect 10 1 12 0;
+#X connect 10 4 11 0;
+#X connect 10 5 11 1;
+#X connect 14 0 15 0;
+#X connect 15 0 16 0;
+#X connect 16 0 14 0;
+#X connect 17 0 2 0;
+#X connect 18 0 17 2;
+#X connect 19 0 5 2;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 22 0 20 0;
+#X connect 24 0 5 1;
+#X coords 0 -1 1 1 200 120 1 10 10;
