@@ -14,6 +14,7 @@
 #X obj 341 219 s \$0-ind-r;
 #X obj 355 55 r \$0-ind-s;
 #X obj 355 79 change;
+#X text 36 44 checkbox;
 #X connect 1 0 7 0;
 #X connect 5 0 0 0;
 #X connect 5 0 9 0;
