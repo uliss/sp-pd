@@ -1,16 +1,16 @@
-#N canvas 174 22 836 560 10;
+#N canvas 187 319 836 560 10;
 #X obj 79 38 inlet~;
 #X obj 79 168 outlet~;
 #X obj 248 19 inlet;
 #X obj 21 21 cnv 15 38 178 empty \$0-cnv-r empty 20 12 0 14 -128992
 -262144 0;
-#X obj 35 43 vsl 10 119 0 1.8 0 0 \$0-vol-s \$0-vol-r empty 0 -9 0
+#X obj 35 45 vsl 10 119 0 1.8 0 0 \$0-vol-s \$0-vol-r empty 0 -9 0
 10 -228856 -257985 -262144 6556 1;
-#X obj 46 43 vu 8 120 \$0-vu-right-r empty -1 -8 0 10 -66577 -1 0 0
+#X obj 46 45 vu 8 120 \$0-vu-right-r empty -1 -8 0 10 -66577 -1 0 0
 ;
 #X obj 394 141 sel 0;
 #X obj 304 19 loadbang;
-#X obj 35 26 tgl 10 0 \$0-mute-s \$0-mute-r M -8 5 0 10 -225271 -1
+#X obj 35 27 tgl 10 0 \$0-mute-s \$0-mute-r M -8 5 0 10 -225271 -1
 -262144 0 1;
 #X msg 511 45 mute \$1;
 #X obj 511 19 r \$0-mute-s;
@@ -26,14 +26,14 @@
 #X msg 460 168 color 13;
 #X obj 304 113 route float bang;
 #X obj 387 373 s \$0-cnv-r;
-#X obj 21 184 cnv 15 38 16 empty \$0-cnv-label-r l_-_r 6 4 0 10 -128992
+#X obj 21 185 cnv 15 38 14 empty \$0-cnv-label-r l_-_r 6 4 0 10 -128992
 -262144 0;
 #X obj 459 373 s \$0-cnv-label-r;
 #X obj 428 302 s \$0-cnv-label-r;
 #X msg 428 275 label \$1;
 #X obj 428 252 l2s;
 #X msg 387 346 color \$1 \$2;
-#X obj 26 43 vu 8 120 \$0-vu-left-r empty -1 -8 0 10 -66577 -1 0 0
+#X obj 26 45 vu 8 120 \$0-vu-left-r empty -1 -8 0 10 -66577 -1 0 0
 ;
 #X obj 129 38 inlet~;
 #X obj 79 135 sp-smix~;
@@ -78,7 +78,7 @@
 #X connect 6 0 5 0;
 #X connect 6 1 3 0;
 #X restore 182 230 pd env;
-#X obj 27 168 cnv 12 25 12 empty \$0-ind-r 1 3 6 0 10 -128992 -1 0
+#X obj 27 169 cnv 12 25 12 empty \$0-ind-r 1 3 6 0 10 -128992 -1 0
 ;
 #X obj 63 328 r \$0-vol-s;
 #X msg 63 407 label \$1;
