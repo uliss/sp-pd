@@ -1,0 +1,5 @@
+#N canvas 624 22 450 300 10;
+#X obj 131 75 sp-gparam;
+#X obj 153 191 r sp-param;
+#X obj 153 216 print;
+#X connect 1 0 2 0;
