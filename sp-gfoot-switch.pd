@@ -1,10 +1,10 @@
-#N canvas 105 128 604 302 10;
+#N canvas 131 374 794 277 10;
 #X obj 282 243 outlet;
 #X obj 282 55 ctlin 102;
 #X obj 11 27 cnv 15 198 40 empty empty empty 20 12 0 14 -191407 -66577
 0;
 #X obj 19 35 vradio 12 1 0 2 \$0-select-s \$0-select-r empty 0 -8 0
-10 -262144 -1 -1 1;
+10 -262144 -1 -1 0;
 #X text 35 32 MBOX foot switch;
 #X obj 282 165 mux . . .;
 #X obj 333 138 r \$0-select-s;
@@ -15,11 +15,26 @@
 #X obj 355 55 r \$0-ind-s;
 #X obj 355 79 change;
 #X text 36 44 checkbox;
+#X obj 443 54 inlet;
+#X obj 443 121 route source;
+#X obj 443 91 route foot-switch;
+#X obj 542 242 outlet;
+#X obj 512 149 print [sp-gfoot-switch] unknown command;
+#X obj 443 182 s \$0-select-r;
+#X obj 414 243 outlet;
+#X obj 414 218 sel 1;
 #X connect 1 0 7 0;
 #X connect 5 0 0 0;
 #X connect 5 0 9 0;
+#X connect 5 0 20 0;
 #X connect 6 0 5 3;
 #X connect 7 0 5 0;
 #X connect 10 0 11 0;
 #X connect 11 0 5 1;
+#X connect 13 0 15 0;
+#X connect 14 0 18 0;
+#X connect 14 1 17 0;
+#X connect 15 0 14 0;
+#X connect 15 1 16 0;
+#X connect 20 0 19 0;
 #X coords 0 -1 1 1 200 60 1 10 10;
