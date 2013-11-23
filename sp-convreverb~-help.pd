@@ -1,5 +1,5 @@
-#N canvas 0 22 450 300 10;
-#X declare -lib zexy;
+#N canvas 0 22 585 420 10;
+#X declare -lib zexy -lib bsaylor;
 #X obj 99 199 +dsp;
 #X obj 99 155 sp-convreverb~;
 #X obj 180 123 openpanel;
