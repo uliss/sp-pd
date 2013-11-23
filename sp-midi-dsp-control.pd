@@ -1,8 +1,8 @@
 #N canvas 233 257 813 419 10;
 #X obj 11 27 cnv 15 198 120 empty empty empty 20 12 0 14 -260097 -66577
 0;
-#X obj 22 46 hsl 128 12 0 2 0 0 \$0-volume-s \$0-volume-r volume -2
--8 0 10 -262144 -1 -1 3175 1;
+#X obj 22 46 hsl 128 12 0 2 0 0 \$0-volume-s \$0-volume-r volume range
+-2 -8 0 10 -262144 -1 -1 3175 1;
 #X obj 282 33 ctlin;
 #X obj 282 74 demux 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18;
 #X obj 158 46 nbx 3 12 0 2 0 0 \$0-vol-nbx-s \$0-vol-nbx-r empty 0
@@ -22,8 +22,8 @@
 #X msg 239 353 vol+ \$1;
 #X obj 239 383 outlet;
 #X obj 150 71 nbx 4 12 0 127 0 0 \$0-ind-s \$0-ind-r Volume: -50 7
-0 10 -262144 -1 -1 0.5 256;
-#N canvas 448 345 450 300 save 0;
+0 10 -262144 -1 -1 0 256;
+#N canvas 61 22 771 562 save 0;
 #X obj 39 74 tof/param /midi/dsp/control/\$1/volume 0.5;
 #X obj 282 32 r \$0-volume-s;
 #X obj 39 108 change;
@@ -32,12 +32,40 @@
 #X obj 40 218 change;
 #X obj 40 245 s \$0-select-r;
 #X obj 259 153 r \$0-select-s;
+#X obj 40 318 change;
+#X obj 40 291 tof/param /midi/dsp/control/\$1/p1;
+#X obj 235 253 r \$0-p1-s;
+#X obj 40 345 s \$0-p1-r;
+#X obj 320 328 change;
+#X obj 320 301 tof/param /midi/dsp/control/\$1/p2;
+#X obj 515 263 r \$0-p2-s;
+#X obj 320 355 s \$0-p2-r;
+#X obj 40 438 change;
+#X obj 40 411 tof/param /midi/dsp/control/\$1/p3;
+#X obj 235 373 r \$0-p3-s;
+#X obj 40 465 s \$0-p3-r;
+#X obj 320 438 change;
+#X obj 515 373 r \$0-p4-s;
+#X obj 320 465 s \$0-p4-r;
+#X obj 320 411 tof/param /midi/dsp/control/\$1/p4;
 #X connect 0 0 2 0;
 #X connect 1 0 0 1;
 #X connect 2 0 3 0;
 #X connect 4 0 5 0;
 #X connect 5 0 6 0;
 #X connect 7 0 4 1;
+#X connect 8 0 11 0;
+#X connect 9 0 8 0;
+#X connect 10 0 9 1;
+#X connect 12 0 15 0;
+#X connect 13 0 12 0;
+#X connect 14 0 13 1;
+#X connect 16 0 19 0;
+#X connect 17 0 16 0;
+#X connect 18 0 17 1;
+#X connect 20 0 22 0;
+#X connect 21 0 23 1;
+#X connect 23 0 20 0;
 #X restore 39 345 pd save;
 #X obj 39 372 sp-param-file;
 #X obj 200 164 / 127;
@@ -85,7 +113,7 @@
 0 10 -262144 -1 -1;
 #X text 178 107 PR4;
 #X text 14 120 VOL+;
-#N canvas 451 228 450 300 init 0;
+#N canvas 451 228 450 300 init 1;
 #X obj 96 41 loadbang;
 #X obj 96 71 t b b;
 #X obj 123 105 f \$0;
@@ -93,14 +121,10 @@
 -1;
 #X msg 123 132 \; \$1-p1-r 1 \; \$1-p2-r 2 \; \$1-p3-r 3 \; \$1-p4-r
 4 \;;
-#X obj 31 163 s sp-param;
-#X msg 31 135 restore;
 #X connect 0 0 1 0;
-#X connect 1 0 6 0;
 #X connect 1 1 2 0;
 #X connect 2 0 4 0;
 #X connect 3 0 1 0;
-#X connect 6 0 5 0;
 #X restore 39 291 pd init;
 #X obj 403 198 pgmin;
 #X obj 403 246 ==;
