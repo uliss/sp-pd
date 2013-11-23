@@ -1,8 +1,8 @@
 #N canvas 45 22 957 704 10;
 #X obj 674 521 +dsp;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array \$0-left 1.41097e+07 float 2;
-#X coords 0 1 1.41097e+07 -1 900 100 1 0 0;
+#X array \$0-left 2.5685e+07 float 2;
+#X coords 0 1 2.5685e+07 -1 900 100 1 0 0;
 #X restore 20 101 graph;
 #X obj 481 221 loadbang;
 #X obj 20 101 hsl 900 100 0 44100 0 0 empty play_ind empty -2 -8 0
@@ -30,12 +30,12 @@
 #X obj 124 21 r init;
 #X obj 109 262 unsig~ 20;
 #X obj 124 45 f \$0;
-#X msg 124 70 read -resize tatata.wav \$1-left \$1-right;
 #X obj 334 156 r play;
 #X msg 334 187 1;
 #X obj 397 155 r stop;
 #X msg 397 187 0;
 #X obj 334 234 s sp-timer;
+#X msg 124 70 read -resize grab_it_new.wav \$1-left \$1-right;
 #X connect 0 0 1 1;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
@@ -50,12 +50,12 @@
 #X connect 10 0 1 0;
 #X connect 11 0 13 0;
 #X connect 12 0 4 0;
-#X connect 13 0 14 0;
-#X connect 14 0 0 0;
-#X connect 15 0 16 0;
-#X connect 16 0 19 0;
+#X connect 13 0 19 0;
+#X connect 14 0 15 0;
+#X connect 15 0 18 0;
+#X connect 16 0 17 0;
 #X connect 17 0 18 0;
-#X connect 18 0 19 0;
+#X connect 19 0 0 0;
 #X restore 826 355 pd loadfile;
 #X obj 210 245 bng 48 250 50 0 init init-r init 0 -16 0 20 -260097
 -1 -1;
@@ -64,17 +64,10 @@
 -1;
 #X obj 350 245 bng 48 250 50 0 stop stop-r stop 0 -16 0 22 -99865 -1
 -1;
-#X obj 17 393 sp-gtuner~ 415;
-#X obj 17 376 r~ \$0-viola-in;
-#X obj 17 268 cnv 15 140 100 empty empty empty 20 12 0 14 -233017 -66577
-0;
-#X obj 24 271 comment 130 12 Verdana ? 0 0 0 0 Legend \; 1 check DSP
-\; 2 tune viola 415hz \; 3 init patch \; 4 play \; 5 tune to 440hz
-\;;
 #X obj 826 295 table \$0-right;
 #X obj 856 228 sp-gcpu;
-#X obj 21 58 sp-gtimer timer;
-#X obj 137 516 sp-gfoot-switch;
+#X obj 821 54 sp-gtimer timer;
+#X obj 19 388 sp-gfoot-switch;
 #N canvas 503 386 450 300 incvol 0;
 #X obj 50 49 sel 1;
 #X obj 50 235 s \$0-bus;
@@ -83,7 +76,7 @@
 #X connect 0 0 3 0;
 #X connect 2 0 0 0;
 #X connect 3 0 1 0;
-#X restore 137 576 pd incvol;
+#X restore 19 448 pd incvol;
 #X obj 674 294 sp-gmix4~ mix4;
 #N canvas 93 247 856 310 input 0;
 #X obj 44 239 outlet~;
@@ -134,26 +127,31 @@ righ \, mix4 3 label ... \, mix4 3 color 20 \, mix4 0 mute 0 \, mix4
 #X connect 6 0 7 0;
 #X connect 7 0 0 1;
 #X restore 674 492 pd output ......;
-#X obj 21 20 sp-title Jacob ter Veldhuis: Ta-ta-ta-ta;
-#X obj 137 430 sp-gparam;
+#X obj 18 277 sp-gparam;
 #N canvas 379 180 450 300 init 0;
 #X obj 52 32 loadbang;
 #X msg 52 58 restore 0;
 #X obj 52 86 s sp-param;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
-#X restore 824 325 pd init;
+#X restore 826 325 pd init;
+#X obj 17 19 sp-title Jacob ter Veldhuis: Grab It!;
+#N canvas 233 406 450 300 keys 0;
+#X obj 101 46 sp-key Space;
+#X obj 101 72 s stop;
+#X connect 0 0 1 0;
+#X restore 826 386 pd keys;
+#X obj 93 517 sp-midi-dsp-control;
 #X connect 2 0 5 0;
 #X connect 5 0 4 0;
 #X connect 11 0 0 2;
-#X connect 15 0 14 0;
-#X connect 21 0 22 0;
-#X connect 23 0 25 0;
-#X connect 23 1 25 1;
-#X connect 23 2 25 2;
-#X connect 24 0 23 0;
-#X connect 24 1 23 1;
-#X connect 24 2 23 2;
-#X connect 24 3 23 4;
-#X connect 25 0 0 0;
-#X connect 25 1 0 1;
+#X connect 17 0 18 0;
+#X connect 19 0 21 0;
+#X connect 19 1 21 1;
+#X connect 19 2 21 2;
+#X connect 20 0 19 0;
+#X connect 20 1 19 1;
+#X connect 20 2 19 2;
+#X connect 20 3 19 4;
+#X connect 21 0 0 0;
+#X connect 21 1 0 1;

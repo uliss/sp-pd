@@ -57,11 +57,11 @@
 #X restore 42 355 pd pieces;
 #X obj 41 48 bng 30 250 50 0 open-spiral open-spiral-r Spiral[no_video]
 35 14 0 18 -260097 -1 -1;
-#X obj 41 98 bng 30 250 50 0 open-tatata open-tatata-r Tatatata 35
+#X obj 41 148 bng 30 250 50 0 open-tatata open-tatata-r Tatatata 35
 14 0 18 -4034 -1 -1;
 #X obj 41 248 bng 30 250 50 0 open-message-ground open-message-ground-r
 Message_Ground 35 14 0 18 -4160 -1 -1;
-#X obj 41 148 bng 30 250 50 0 open-vent open-vent-r Vent_Nocturne 35
+#X obj 41 98 bng 30 250 50 0 open-vent open-vent-r Vent_Nocturne 35
 14 0 18 -159808 -1 -1;
 #N canvas 506 365 450 300 utils 0;
 #X obj 45 29 sp-screen-unlock;
