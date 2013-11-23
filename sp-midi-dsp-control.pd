@@ -1,12 +1,12 @@
 #N canvas 233 257 813 419 10;
 #X obj 11 27 cnv 15 198 120 empty empty empty 20 12 0 14 -260097 -66577
 0;
-#X obj 22 46 hsl 128 12 0 2 0 0 \$0-volume-s \$0-volume-r volume -2
--8 0 10 -262144 -1 -1 0 1;
+#X obj 22 46 hsl 128 12 0 2 0 0 \$0-volume-s \$0-volume-r volume range
+-2 -8 0 10 -262144 -1 -1 3175 1;
 #X obj 282 33 ctlin;
 #X obj 282 74 demux 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18;
 #X obj 158 46 nbx 3 12 0 2 0 0 \$0-vol-nbx-s \$0-vol-nbx-r empty 0
--8 0 10 -262144 -1 -1 0 256;
+-8 0 10 -262144 -1 -1 0.5 256;
 #X obj 220 45 change;
 #X obj 296 307 r \$0-volume-s;
 #X obj 20 65 vradio 12 1 0 2 \$0-select-s \$0-select-r empty 0 -8 0
@@ -113,7 +113,7 @@
 0 10 -262144 -1 -1;
 #X text 178 107 PR4;
 #X text 14 120 VOL+;
-#N canvas 451 228 450 300 init 1;
+#N canvas 451 228 450 300 init 0;
 #X obj 96 41 loadbang;
 #X obj 96 71 t b b;
 #X obj 123 105 f \$0;
@@ -169,13 +169,17 @@
 #X connect 46 0 54 0;
 #X connect 47 0 48 0;
 #X connect 48 0 24 0;
+#X connect 48 0 36 0;
 #X connect 49 0 47 1;
 #X connect 50 0 51 0;
 #X connect 51 0 25 0;
+#X connect 51 0 38 0;
 #X connect 52 0 53 0;
 #X connect 53 0 26 0;
+#X connect 53 0 40 0;
 #X connect 54 0 55 0;
 #X connect 55 0 27 0;
+#X connect 55 0 42 0;
 #X connect 56 0 50 1;
 #X connect 57 0 52 1;
 #X connect 58 0 54 1;
