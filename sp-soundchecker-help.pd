@@ -1,0 +1,6 @@
+#N canvas 0 22 646 377 10;
+#X obj 105 78 sp-soundchecker;
+#X obj 104 242 +dsp;
+#X obj 356 73 sp-gparam;
+#X connect 0 0 1 0;
+#X connect 0 1 1 1;

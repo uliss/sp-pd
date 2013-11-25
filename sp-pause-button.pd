@@ -1,0 +1,41 @@
+#N canvas 196 129 678 413 10;
+#X obj 11 178 outlet;
+#X obj 10 10 cnv 10 31 31 \$0-cnv-s empty empty 20 12 0 14 -262144
+-66577 0;
+#X obj 246 24 inlet;
+#X obj 11 11 bng 29 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 26 26 moonlib/image icons/stop-icon.gif 0;
+#X obj 246 108 sel 0 1;
+#X obj 322 26 loadbang;
+#X msg 322 52 0;
+#X obj 246 69 f;
+#X obj 64 9 r \$0-img;
+#X obj 246 202 s \$0-img;
+#X obj 95 111 demux . .;
+#X obj 95 149 del 100;
+#X obj 173 40 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 157 149 del 100;
+#X msg 246 141 open icons/pause-icon.gif;
+#X msg 265 172 open icons/pause-icon-solid.gif;
+#X connect 2 0 8 0;
+#X connect 3 0 0 0;
+#X connect 3 0 11 0;
+#X connect 5 0 15 0;
+#X connect 5 1 16 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 5 0;
+#X connect 8 0 11 1;
+#X connect 9 0 4 0;
+#X connect 11 0 12 0;
+#X connect 11 0 16 0;
+#X connect 11 1 15 0;
+#X connect 11 1 14 0;
+#X connect 12 0 15 0;
+#X connect 13 0 8 0;
+#X connect 14 0 16 0;
+#X connect 15 0 10 0;
+#X connect 16 0 10 0;
+#X coords 0 -1 1 1 31 31 2 10 10;

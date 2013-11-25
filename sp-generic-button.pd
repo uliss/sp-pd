@@ -1,0 +1,20 @@
+#N canvas 196 129 640 202 10;
+#X obj 11 178 outlet;
+#X obj 10 10 cnv 10 31 31 \$0-cnv-s empty empty 20 12 0 14 -262144
+-66577 0;
+#X obj 196 29 inlet;
+#X obj 11 11 bng 29 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 26 26 moonlib/image icons/play-icon.gif 0;
+#X obj 64 9 r \$0-img;
+#X obj 196 136 s \$0-img;
+#X msg 196 102 open \$1;
+#X msg 262 31 icons/play-icon.gif;
+#X obj 196 68 l2s;
+#X connect 2 0 9 0;
+#X connect 3 0 0 0;
+#X connect 5 0 4 0;
+#X connect 7 0 6 0;
+#X connect 8 0 9 0;
+#X connect 9 0 7 0;
+#X coords 0 -1 1 1 31 31 2 10 10;
