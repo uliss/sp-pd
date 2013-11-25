@@ -242,17 +242,18 @@
 -2 -8 0 10 -262144 -1 -1 4233 1;
 #X obj 426 401 hsl 128 10 -45 45 0 0 \$0-bass-pan-s \$0-bass-pan-r
 bass -2 -8 0 10 -262144 -1 -1 6350 1;
-#N canvas 33 75 415 348 init 0;
+#N canvas 587 349 415 348 init 1;
 #X obj 51 38 loadbang;
 #X obj 51 71 f \$0;
 #X obj 135 56 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X msg 51 102 \; \$1-card-select-r 1 \; \$1-latency 10 \; \$1-tempo
 140 \; \$1-v1-pan-r 15 \; \$1-v2-pan-r -15 \; \$1-bass-pan-r 0 \; \$1-v1-ctrl
-mix4 0 volume 0.9 \, mix4 0 mute 0 \; \$1-v2-ctrl mix4 1 volume 1 \,
+mix4 0 volume 1 \, mix4 0 mute 0 \; \$1-v2-ctrl mix4 1 volume 1.1 \,
 mix4 1 mute 0 \; \$1-bass-ctrl mix4 2 volume 1.1 \, mix4 2 mute 0 \,
 mix4 3 volume 1.6 \; \$1-click-ctrl volume 1 \, mute 1 \; \$1-attack-on-r
-1 \; \$1-autostart-level 40 \; \$1-master-level 1 \; pd dsp 1 \;;
+1 \; \$1-autostart-level 40 \; \$1-master-level 1.2 \; pd dsp 1 \;
+;
 #X connect 0 0 1 0;
 #X connect 1 0 3 0;
 #X connect 2 0 1 0;
@@ -324,7 +325,7 @@ stop_bar_pos[p] 20 7 0 10 -262130 -1 -1;
 #X obj 30 184 bng 15 250 50 0 \$0-bar-pos-sync-s \$0-bar-pos-sync-r
 bar_sync[y] 20 7 0 10 -203904 -1 -1;
 #X obj 31 159 tgl 15 0 \$0-auto-stop-s \$0-auto-stop-r auto_stop[a]
-20 7 0 10 -261234 -1 -1 1 1;
+20 7 0 10 -261234 -1 -1 0 1;
 #N canvas 392 332 291 309 autostart 0;
 #X obj 74 56 env~ 1024;
 #X obj 74 216 sp-bangonce;

@@ -31,8 +31,8 @@
 #X obj 52 49 block~ 8192 1;
 #X msg 48 193 restore 0;
 #X obj 48 221 s sp-param;
-#X msg 368 100 \; \$1-v1-order-r 0 \; \$1-v2-order-r 2 \; \$1-v3-order-r
-3 \; \$1-v4-order-r 4 \; \$1-v5-order-r 5 \; \$1-v6-order-r 6 \; \$1-f3-order-r
+#X msg 368 100 \; \$1-v1-order-r 0 \; \$1-v2-order-r 1 \; \$1-v3-order-r
+3 \; \$1-v4-order-r 4 \; \$1-v5-order-r 5 \; \$1-v6-order-r 2 \; \$1-f3-order-r
 7 \; \$1-f4-order-r 5 \; \$1-init-bpm 180 \;;
 #X connect 0 0 23 0;
 #X connect 1 0 4 0;
@@ -395,7 +395,7 @@ mix 6 color \$1 0 \, mix 7 color \$1 0 \, mix 8 color \$1 0 \, mix
 #X connect 3 0 2 0;
 #X connect 4 0 1 0;
 #X restore 19 642 pd keys;
-#N canvas 286 443 644 327 delay_viola 1;
+#N canvas 286 443 644 327 delay_viola 0;
 #X obj 29 43 r \$0-start;
 #X obj 468 19 r \$0-init;
 #X msg 468 46 bang;
@@ -683,7 +683,7 @@ mix 6 color \$1 0 \, mix 7 color \$1 0 \, mix 8 color \$1 0 \, mix
 #X obj 105 63 osc~;
 #X obj 105 85 unsig~ 500;
 #X obj 117 172 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 -44.6454 256;
+-262144 -1 -1 -40.7177 256;
 #X obj 105 109 scale -1 1 -45 45 0;
 #X obj 105 41 f 0.03;
 #X connect 0 0 1 0;
@@ -719,7 +719,7 @@ mix 6 color \$1 0 \, mix 7 color \$1 0 \, mix 8 color \$1 0 \, mix
 #X obj 105 63 osc~;
 #X obj 105 85 unsig~ 500;
 #X obj 117 172 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 14.1181 256;
+-262144 -1 -1 -13.2817 256;
 #X obj 105 41 f 0.017;
 #X obj 105 109 scale -1 1 -30 30 0;
 #X connect 0 0 1 0;
@@ -834,7 +834,7 @@ mix 6 color \$1 0 \, mix 7 color \$1 0 \, mix 8 color \$1 0 \, mix
 #X obj 321 325 s \$0-moog;
 #X obj 625 148 scale 0 20 0.1 0.9;
 #X obj 625 204 spigot;
-#X obj 581 171 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 581 171 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 543 138 1;
 #X msg 507 138 0;
@@ -994,7 +994,7 @@ level 4 \, crossfade 50 \, gate pass 1 \, compr pass 1;
 #X obj 19 15 sp-title Terry Riley: In C;
 #X text 665 325 material;
 #X text 665 341 spectral;
-#X obj 761 275 sp-midi-dsp-control;
+#X obj 761 255 sp-midi-dsp-control;
 #X connect 6 0 7 0;
 #X connect 7 0 8 12;
 #X connect 8 0 36 0;

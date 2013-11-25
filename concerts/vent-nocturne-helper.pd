@@ -1,10 +1,12 @@
-#N canvas 435 296 450 300 10;
-#X obj 65 70 ctlin 102;
-#X floatatom 65 120 5 0 0 0 - - -;
-#X obj 65 159 ctlout 64;
-#X obj 185 62 sp-gtuner~ 442;
-#X obj 185 37 adc~ 1;
-#X text 65 42 MIDI routing;
+#N canvas 181 28 440 370 10;
+#X obj 25 150 ctlin 102;
+#X floatatom 25 192 5 0 0 0 - - -;
+#X obj 25 239 ctlout 64;
+#X obj 325 132 sp-gtuner~ 442;
+#X obj 325 107 adc~ 1;
+#X obj 25 24 cnv 15 400 60 empty empty DO_NOT_CLOSE_WHEN_PLAYING!!!
+30 30 0 20 -233017 -258113 0;
+#X text 25 122 MIDI routing for MaxMSP;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 4 0 3 0;
