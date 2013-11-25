@@ -1,0 +1,9 @@
+#N canvas 181 71 474 597 10;
+#X declare -path contrib/partconvEQ10~;
+#X obj 42 77 sp-filtergraph~;
+#X obj 42 539 s~ s1;
+#X obj 42 46 r~ s1;
+#X obj 42 351 sp-eq10~;
+#X connect 0 0 3 0;
+#X connect 2 0 0 0;
+#X connect 3 0 1 0;
