@@ -1,0 +1,33 @@
+#N canvas 305 22 659 402 10;
+#X obj 27 21 cnv 15 600 50 empty empty strlen 12 12 0 22 -204786 -66577
+0;
+#X obj 33 281 cnv 15 15 15 empty empty inlets 0 0 0 14 -262144 -66577
+0;
+#X obj 33 323 cnv 15 15 15 empty empty outlets 0 0 0 14 -262144 -66577
+0;
+#X obj 33 362 cnv 15 15 15 empty empty arguments 0 0 0 14 -262144 -66577
+0;
+#X obj 32 303 cnv 2 600 2 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 474 25 (c) Serj Poltavski \, 2013;
+#X msg 182 102 symbol message;
+#X symbolatom 102 103 10 0 0 0 - - -;
+#X obj 32 258 cnv 2 600 2 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 32 343 cnv 2 600 2 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 182 210 print;
+#X text 39 51 Returns string length.;
+#X obj 182 152 strlen;
+#X floatatom 182 183 5 0 0 0 - - -;
+#X text 124 315 0) int;
+#X text 237 312 - outputs string length.;
+#X text 123 354 (none);
+#X msg 281 102 symbol;
+#X text 125 273 0) symbol;
+#X text 237 272 - input string.;
+#X connect 6 0 12 0;
+#X connect 7 0 12 0;
+#X connect 12 0 13 0;
+#X connect 13 0 10 0;
+#X connect 17 0 12 0;

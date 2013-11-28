@@ -16,3 +16,4 @@ if(APPLE)
 endif()
 
 add_library(substr SHARED substr.c)
+add_library(strlen SHARED strlen.c)
