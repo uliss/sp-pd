@@ -21,7 +21,7 @@
 
 typedef struct substr_ {
     t_object xobj;
-    t_symbol * string;
+    t_symbol * substr;
     t_float start;
     t_float length;
     t_inlet * start_inlet;
@@ -29,15 +29,18 @@ typedef struct substr_ {
     t_outlet * outlet;
 } t_substr;
 
+#define PREFIX "[cstr:substr] "
+
 void substr_setup();
 
 t_class * substr_class;
 
 void * substr_new(t_symbol *s, int argc, t_atom * argv)
 {
-    t_substr * res = (t_sp_substr*) pd_new(substr_class);
+    t_substr * res = (t_substr*) pd_new(substr_class);
     res->start = 0;
     res->length = -1;
+    res->substr = NULL;
     
     switch(argc){
         default:
@@ -51,7 +54,6 @@ void * substr_new(t_symbol *s, int argc, t_atom * argv)
         break;
     }
 
-
     res->outlet = outlet_new(&res->xobj, &s_symbol);
     res->start_inlet = floatinlet_new(&res->xobj, &res->start);
     res->length_inlet = floatinlet_new(&res->xobj, &res->length);
@@ -61,37 +63,78 @@ void * substr_new(t_symbol *s, int argc, t_atom * argv)
 
 static void substr_symbol(t_substr * x, t_symbol * f)
 {
-    std::string s = f->s_name;
-    // 
-    if(x->start >= 0) { 
-        if(x->start >= s.length()) {
-            error("sp_substr: too big start position - %f", x->start);
-            return;
-        }
-        
-        size_t len = (x->length >= 0) ? x->length : std::string::npos;
-        size_t start = x->start;
+    const char * src = f->s_name;
+    size_t src_len = strlen(src);
+     
+    if(src_len == 0) {
+        error(PREFIX "empty string given");
+        return;
+    }
     
-        s = s.substr(start, len);
-        
-        outlet_symbol(x->outlet, gensym(s.c_str()));    
+    size_t src_pos = 0;
+    
+    if(x->start >= 0) {
+        src_pos = (size_t) x->start;
     }
     else {
-        long pos = s.length() + x->start;
-        post("pos: %d", pos);
+        if(((long) src_len + (long) x->start) < 0)
+            src_pos = 0;
+        else
+            src_pos = src_len + (long) x->start;
+    }
+             
+    if(src_pos >= src_len) {
+        error(PREFIX "invalid substring start position - %zd", src_pos);
+        return;
+    }
         
-        size_t len = (x->length >= 0) ? x->length : std::string::npos;
-        if(pos >= 0 && pos < s.length()) {
-            s = s.substr(pos, len);
-            outlet_symbol(x->outlet, gensym(s.c_str()));  
+    size_t dest_len = 0;
+    if(x->length == 0) {
+        return; // length == 0, no copy
+    }
+        
+    if(x->length > 0) {
+        dest_len = (size_t) x->length;
+        if(dest_len + src_pos >= src_len) { // to many characters
+            dest_len = src_len - src_pos;
         }
     }
+    else { // copy until end
+        dest_len = src_len - src_pos;
+    }
+        
+    char buffer[dest_len + 1];
+    strncpy(buffer, &src[src_pos], dest_len);
+    buffer[dest_len] = '\0';
+    x->substr = gensym(buffer);
+    outlet_symbol(x->outlet, x->substr);    
 }
 
 static void substr_bang(t_substr * x)
 {
-    // sp_update_freq(x);
-    // outlet_float(x->outlet, x->out_freq);
+    if(x->substr != NULL)
+        outlet_symbol(x->outlet, x->substr);
+}
+
+static void substr_any(t_substr * x, t_symbol * s, int argc, t_atom * argv)
+{
+    // list message
+    if(strncmp(s->s_name, "list", 4) == 0 && argc > 0) { 
+        t_symbol * arg1 = atom_gensym(argv); // get first list item and try to convert to symbol
+        if(arg1 != NULL)
+            substr_symbol(x, arg1);
+        
+        return;
+    }
+    
+    // float
+    if(strncmp(s->s_name, "float", 5) == 0) {
+        error(PREFIX "invalid message type: float");
+        return;
+    }
+    
+    // any other message
+    substr_symbol(x, s);
 }
 
 void substr_setup()
@@ -105,7 +148,9 @@ void substr_setup()
                                0);
 
     class_addsymbol(substr_class, substr_symbol);
-    // class_addbang(sp_substr_class, sp_substr_bang);
+    class_addbang(substr_class, substr_bang);
+    class_addanything(substr_class, substr_any);
+    class_sethelpsymbol(substr_class, gensym("substr-help.pd"));
 }
 
 
