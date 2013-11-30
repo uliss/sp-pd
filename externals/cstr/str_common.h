@@ -16,57 +16,13 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>   *
  ***************************************************************************/
 
-#include <string.h>
-#include <m_pd.h>
+#include <stddef.h>
 
-#include "utf8.h"
-
-typedef struct strlen_ {
-    t_object xobj;
-    t_outlet * outlet;
-} t_strlen;
-
-#define PREFIX "[cstr:strlen] "
-
-void strlen_setup();
-
-t_class * strlen_class;
-
-void * strlen_new(t_symbol *s, int argc, t_atom * argv)
-{
-    t_strlen * res = (t_strlen*) pd_new(strlen_class);
-    res->outlet = outlet_new(&res->xobj, &s_float);
-    return (void*) res;
-}
-
-static void strlen_symbol(t_strlen * x, t_symbol * f)
-{
-    outlet_float(x->outlet, strlen(f->s_name)); 
-}
-
-static void strlen_utf8(t_strlen * x, t_symbol * s)
-{        
-    long len = utf8_strlen(s->s_name);    
-    outlet_float(x->outlet, len); 
-}
-
-void strlen_setup()
-{
-    strlen_class = class_new(gensym("strlen"),
-                              (t_newmethod) strlen_new,
-                               0,
-                               sizeof(t_strlen),
-                               CLASS_DEFAULT,
-                               A_GIMME,
-                               0);
-
-    class_addsymbol(strlen_class, strlen_symbol);
-    class_addmethod(strlen_class, 
-                    (t_method) strlen_utf8, 
-                    gensym("utf8"),
-                    A_DEFSYMBOL, 
-                    0);
-    class_sethelpsymbol(strlen_class, gensym("strlen-help.pd"));
-}
-
-
+/**
+ * Returns position in the string from beginning
+ * @param str_lenght - length of string
+ * @paran pos - relative position. If positive - means position from start,
+ *              if negative - from the end of string.
+ * @param return position (>=0), or -1 on error
+ */ 
+long str_position(size_t str_length, long pos);

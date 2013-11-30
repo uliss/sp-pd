@@ -16,57 +16,32 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>   *
  ***************************************************************************/
 
-#include <string.h>
-#include <m_pd.h>
+#include <stddef.h>
 
-#include "utf8.h"
+/**
+ * Returns numbers of chars in utf-8 encoded string.
+ * @param str - utf-8 string
+ * @return number of chars on success, or -1 on error.
+ */
+long utf8_strlen(const char * str);
 
-typedef struct strlen_ {
-    t_object xobj;
-    t_outlet * outlet;
-} t_strlen;
+/**
+ * Writes to destination utf-8 encoded char at given position.
+ * @param str - source utf-8 encoded string
+ * @param pos - character position
+ * @param dest - pointer to write result. Must have enough space to store
+ *               utf-8 character + trailing '\0' == 5 bytes.
+ * @return 0 on sucess, -1 on error
+ */
+int utf8_char_at(const char * str, size_t pos, char * dest);
 
-#define PREFIX "[cstr:strlen] "
-
-void strlen_setup();
-
-t_class * strlen_class;
-
-void * strlen_new(t_symbol *s, int argc, t_atom * argv)
-{
-    t_strlen * res = (t_strlen*) pd_new(strlen_class);
-    res->outlet = outlet_new(&res->xobj, &s_float);
-    return (void*) res;
-}
-
-static void strlen_symbol(t_strlen * x, t_symbol * f)
-{
-    outlet_float(x->outlet, strlen(f->s_name)); 
-}
-
-static void strlen_utf8(t_strlen * x, t_symbol * s)
-{        
-    long len = utf8_strlen(s->s_name);    
-    outlet_float(x->outlet, len); 
-}
-
-void strlen_setup()
-{
-    strlen_class = class_new(gensym("strlen"),
-                              (t_newmethod) strlen_new,
-                               0,
-                               sizeof(t_strlen),
-                               CLASS_DEFAULT,
-                               A_GIMME,
-                               0);
-
-    class_addsymbol(strlen_class, strlen_symbol);
-    class_addmethod(strlen_class, 
-                    (t_method) strlen_utf8, 
-                    gensym("utf8"),
-                    A_DEFSYMBOL, 
-                    0);
-    class_sethelpsymbol(strlen_class, gensym("strlen-help.pd"));
-}
-
-
+/**
+ * Returns substring from utf-8 encoded string.
+ * @param str - source string
+ * @param pos - substring start
+ * @param length - substring length
+ * @param buffer - pointer to write buffer. Must have enough space to store
+ *               utf-8 substring + trailing '\0'.
+ * @return 0 on success, -1 on error
+*/
+int utf8_substr(const char * str, size_t pos, size_t length, char * buffer);

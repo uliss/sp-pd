@@ -19,9 +19,11 @@
 #include <string.h>
 #include <m_pd.h>
 
+#include "str_common.h"
+#include "utf8.h"
+
 typedef struct substr_ {
     t_object xobj;
-    t_symbol * substr;
     t_float start;
     t_float length;
     t_inlet * start_inlet;
@@ -40,16 +42,13 @@ void * substr_new(t_symbol *s, int argc, t_atom * argv)
     t_substr * res = (t_substr*) pd_new(substr_class);
     res->start = 0;
     res->length = -1;
-    res->substr = NULL;
     
     switch(argc){
         default:
         case 2:
             res->length = atom_getint(argv + 1);
-            // post("settings substr length to %d", res->length);
         case 1:
             res->start = atom_getint(argv);
-            // post("settings substr start to %d", res->start);
         case 0:
         break;
     }
@@ -61,59 +60,71 @@ void * substr_new(t_symbol *s, int argc, t_atom * argv)
     return (void*) res;
 }
 
+static long substr_length(long str_len, long pos, long substr_len)
+{
+    if(substr_len == 0) 
+        return -1; // length == 0, no copy
+    
+    if(substr_len > 0) { // positive
+        if(pos + substr_len > str_len) // to many characters
+            return str_len - pos;
+        else
+            return substr_len;
+    }
+    else { // copy until end
+        return str_len - pos;
+    }
+}
+
+static void substr_utf8(t_substr * x, t_symbol * s)
+{
+    const char * src = s->s_name;
+    const long src_len = utf8_strlen(src);
+    if(src_len == -1) {
+        error(PREFIX "invalid utf-8");
+        return;
+    }
+    
+    const long src_pos = str_position(src_len, x->start);
+    if(src_pos == -1) {
+        error(PREFIX "invalid substring start position - %d", (int) x->start);
+        return;
+    }
+    
+    size_t dest_len = substr_length(src_len, src_pos, x->length);
+    if(dest_len == -1)
+        return;
+    
+    char buffer[src_len + 10];
+    memset(buffer, 0, sizeof(buffer));
+    int rc = utf8_substr(src, src_pos, dest_len, buffer);
+    if(rc == -1) {
+        error(PREFIX "utf8 substring error: %ld, %ld", src_pos, dest_len);
+        return;
+    }
+    
+    outlet_symbol(x->outlet, gensym(buffer));  
+}
+
 static void substr_symbol(t_substr * x, t_symbol * f)
 {
     const char * src = f->s_name;
     size_t src_len = strlen(src);
-     
-    if(src_len == 0) {
-        error(PREFIX "empty string given");
-        return;
-    }
     
-    size_t src_pos = 0;
-    
-    if(x->start >= 0) {
-        src_pos = (size_t) x->start;
-    }
-    else {
-        if(((long) src_len + (long) x->start) < 0)
-            src_pos = 0;
-        else
-            src_pos = src_len + (long) x->start;
-    }
-             
-    if(src_pos >= src_len) {
-        error(PREFIX "invalid substring start position - %zd", src_pos);
+    const long src_pos = str_position(src_len, x->start);             
+    if(src_pos == -1) {
+        error(PREFIX "invalid substring start position - %d", (int) x->start);
         return;
     }
         
-    size_t dest_len = 0;
-    if(x->length == 0) {
-        return; // length == 0, no copy
-    }
-        
-    if(x->length > 0) {
-        dest_len = (size_t) x->length;
-        if(dest_len + src_pos >= src_len) { // to many characters
-            dest_len = src_len - src_pos;
-        }
-    }
-    else { // copy until end
-        dest_len = src_len - src_pos;
-    }
+    size_t dest_len = substr_length(src_len, src_pos, x->length);
+    if(dest_len == -1)
+        return;
         
     char buffer[dest_len + 1];
     strncpy(buffer, &src[src_pos], dest_len);
     buffer[dest_len] = '\0';
-    x->substr = gensym(buffer);
-    outlet_symbol(x->outlet, x->substr);    
-}
-
-static void substr_bang(t_substr * x)
-{
-    if(x->substr != NULL)
-        outlet_symbol(x->outlet, x->substr);
+    outlet_symbol(x->outlet, gensym(buffer));    
 }
 
 static void substr_any(t_substr * x, t_symbol * s, int argc, t_atom * argv)
@@ -133,6 +144,12 @@ static void substr_any(t_substr * x, t_symbol * s, int argc, t_atom * argv)
         return;
     }
     
+    // bang
+    if(strncmp(s->s_name, "bang", 4) == 0) {
+        error(PREFIX "invalid message type: bang");
+        return;
+    }
+    
     // any other message
     substr_symbol(x, s);
 }
@@ -148,8 +165,12 @@ void substr_setup()
                                0);
 
     class_addsymbol(substr_class, substr_symbol);
-    class_addbang(substr_class, substr_bang);
     class_addanything(substr_class, substr_any);
+    class_addmethod(substr_class, 
+                    (t_method) substr_utf8, 
+                    gensym("utf8"),
+                    A_DEFSYMBOL, 
+                    0);
     class_sethelpsymbol(substr_class, gensym("substr-help.pd"));
 }
 
