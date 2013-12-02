@@ -1,0 +1,18 @@
+#N canvas 470 101 450 300 10;
+#X obj 26 22 osc~ 440;
+#X obj 26 64 sp-bus~ bus0 0;
+#X obj 38 193 catch~ bus-0;
+#X obj 38 217 env~;
+#X floatatom 38 242 5 0 0 0 - - -;
+#X obj 176 25 osc~ 220;
+#X obj 176 64 sp-bus~ bus2 2;
+#X obj 188 217 env~;
+#X floatatom 188 242 5 0 0 0 - - -;
+#X obj 188 193 catch~ bus-2;
+#X obj 331 26 sp-gparam;
+#X connect 0 0 1 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 5 0 6 0;
+#X connect 7 0 8 0;
+#X connect 9 0 7 0;
