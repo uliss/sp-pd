@@ -95,7 +95,7 @@ static void substr_utf8(t_substr * x, t_symbol * s)
     if(dest_len == -1)
         return;
     
-    char buffer[src_len + 10];
+    char buffer[strlen(src) + 1];
     memset(buffer, 0, sizeof(buffer));
     int rc = utf8_substr(src, src_pos, dest_len, buffer);
     if(rc == -1) {
