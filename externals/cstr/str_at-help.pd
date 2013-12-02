@@ -1,0 +1,47 @@
+#N canvas 305 22 659 508 10;
+#X obj 27 21 cnv 15 600 60 empty empty str_at 12 12 0 22 -204786 -66577
+0;
+#X obj 33 281 cnv 15 15 15 empty empty inlets 0 0 0 14 -262144 -66577
+0;
+#X obj 33 343 cnv 15 15 15 empty empty outlets 0 0 0 14 -262144 -66577
+0;
+#X obj 33 382 cnv 15 15 15 empty empty arguments 0 0 0 14 -262144 -66577
+0;
+#X obj 32 323 cnv 2 600 2 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 474 25 (c) Serj Poltavski \, 2013;
+#X msg 182 102 symbol message;
+#X symbolatom 102 103 10 0 0 0 - - -;
+#X obj 32 258 cnv 2 600 2 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 32 363 cnv 2 600 2 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 182 220 print;
+#X text 124 335 0) int;
+#X msg 281 102 symbol;
+#X text 125 273 0) symbol;
+#X text 237 273 - input string.;
+#X msg 335 102 symbol utf8©™;
+#X msg 509 102 utf8;
+#X msg 432 102 utf8 тест4;
+#X obj 182 162 str_at 4;
+#X symbolatom 182 192 10 0 0 0 - - -;
+#X floatatom 227 129 5 0 0 0 - - -;
+#X text 39 49 Returns character at given index. Supports UTF-8 encoded
+string via selector "utf8";
+#X text 237 335 - outputs single character.;
+#X text 123 374 1) int;
+#X text 237 374 - character position.;
+#X text 125 293 1) int;
+#X text 237 293 - character position.;
+#X msg 335 145 utf8 utf8©™;
+#X connect 6 0 18 0;
+#X connect 7 0 18 0;
+#X connect 12 0 18 0;
+#X connect 15 0 18 0;
+#X connect 16 0 18 0;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 19 0 10 0;
+#X connect 20 0 18 1;
+#X connect 27 0 18 0;
