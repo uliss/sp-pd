@@ -1,9 +1,18 @@
-#N canvas 181 71 474 597 10;
+#N canvas 553 74 474 597 10;
 #X declare -path contrib/partconvEQ10~;
 #X obj 42 77 sp-filtergraph~;
 #X obj 42 539 s~ s1;
 #X obj 42 46 r~ s1;
 #X obj 42 351 sp-eq10~;
+#X obj 282 414 sp-gparam;
+#X msg 274 360 eq10 reset;
+#X msg 358 377 eq10 pass \$1;
+#X obj 358 352 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 288 28 sp-gcpu;
 #X connect 0 0 3 0;
 #X connect 2 0 0 0;
 #X connect 3 0 1 0;
+#X connect 5 0 3 1;
+#X connect 6 0 3 1;
+#X connect 7 0 6 0;
