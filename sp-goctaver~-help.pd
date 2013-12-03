@@ -1,4 +1,4 @@
-#N canvas 0 22 772 438 10;
+#N canvas 254 53 772 438 10;
 #X obj 131 306 +dsp;
 #X obj 131 172 sp-goctaver~ -1 oct1;
 #X msg 324 100 octaver pass \$1;
@@ -6,6 +6,7 @@
 1;
 #X msg 378 68 octaver shape 3;
 #X obj 131 131 adc~ 1;
+#X obj 419 202 sp-gparam;
 #X connect 1 0 0 0;
 #X connect 1 0 0 1;
 #X connect 2 0 1 1;

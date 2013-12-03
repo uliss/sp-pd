@@ -19,6 +19,7 @@
 #X msg 277 120 mix4 solo \$1;
 #X msg 530 203 mix4 save 1;
 #X msg 610 203 mix4 restore 1;
+#X obj 81 48 sp-gparam;
 #X connect 0 0 3 0;
 #X connect 0 0 3 1;
 #X connect 1 0 4 0;

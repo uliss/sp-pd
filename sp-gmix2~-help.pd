@@ -35,6 +35,7 @@
 #X msg 683 142 mix2 restore 1;
 #X msg 604 142 mix2 save 1;
 #X obj 99 172 sp-gmix2~;
+#X obj 255 280 sp-gparam;
 #X connect 0 0 30 0;
 #X connect 0 0 30 1;
 #X connect 1 0 2 0;

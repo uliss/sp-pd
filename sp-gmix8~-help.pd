@@ -40,6 +40,7 @@
 #X msg 818 232 mix8 restore;
 #X msg 818 202 mix8 restore 1;
 #X msg 738 202 mix8 save 1;
+#X obj 703 535 sp-gparam;
 #X connect 0 0 1 0;
 #X connect 0 1 1 0;
 #X connect 0 2 1 0;
