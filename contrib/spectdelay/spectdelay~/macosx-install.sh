@@ -1,6 +1,7 @@
 #/bin/sh
 
-FLAGS="-m32 -undefined suppress -flat_namespace"
+PD_PATH="/Applications/Pd-extended.app/Contents/Resources/include/pdextended"
+FLAGS="-m32 -undefined suppress -flat_namespace -I${PD_PATH}"
 
 cd ../genlib
 rm -f *.o
@@ -18,7 +19,7 @@ gcc -c $FLAGS -fPIC -o Spectacle.o Spectacle.cpp
 cd ../spectdelay~
 rm -f *.o
 
-gcc -m32 -DPD $FLAGS -I/usr/local/include/pdl2ork -I../Spectacle -o spectdelay~.o -c spectdelay~.cpp
+gcc -m32 -DPD $FLAGS -I../Spectacle -o spectdelay~.o -c spectdelay~.cpp
 
 gcc -shared $FLAGS \
         -o spectdelay~.pd_darwin \

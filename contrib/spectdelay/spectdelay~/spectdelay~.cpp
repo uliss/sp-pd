@@ -150,7 +150,7 @@
 //#include <string.h>
 
 #include "Spectacle.h"
-#include "../../../pd/src/m_pd.h"
+#include "m_pd.h"
 
 // conform out-of-range values passed to dt, dx, fb, and fx
 #define CONFORM_INPUT

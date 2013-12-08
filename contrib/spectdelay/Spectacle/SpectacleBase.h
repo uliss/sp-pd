@@ -13,7 +13,7 @@
 
 #include <math.h>
 #include "../genlib/Ougens.h"
-#include "../../../pd/src/m_pd.h"
+#include "m_pd.h"
 //#include "ext.h"	// for Max/MSP post and error functions
 
 //#define NDEBUG
