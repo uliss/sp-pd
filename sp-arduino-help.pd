@@ -1,14 +1,14 @@
 #N canvas 260 110 806 556 10;
 #X msg 120 109 open 3;
 #X msg 168 109 close;
-#X obj 53 258 tgl 30 0 empty empty empty 17 7 0 10 -258113 -1 -1 144
-144;
-#X obj 91 258 tgl 30 0 empty empty empty 17 7 0 10 -260097 -1 -1 128
-128;
-#X obj 129 258 tgl 30 0 empty empty empty 17 7 0 10 -4032 -1 -1 144
-144;
-#X obj 167 258 tgl 30 0 empty empty empty 17 7 0 10 -4034 -1 -1 144
-144;
+#X obj 53 258 tgl 30 0 empty empty empty 17 7 0 10 -258113 -1 -1 0
+1;
+#X obj 91 258 tgl 30 0 empty empty empty 17 7 0 10 -260097 -1 -1 0
+1;
+#X obj 129 258 tgl 30 0 empty empty empty 17 7 0 10 -4032 -1 -1 0 1
+;
+#X obj 167 258 tgl 30 0 empty empty empty 17 7 0 10 -4034 -1 -1 0 1
+;
 #X obj 221 268 bng 30 250 50 0 empty empty empty 17 7 0 10 -204786
 -1 -1;
 #X obj 266 266 bng 30 250 50 0 empty empty empty 17 7 0 10 -261234
@@ -16,7 +16,7 @@
 #X obj 221 235 sel 1;
 #X obj 266 236 sel 1;
 #X obj 400 90 metro 500;
-#X obj 400 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 400 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 422 113 del 20;
 #X obj 454 63 hsl 128 15 0 1000 0 0 empty empty empty -2 -8 0 10 -262144
@@ -27,18 +27,18 @@
 #X msg 400 136 led_green 1;
 #X floatatom 457 395 5 0 0 0 - - -;
 #X msg 167 308 \; pd dsp \$1;
-#X obj 283 14 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 153 34 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X msg 283 37 skip_pedal 0 \$1;
+#X msg 153 57 skip_pedal 0 \$1;
 #X obj 261 37 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X msg 261 60 skip_pedal 1 \$1;
 #X msg 221 151 sync;
 #X obj 161 350 phasor~ 75;
 #X obj 431 224 vsl 15 128 0 251 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 51 1;
+-1 -1 253 1;
 #X obj 457 224 vsl 15 128 0 251 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6476 1;
+-1 -1 12700 1;
 #X msg 274 343 2 \$1;
 #X msg 314 342 1 \$1;
 #X floatatom 476 90 5 0 0 0 - - -;
@@ -46,12 +46,22 @@
 #X msg 457 422 volume \$1;
 #X obj 83 349 osc~ 440;
 #X obj 168 205 sp-arduino 3;
+#X obj 600 90 metro 500;
+#X obj 600 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 622 113 del 20;
+#X obj 654 63 hsl 128 15 0 1000 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 676 90 5 0 0 0 - - -;
+#X msg 600 136 led_red 1;
+#X msg 622 161 led_red 0;
 #X connect 0 0 34 0;
 #X connect 1 0 34 0;
 #X connect 2 0 29 0;
 #X connect 3 0 28 0;
 #X connect 5 0 19 0;
 #X connect 6 0 11 0;
+#X connect 7 0 36 0;
 #X connect 8 0 6 0;
 #X connect 9 0 7 0;
 #X connect 10 0 17 0;
@@ -82,3 +92,11 @@
 #X connect 34 5 9 0;
 #X connect 34 6 26 0;
 #X connect 34 7 27 0;
+#X connect 35 0 40 0;
+#X connect 35 0 37 0;
+#X connect 36 0 35 0;
+#X connect 37 0 41 0;
+#X connect 38 0 35 1;
+#X connect 38 0 39 0;
+#X connect 40 0 34 1;
+#X connect 41 0 34 1;
