@@ -77,25 +77,17 @@
 #X restore 42 445 pd pieces;
 #X obj 42 138 bng 30 250 50 0 open-spiral open-spiral-r Spiral[no_video]
 35 14 0 18 -260097 -1 -1;
-#X obj 42 188 bng 30 250 50 0 open-tatata open-tatata-r Tatatata 35
+#X obj 463 439 bng 30 250 50 0 open-tatata open-tatata-r Tatatata 35
 14 0 18 -106496 -1 -1;
-#X obj 312 338 bng 30 250 50 0 open-message-ground open-message-ground-r
-Message_Ground 35 14 0 18 -203904 -1 -1;
-#X obj 42 288 bng 30 250 50 0 open-vent open-vent-r Vent_Nocturne 35
-14 0 18 -232576 -1 -1;
 #X obj 604 106 sp-gcpu;
 #X obj 467 32 sp-gfoot-switch;
-#X obj 42 338 bng 30 250 50 0 open-berio open-berio-r Berio 35 14 0
-18 -261338 -1 -1;
-#X obj 42 32 sp-title Усадьба Freelabs;
 #N canvas 506 365 450 300 utils 0;
 #X obj 45 29 sp-screen-unlock;
 #X restore 43 476 pd utils;
-#X obj 312 198 bng 30 250 50 0 open-knox open-knox-r Knox 35 14 0 18
--261234 -1 -1;
-#X obj 42 238 bng 30 250 50 0 open-mass-destruction open-mass-destruction-r
+#X obj 463 389 bng 30 250 50 0 open-mass-destruction open-mass-destruction-r
 Mass_Destruction 35 14 0 18 -259712 -1 -1;
-#X obj 312 288 bng 30 250 50 0 open-grab-it open-grab-it-r Grab_It!
+#X obj 42 198 bng 30 250 50 0 open-grab-it open-grab-it-r Grab_It!
 35 14 0 18 -106458 -1 -1;
-#X obj 312 138 bng 30 250 50 0 open-in-c open-in-c-r In_C 35 14 0 18
+#X obj 462 338 bng 30 250 50 0 open-in-c open-in-c-r In_C 35 14 0 18
 -212954 -1 -1;
+#X obj 40 31 sp-title Stanzia;

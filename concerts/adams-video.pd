@@ -1,0 +1,37 @@
+#N canvas 237 130 778 421 10;
+#X declare -lib Gem;
+#X obj 20 24 import Gem;
+#X obj 24 126 gemwin;
+#X obj 313 102 gemhead;
+#X obj 313 161 pix_film;
+#X obj 326 245 pix_mix 0;
+#X obj 241 107 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 241 133 auto \$1;
+#X obj 326 284 pix_texture;
+#X obj 380 217 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 351 32 open /Users/serj/concerts/2014.01.16_krasnojarsk/spiral2/video.mp4
+;
+#X floatatom 352 134 5 0 0 0 - - -;
+#X obj 260 41 openpanel;
+#X obj 260 21 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 285 69 open \$1;
+#X msg 94 109 destroy \, 0;
+#X msg 24 73 reset \, dimen 1280 720 \, create \, 1;
+#X obj 326 356 rectangle 6 3;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 7 0;
+#X connect 5 0 6 0;
+#X connect 6 0 3 0;
+#X connect 7 0 16 0;
+#X connect 8 0 4 2;
+#X connect 9 0 3 0;
+#X connect 10 0 3 1;
+#X connect 11 0 13 0;
+#X connect 12 0 11 0;
+#X connect 13 0 3 0;
+#X connect 14 0 1 0;
+#X connect 15 0 1 0;

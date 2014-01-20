@@ -1,4 +1,4 @@
-#N canvas 222 95 702 535 10;
+#N canvas 222 95 718 556 10;
 #N canvas 2 22 1023 535 pieces 0;
 #X obj 24 50 t a b;
 #X obj 24 74 symbol;
@@ -74,28 +74,26 @@
 #X connect 36 0 34 0;
 #X connect 38 0 39 0;
 #X connect 39 0 37 0;
-#X restore 42 445 pd pieces;
+#X restore 612 445 pd pieces;
 #X obj 42 138 bng 30 250 50 0 open-spiral open-spiral-r Spiral[no_video]
 35 14 0 18 -260097 -1 -1;
 #X obj 42 188 bng 30 250 50 0 open-tatata open-tatata-r Tatatata 35
 14 0 18 -106496 -1 -1;
-#X obj 312 338 bng 30 250 50 0 open-message-ground open-message-ground-r
+#X obj 42 488 bng 30 250 50 0 open-message-ground open-message-ground-r
 Message_Ground 35 14 0 18 -203904 -1 -1;
-#X obj 42 288 bng 30 250 50 0 open-vent open-vent-r Vent_Nocturne 35
+#X obj 42 238 bng 30 250 50 0 open-vent open-vent-r Vent_Nocturne 35
 14 0 18 -232576 -1 -1;
 #X obj 604 106 sp-gcpu;
 #X obj 467 32 sp-gfoot-switch;
-#X obj 42 338 bng 30 250 50 0 open-berio open-berio-r Berio 35 14 0
-18 -261338 -1 -1;
-#X obj 42 32 sp-title Усадьба Freelabs;
+#X obj 42 32 sp-title Пермь Губерния;
 #N canvas 506 365 450 300 utils 0;
 #X obj 45 29 sp-screen-unlock;
-#X restore 43 476 pd utils;
-#X obj 312 198 bng 30 250 50 0 open-knox open-knox-r Knox 35 14 0 18
+#X restore 613 476 pd utils;
+#X obj 42 388 bng 30 250 50 0 open-knox open-knox-r Knox 35 14 0 18
 -261234 -1 -1;
-#X obj 42 238 bng 30 250 50 0 open-mass-destruction open-mass-destruction-r
+#X obj 42 338 bng 30 250 50 0 open-mass-destruction open-mass-destruction-r
 Mass_Destruction 35 14 0 18 -259712 -1 -1;
-#X obj 312 288 bng 30 250 50 0 open-grab-it open-grab-it-r Grab_It!
+#X obj 42 438 bng 30 250 50 0 open-grab-it open-grab-it-r Grab_It!
 35 14 0 18 -106458 -1 -1;
-#X obj 312 138 bng 30 250 50 0 open-in-c open-in-c-r In_C 35 14 0 18
+#X obj 42 288 bng 30 250 50 0 open-in-c open-in-c-r In_C 35 14 0 18
 -212954 -1 -1;

@@ -1,7 +1,4 @@
-#N canvas 63 29 1004 680 10;
-#X obj 291 551 +dsp;
-#X obj 394 497 loadbang;
-#X msg 394 520 volume 0.9;
+#N canvas 22 38 1004 680 10;
 #N canvas 0 22 895 286 (subpatch) 0;
 #X array left-channel 2.42289e+07 float 2;
 #X coords 0 1 2.42289e+07 -1 700 100 1 0 0;
@@ -26,7 +23,7 @@ Major;
 #X restore 18 81 pd load;
 #X obj 18 23 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
 -1;
-#X obj 102 377 sp-gmix8~;
+#X obj 113 365 sp-gmix8~;
 #N canvas 192 310 564 325 player 0;
 #X obj 48 205 outlet~;
 #X obj 228 205 outlet~;
@@ -79,7 +76,7 @@ Major;
 #X connect 21 0 11 0;
 #X connect 22 0 19 0;
 #X connect 23 0 11 1;
-#X restore 278 348 pd player;
+#X restore 112 339 pd player;
 #N canvas 133 208 1025 299 ctrl 0;
 #X obj 58 102 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -173,7 +170,7 @@ Major;
 #X connect 52 0 53 0;
 #X restore 18 108 pd ctrl;
 #X obj 101 192 hsl 700 15 0 549.407 0 0 pos-s pos-r empty -2 -8 0 10
--66577 -4034 -1 14937 1;
+-66577 -4034 -1 69137 1;
 #X obj 593 358 bng 30 250 50 0 pos1-s pos1-r 1 11 14 0 14 -203904 -1
 -1;
 #X obj 643 358 bng 30 250 50 0 pos2-s pos2-r 2 11 14 0 14 -204800 -1
@@ -193,10 +190,31 @@ Major;
 #X obj 504 358 bng 30 250 50 0 play-btn-s play-btn-r Play 35 15 0 10
 -166441 -1 -166441;
 #X symbolatom 815 192 14 0 0 0 - time-r time-s;
-#X connect 1 0 2 0;
-#X connect 2 0 0 2;
-#X connect 7 0 6 0;
-#X connect 8 5 0 0;
-#X connect 8 6 0 1;
-#X connect 9 0 8 10;
-#X connect 9 1 8 12;
+#X obj 583 515 sp-gparam;
+#X obj 112 561 +dsp;
+#X obj 745 453 loadbang;
+#X msg 745 474 restore 1;
+#X obj 745 495 s sp-param;
+#X obj 357 634 dac~ 3 4;
+#X obj 414 402 loadbang;
+#X msg 404 350 mix8 save;
+#X msg 414 428 mix8 1 mute 0 \, mix8 0 mute 0 \, mix8 2 mute 0 \, mix8
+3 mute 0;
+#X obj 354 600 *~ 2;
+#X obj 405 598 *~ 2;
+#X connect 4 0 3 0;
+#X connect 5 0 20 0;
+#X connect 5 1 28 0;
+#X connect 5 2 20 1;
+#X connect 5 3 29 0;
+#X connect 6 0 5 0;
+#X connect 6 0 5 1;
+#X connect 6 1 5 2;
+#X connect 6 1 5 3;
+#X connect 21 0 22 0;
+#X connect 22 0 23 0;
+#X connect 25 0 27 0;
+#X connect 26 0 5 8;
+#X connect 27 0 5 8;
+#X connect 28 0 24 0;
+#X connect 29 0 24 1;
