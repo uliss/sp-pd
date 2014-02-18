@@ -1,0 +1,8 @@
+#N canvas 317 204 509 408 10;
+#X declare -lib flatgui;
+#X obj 147 195 sp-gmonitor~;
+#X obj 147 101 osc~ 440;
+#X obj 243 101 osc~ 880;
+#X obj 349 113 sp-gparam;
+#X connect 1 0 0 0;
+#X connect 2 0 0 1;

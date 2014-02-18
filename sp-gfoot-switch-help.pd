@@ -1,4 +1,4 @@
-#N canvas 255 377 450 300 10;
+#N canvas 255 377 605 225 10;
 #X obj 67 99 sp-gfoot-switch;
 #X msg 67 53 foot-switch source 1;
 #X msg 67 23 foot-switch source 0;
@@ -8,7 +8,12 @@
 1;
 #X text 171 163 bang output;
 #X text 74 163 value output;
+#X obj 382 22 sp-gparam;
+#X msg 228 23 foot-switch save;
+#X msg 228 53 foot-switch restore;
 #X connect 0 0 3 0;
 #X connect 0 1 4 0;
 #X connect 1 0 0 0;
 #X connect 2 0 0 0;
+#X connect 8 0 0 0;
+#X connect 9 0 0 0;

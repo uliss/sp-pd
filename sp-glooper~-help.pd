@@ -1,0 +1,23 @@
+#N canvas 226 150 914 563 10;
+#X declare -lib bsaylor;
+#X msg 223 63 looper setarray \$1-data;
+#X obj 223 39 \$0;
+#X obj 223 17 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 522 91 sp-garrayloader \$0-data;
+#X obj 46 401 +dsp;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array \$0-data 176400 float 2;
+#X coords 0 1 176400 -1 180 60 1 0 0;
+#X restore 233 293 graph;
+#X msg 124 69 looper start;
+#X msg 420 52 looper speed 1;
+#X obj 223 125 sp-glooper~;
+#X msg 540 56 looper speed 1.005;
+#X connect 0 0 8 0;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 6 0 8 0;
+#X connect 7 0 8 0;
+#X connect 8 0 4 0;
+#X connect 9 0 8 0;

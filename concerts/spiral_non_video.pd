@@ -78,7 +78,7 @@ muted.;
 #X restore 783 456 pd delay;
 #X obj 773 24 tgl 30 0 \$0-delay-tgl-s \$0-delay-tgl-r Delay[d] 40
 13 0 22 -204800 -4160 -1 0 1;
-#N canvas 130 75 950 649 init 0;
+#N canvas 130 75 950 649 init 1;
 #X obj 154 150 expr 1000 * 60 / $f1;
 #X obj 7 96 loadbang;
 #X obj -84 97 bng 15 250 50 0 empty empty init 19 7 0 13 -262144 -1
@@ -130,7 +130,7 @@ muted.;
 #X msg 526 356 restore 0;
 #X msg -8 255 \; \$1-latency 20 \; \$1-load_tempo 144 \; \$1-bus limiter
 threshold 96 \;;
-#X msg 115 442 \; \$1-click-output-s 2 \; \$1-click-pan 0.5 \; pd dsp
+#X msg 115 442 \; \$1-click-output-s 1 \; \$1-click-pan 0.5 \; pd dsp
 1;
 #X connect 0 0 8 0;
 #X connect 1 0 20 0;
