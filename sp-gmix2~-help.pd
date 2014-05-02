@@ -14,7 +14,7 @@
 #X floatatom 147 427 5 0 0 0 - - -;
 #X msg 264 139 mix2 0 volume \$1;
 #X obj 267 65 hsl 128 15 0 3 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 2000 1;
 #X msg 264 89 mix2 1 volume \$1;
 #X msg 544 112 mix2 save;
 #X msg 623 112 mix2 restore;
@@ -23,9 +23,8 @@
 #X obj 170 84 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 170 104 mix2 0 mute \$1;
-#X obj 483 164 sp-gmix2~ m2;
 #X obj 267 15 hsl 128 15 0 3 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 3100 1;
 #X msg 264 39 mix2 volume \$1;
 #X text 410 12 All values;
 #X text 413 63 channel 2;
@@ -36,8 +35,14 @@
 #X msg 604 142 mix2 save 1;
 #X obj 99 172 sp-gmix2~;
 #X obj 255 280 sp-gparam;
-#X connect 0 0 30 0;
-#X connect 0 0 30 1;
+#X msg 225 190 mix2 0 midilearn 7 \, mix2 1 midilearn 17;
+#X msg 225 228 mix2 midilearn 17;
+#X obj 483 164 sp-gmix2~ m2;
+#X msg 50 61 mix2 solo \$1;
+#X obj 50 26 hradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X connect 0 0 29 0;
+#X connect 0 0 29 1;
 #X connect 1 0 2 0;
 #X connect 1 0 5 0;
 #X connect 3 0 17 0;
@@ -46,17 +51,21 @@
 #X connect 7 0 8 0;
 #X connect 7 0 9 0;
 #X connect 9 0 10 0;
-#X connect 11 0 30 2;
+#X connect 11 0 29 2;
 #X connect 12 0 13 0;
-#X connect 13 0 30 2;
-#X connect 14 0 20 2;
-#X connect 15 0 20 2;
-#X connect 17 0 30 2;
+#X connect 13 0 29 2;
+#X connect 14 0 33 2;
+#X connect 15 0 33 2;
+#X connect 17 0 29 2;
 #X connect 18 0 19 0;
-#X connect 19 0 30 2;
-#X connect 21 0 22 0;
-#X connect 22 0 30 2;
-#X connect 28 0 20 2;
-#X connect 29 0 20 2;
-#X connect 30 0 1 0;
-#X connect 30 1 7 0;
+#X connect 19 0 29 2;
+#X connect 20 0 21 0;
+#X connect 21 0 29 2;
+#X connect 27 0 33 2;
+#X connect 28 0 33 2;
+#X connect 29 0 1 0;
+#X connect 29 1 7 0;
+#X connect 31 0 29 2;
+#X connect 32 0 29 2;
+#X connect 34 0 29 2;
+#X connect 35 0 34 0;
