@@ -77,7 +77,6 @@
 #X connect 6 0 4 0;
 #X connect 6 1 1 1;
 #X restore 621 210 pd midilearn;
-#X obj 621 237 s \$0-route;
 #N canvas 594 221 165 191 label 0;
 #X obj 30 23 loadbang;
 #X obj 57 93 pack f f;
@@ -128,6 +127,6 @@
 #X connect 27 4 26 0;
 #X connect 27 5 28 0;
 #X connect 27 6 12 0;
-#X connect 28 0 29 0;
-#X connect 30 0 11 0;
+#X connect 28 0 11 0;
+#X connect 29 0 11 0;
 #X coords 0 -1 1 1 135 185 2 100 100;

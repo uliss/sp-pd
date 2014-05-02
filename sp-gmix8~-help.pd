@@ -35,12 +35,17 @@
 #X obj 436 43 hsl 128 15 0 2 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
 #X msg 433 66 mix8 volume \$1;
-#X obj 473 280 sp-gmix8~ m8;
 #X msg 738 232 mix8 save;
 #X msg 818 232 mix8 restore;
 #X msg 818 202 mix8 restore 1;
 #X msg 738 202 mix8 save 1;
 #X obj 703 535 sp-gparam;
+#X msg 624 55 mix8 0 vol- 0.1;
+#X msg 749 58 mix8 1 fade 1 3000;
+#X msg 203 57 mix8 0 fade 0 2000;
+#X msg 203 77 mix8 0 fade 1 2000;
+#X msg 238 26 mix8 midilearn 7;
+#X obj 473 280 sp-gmix8~ m8;
 #X connect 0 0 1 0;
 #X connect 0 1 1 0;
 #X connect 0 2 1 0;
@@ -86,7 +91,12 @@
 #X connect 29 0 0 8;
 #X connect 30 0 31 0;
 #X connect 31 0 0 8;
-#X connect 33 0 32 8;
-#X connect 34 0 32 8;
-#X connect 35 0 32 8;
-#X connect 36 0 32 8;
+#X connect 32 0 42 8;
+#X connect 33 0 42 8;
+#X connect 34 0 42 8;
+#X connect 35 0 42 8;
+#X connect 37 0 0 8;
+#X connect 38 0 0 8;
+#X connect 39 0 0 8;
+#X connect 40 0 0 8;
+#X connect 41 0 0 8;
