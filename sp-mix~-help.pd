@@ -1,4 +1,4 @@
-#N canvas 645 154 359 207 10;
+#N canvas 645 154 470 215 10;
 #X obj 55 38 osc~ 440;
 #X obj 55 123 env~;
 #X floatatom 55 160 5 0 0 0 - - -;
@@ -9,6 +9,8 @@
 #X msg 178 59 volume \$1;
 #X obj 181 32 hsl 128 15 0 4 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
+#X msg 275 59 fade 0 1000;
+#X msg 358 59 fade 1 2000;
 #X connect 0 0 3 0;
 #X connect 1 0 2 0;
 #X connect 3 0 1 0;
@@ -16,3 +18,5 @@
 #X connect 5 0 4 0;
 #X connect 6 0 3 1;
 #X connect 7 0 6 0;
+#X connect 8 0 3 1;
+#X connect 9 0 3 1;
