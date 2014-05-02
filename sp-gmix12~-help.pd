@@ -16,6 +16,7 @@
 #X obj 455 427 sp-gmix12~ m12;
 #X msg 630 117 \; sp-m12 mute 0;
 #X msg 506 108 mix12 midilearn 8;
+#X obj 126 500 sp-gparam;
 #X connect 1 0 0 0;
 #X connect 1 0 0 2;
 #X connect 1 0 0 4;

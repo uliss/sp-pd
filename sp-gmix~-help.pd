@@ -1,4 +1,4 @@
-#N canvas 137 262 739 520 10;
+#N canvas 89 140 739 520 10;
 #X obj 99 173 osc~ 440;
 #X obj 99 406 env~;
 #X floatatom 99 447 5 0 0 0 - - -;
@@ -28,6 +28,7 @@
 #X msg 364 76 fade 0 1000;
 #X obj 436 213 sp-gmix~ mix1;
 #X msg 449 75 fade 1 2000;
+#X obj 254 361 sp-gparam;
 #X connect 0 0 3 0;
 #X connect 1 0 2 0;
 #X connect 1 0 8 0;
