@@ -2,7 +2,6 @@
 #X declare -lib bsaylor;
 #X declare -lib bsaylor;
 #X obj 130 362 +dsp;
-#X obj 360 237 table data;
 #X obj 361 44 openpanel;
 #X obj 361 170 soundfiler;
 #X obj 361 17 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -11,11 +10,11 @@
 #X msg 268 98 setarray data;
 #X msg 64 249 start;
 #X obj 133 196 hsl 128 15 0 2 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 6356 1;
+-1 -1 0 1;
 #X msg 130 250 speed \$1;
 #X floatatom 141 221 5 0 0 0 - - -;
 #X obj 283 196 hsl 128 15 0 2 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 6350 1;
+-1 -1 0 1;
 #X msg 280 250 speed \$1;
 #X floatatom 291 221 5 0 0 0 - - -;
 #X msg 110 117 1;
@@ -23,22 +22,29 @@
 #X msg 136 155 1;
 #X obj 226 294 sp-looper~;
 #X obj 130 294 sp-looper~;
-#X connect 2 0 5 0;
-#X connect 2 0 6 0;
+#X msg 454 249 stop;
+#X obj 377 330 unsig~;
+#X floatatom 399 400 5 0 0 0 - - -;
+#X obj 360 237 table data 1000;
+#X connect 1 0 4 0;
+#X connect 1 0 5 0;
+#X connect 3 0 1 0;
 #X connect 4 0 2 0;
-#X connect 5 0 3 0;
+#X connect 5 0 16 0;
+#X connect 5 0 17 0;
+#X connect 6 0 16 0;
 #X connect 6 0 17 0;
-#X connect 6 0 18 0;
-#X connect 7 0 17 0;
-#X connect 7 0 18 0;
-#X connect 8 0 9 0;
-#X connect 8 0 10 0;
-#X connect 9 0 18 0;
-#X connect 11 0 12 0;
-#X connect 11 0 13 0;
-#X connect 12 0 17 0;
-#X connect 14 0 11 0;
-#X connect 15 0 8 0;
-#X connect 16 0 8 0;
-#X connect 17 0 0 1;
-#X connect 18 0 0 0;
+#X connect 7 0 8 0;
+#X connect 7 0 9 0;
+#X connect 8 0 17 0;
+#X connect 10 0 11 0;
+#X connect 10 0 12 0;
+#X connect 11 0 16 0;
+#X connect 13 0 10 0;
+#X connect 14 0 7 0;
+#X connect 15 0 7 0;
+#X connect 16 0 0 1;
+#X connect 16 1 19 0;
+#X connect 17 0 0 0;
+#X connect 18 0 16 0;
+#X connect 19 0 20 0;
