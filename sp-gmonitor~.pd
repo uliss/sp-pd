@@ -1,13 +1,13 @@
-#N canvas 1 22 1042 484 10;
+#N canvas 1 22 1043 427 10;
 #X declare -lib flatgui;
 #X obj 21 117 cnv 15 198 100 empty empty empty 20 12 0 14 -128992 -66577
 0;
-#X obj 322 20 inlet~;
-#X obj 385 20 inlet~;
+#X obj 292 20 inlet~;
+#X obj 405 20 inlet~;
 #X obj 536 20 inlet;
-#X obj 322 242 outlet~;
-#X obj 385 242 outlet~;
-#X obj 611 427 outlet;
+#X obj 292 382 outlet~;
+#X obj 405 382 outlet~;
+#X obj 611 382 outlet;
 #X obj 536 51 route monitor;
 #X obj 536 119 sp-param-file;
 #X obj 191 127 vu 8 80 \$0-lvl-l empty -1 -8 0 10 -66577 -1 0 0;
@@ -16,7 +16,7 @@
 #X obj 193 32 r \$0-lvl2-r;
 #X obj 200 51 r \$0-lvr1-r;
 #X obj 203 70 r \$0-lvr2-r;
-#N canvas 621 171 410 280 level-indicator 0;
+#N canvas 621 171 413 342 level-indicator 0;
 #X obj 40 38 inlet~;
 #X obj 117 39 inlet~;
 #X obj 40 82 pvu~;
@@ -36,10 +36,14 @@
 #X obj 262 132 sel 0;
 #X obj 334 41 loadbang;
 #X msg 334 65 1;
+#X obj 40 303 outlet~;
+#X obj 117 303 outlet~;
 #X connect 0 0 2 0;
 #X connect 0 0 6 0;
+#X connect 0 0 19 0;
 #X connect 1 0 3 0;
 #X connect 1 0 9 0;
+#X connect 1 0 20 0;
 #X connect 2 0 4 0;
 #X connect 3 0 5 0;
 #X connect 6 0 7 0;
@@ -54,7 +58,7 @@
 #X connect 16 0 15 0;
 #X connect 17 0 18 0;
 #X connect 18 0 13 0;
-#X restore 328 98 pd level-indicator;
+#X restore 320 259 pd level-indicator;
 #X obj 62 190 hradio 12 1 0 9 \$0-sel2-s \$0-sel2-r right -33 8 0 10
 -262144 -1 -262144 4;
 #X obj 62 178 hradio 12 1 0 9 \$0-sel1-s \$0-sel1-r left -28 8 0 10
@@ -75,7 +79,7 @@
 #X obj 854 18 import flatgui;
 #X obj 145 133 knob 24 24 0 2 0 0 \$0-right-s \$0-right-r R 10 -8 0
 10 -262144 -1 -262144 1150 1;
-#X obj 111 133 knob 24 24 0 2 0 0 \$0-left-s \$0-left-r L 10 -8 0 10
+#X obj 105 133 knob 24 24 0 2 0 0 \$0-left-s \$0-left-r L 10 -8 0 10
 -262144 -1 -262144 1150 1;
 #X text 76 160 1;
 #X text 89 160 2;
@@ -138,9 +142,9 @@
 #X connect 12 0 10 0;
 #X connect 13 0 12 1;
 #X restore 26 293 pd save;
-#X obj 78 134 tgl 24 0 \$0-mute-s \$0-mute-r mute 0 -8 0 10 -261682
+#X obj 62 134 tgl 24 0 \$0-mute-s \$0-mute-r mute 0 -8 0 10 -261682
 -1 -262144 0 1;
-#N canvas 311 383 575 281 demux 1;
+#N canvas 311 383 575 281 demux 0;
 #X obj 53 26 inlet~;
 #X obj 223 25 inlet~;
 #X obj 122 200 dac~ 1 2 3 4 5 6 7 8;
@@ -177,19 +181,41 @@
 #X connect 9 0 7 0;
 #X connect 10 0 11 0;
 #X connect 11 0 7 0;
-#X restore 423 214 pd demux;
+#X restore 320 304 pd demux;
 #X obj 737 115 print [sp-gmonitor~] unknown command;
 #X obj 616 146 s \$0-sel1-r;
 #X obj 656 176 s \$0-sel2-r;
 #X obj 536 85 route save restore left right mute;
 #X obj 696 212 s \$0-mute-r;
-#X obj 468 184 r \$0-mute-s;
+#X obj 425 214 r \$0-mute-s;
+#N canvas 520 205 264 308 level 0;
+#X obj 40 36 inlet~;
+#X obj 145 37 inlet~;
+#X obj 40 251 outlet~;
+#X obj 145 250 outlet~;
+#X obj 40 203 *~;
+#X obj 145 202 *~;
+#X obj 55 179 line~;
+#X obj 160 179 line~;
+#X msg 160 154 \$1 10;
+#X msg 55 154 \$1 10;
+#X obj 55 111 r \$0-left-s;
+#X obj 160 111 r \$0-right-s;
+#X connect 0 0 4 0;
+#X connect 1 0 5 0;
+#X connect 4 0 2 0;
+#X connect 5 0 3 0;
+#X connect 6 0 4 1;
+#X connect 7 0 5 1;
+#X connect 8 0 7 0;
+#X connect 9 0 6 0;
+#X connect 10 0 9 0;
+#X connect 11 0 8 0;
+#X restore 320 187 pd level;
 #X connect 1 0 4 0;
-#X connect 1 0 15 0;
-#X connect 1 0 34 0;
+#X connect 1 0 41 0;
 #X connect 2 0 5 0;
-#X connect 2 0 15 1;
-#X connect 2 0 34 1;
+#X connect 2 0 41 1;
 #X connect 3 0 7 0;
 #X connect 7 0 38 0;
 #X connect 7 1 6 0;
@@ -197,6 +223,8 @@
 #X connect 12 0 9 1;
 #X connect 13 0 10 0;
 #X connect 14 0 10 1;
+#X connect 15 0 34 0;
+#X connect 15 1 34 1;
 #X connect 38 0 8 0;
 #X connect 38 1 8 1;
 #X connect 38 2 36 0;
@@ -205,4 +233,6 @@
 #X connect 38 5 35 0;
 #X connect 40 0 34 2;
 #X connect 40 0 15 2;
+#X connect 41 0 15 0;
+#X connect 41 1 15 1;
 #X coords 0 -1 1 1 200 120 1 20 100;

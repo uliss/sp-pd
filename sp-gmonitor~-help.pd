@@ -1,4 +1,4 @@
-#N canvas 317 204 568 408 10;
+#N canvas 317 204 433 450 10;
 #X declare -lib flatgui;
 #X obj 37 195 sp-gmonitor~;
 #X obj 37 101 osc~ 440;
