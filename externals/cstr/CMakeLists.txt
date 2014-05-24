@@ -28,4 +28,5 @@ target_link_libraries(str_at cstr_common)
 
 add_library(str_append SHARED str_append.c)
 add_library(str_prepend SHARED str_prepend.c)
+add_library(str_compare SHARED str_compare.c)
 
