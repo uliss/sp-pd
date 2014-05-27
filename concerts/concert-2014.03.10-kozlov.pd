@@ -56,8 +56,6 @@
 #X connect 26 0 19 0;
 #X connect 27 0 24 0;
 #X restore 612 215 pd pieces;
-#X obj 42 138 bng 30 250 50 0 open-spiral open-spiral-r Spiral[no_video]
-35 14 0 18 -260097 -1 -1;
 #X obj 42 338 bng 30 250 50 0 open-tatata open-tatata-r Tatatata 35
 14 0 18 -106496 -1 -1;
 #X obj 42 238 bng 30 250 50 0 open-vent open-vent-r Vent_Nocturne 35
@@ -70,6 +68,4 @@
 #X restore 613 246 pd utils;
 #X obj 42 288 bng 30 250 50 0 open-loops open-loops-r Loops_drones_and_riffs
 35 14 0 18 -204786 -1 -1;
-#X obj 42 188 bng 30 250 50 0 open-phase open-phase-r Viola_phase 35
-14 0 18 -232576 -1 -1;
 #X obj 609 168 declare -path ../;
