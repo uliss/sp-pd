@@ -1,0 +1,26 @@
+#N canvas 137 111 571 474 10;
+#X obj 64 344 +dsp;
+#X obj 64 268 sp-glimiter~ 80;
+#X obj 64 76 noise~;
+#X obj 260 63 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 169 33 limiter threshold 85;
+#X obj 64 156 sp-ghip~ f1;
+#X msg 257 89 hip cutoff \$1;
+#X msg 366 88 hip save;
+#X msg 366 114 hip save 1;
+#X obj 355 242 sp-gparam;
+#X msg 433 88 hip restore;
+#X msg 446 115 hip restore 1;
+#X connect 1 0 0 0;
+#X connect 1 2 0 2;
+#X connect 2 0 5 0;
+#X connect 3 0 6 0;
+#X connect 4 0 5 1;
+#X connect 5 0 1 0;
+#X connect 5 1 1 2;
+#X connect 6 0 5 1;
+#X connect 7 0 5 1;
+#X connect 8 0 5 1;
+#X connect 10 0 5 1;
+#X connect 11 0 5 1;
