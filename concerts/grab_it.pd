@@ -1,5 +1,6 @@
 #N canvas 45 22 957 704 10;
-#X obj 674 521 +dsp;
+#X declare -path ..;
+#X obj 674 481 +dsp;
 #N canvas 0 22 450 278 (subpatch) 0;
 #X array \$0-left 2.5685e+07 float 2;
 #X coords 0 1 2.5685e+07 -1 900 100 1 0 0;
@@ -54,7 +55,7 @@
 #X restore 826 355 pd loadfile;
 #X obj 210 245 bng 48 250 50 0 init init-r init 0 -16 0 20 -260097
 -1 -1;
-#X obj 867 491 r \$0-bus;
+#X obj 867 451 r \$0-bus;
 #X obj 280 245 bng 48 250 50 0 play play-r play 0 -16 0 22 -4034 -1
 -1;
 #X obj 350 245 bng 48 250 50 0 stop stop-r stop 0 -16 0 22 -99865 -1
@@ -62,7 +63,7 @@
 #X obj 826 295 table \$0-right;
 #X obj 856 228 sp-gcpu;
 #X obj 821 54 sp-gtimer timer;
-#X obj 674 294 sp-gmix4~ mix4;
+#X obj 674 254 sp-gmix4~ mix4;
 #N canvas 93 247 856 310 input 0;
 #X obj 44 239 outlet~;
 #X obj 341 239 outlet;
@@ -81,6 +82,10 @@
 #X msg 341 73 mix4 0 label vla \, mix4 1 label left \, mix4 2 label
 righ \, mix4 3 label ... \, mix4 3 color 20 \, mix4 0 mute 0 \, mix4
 1 mute 0 \, mix4 2 mute 0;
+#X obj 449 154 r play;
+#X obj 510 154 r stop;
+#X msg 449 185 record start;
+#X msg 551 184 record stop;
 #X connect 2 0 0 0;
 #X connect 2 0 13 0;
 #X connect 3 0 14 0;
@@ -94,7 +99,11 @@ righ \, mix4 3 label ... \, mix4 3 color 20 \, mix4 0 mute 0 \, mix4
 #X connect 12 0 4 0;
 #X connect 12 1 10 0;
 #X connect 14 0 1 0;
-#X restore 674 273 pd input ............;
+#X connect 15 0 17 0;
+#X connect 16 0 18 0;
+#X connect 17 0 1 0;
+#X connect 18 0 1 0;
+#X restore 674 233 pd input ............;
 #N canvas 157 132 551 315 output 0;
 #X obj 46 180 sp-gpan~;
 #X obj 46 77 inlet~;
@@ -111,14 +120,18 @@ righ \, mix4 3 label ... \, mix4 3 color 20 \, mix4 0 mute 0 \, mix4
 #X connect 3 0 5 0;
 #X connect 6 0 7 0;
 #X connect 7 0 0 1;
-#X restore 674 492 pd output ......;
+#X restore 674 452 pd output ......;
 #X obj 18 277 sp-gparam;
 #N canvas 379 180 450 300 init 0;
 #X obj 52 32 loadbang;
 #X msg 52 58 restore 0;
 #X obj 52 86 s sp-param;
+#X obj 154 54 delay 2000;
+#X obj 154 84 s init-r;
 #X connect 0 0 1 0;
+#X connect 0 0 3 0;
 #X connect 1 0 2 0;
+#X connect 3 0 4 0;
 #X restore 826 325 pd init;
 #X obj 17 19 sp-title Jacob ter Veldhuis: Grab It!;
 #N canvas 233 406 353 135 keys 0;
@@ -134,10 +147,34 @@ righ \, mix4 3 label ... \, mix4 3 color 20 \, mix4 0 mute 0 \, mix4
 #X obj 88 663 s play-r;
 #X obj 149 663 s stop-r;
 #X text 26 238 Stop: Space;
+#X obj 820 23 declare -path ..;
+#N canvas 388 137 624 294 midi 0;
+#X obj 39 61 sp-midiview;
+#X obj 272 122 s init-r;
+#X obj 272 92 sel 127;
+#X obj 352 92 sel 127;
+#X obj 272 62 ctlin 60 17;
+#X obj 352 62 ctlin 41 17;
+#X obj 352 122 s play-r;
+#X obj 432 92 sel 127;
+#X obj 432 62 ctlin 42 17;
+#X obj 432 122 s stop-r;
+#X connect 2 0 1 0;
+#X connect 3 0 6 0;
+#X connect 4 0 2 0;
+#X connect 5 0 3 0;
+#X connect 7 0 9 0;
+#X connect 8 0 7 0;
+#X restore 826 416 pd midi;
+#X obj 674 590 sp-grecord~ lynch.grabit;
+#X connect 0 0 27 0;
+#X connect 0 1 27 1;
+#X connect 0 2 27 2;
 #X connect 7 0 0 2;
 #X connect 13 0 15 0;
 #X connect 13 1 15 1;
 #X connect 13 2 15 2;
+#X connect 13 4 0 2;
 #X connect 14 0 13 0;
 #X connect 14 1 13 1;
 #X connect 14 2 13 2;

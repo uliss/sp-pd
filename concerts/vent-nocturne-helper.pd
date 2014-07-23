@@ -1,12 +1,27 @@
 #N canvas 181 28 440 370 10;
+#X declare -path ..;
 #X obj 25 150 ctlin 102;
 #X floatatom 25 192 5 0 0 0 - - -;
-#X obj 25 239 ctlout 64;
+#X obj 25 269 ctlout 64;
 #X obj 325 132 sp-gtuner~ 442;
 #X obj 325 107 adc~ 1;
 #X obj 25 24 cnv 15 400 60 empty empty DO_NOT_CLOSE_WHEN_PLAYING!!!
 30 30 0 20 -233017 -258113 0;
 #X text 25 122 MIDI routing for MaxMSP;
+#X obj 325 342 declare -path ..;
+#X obj 130 151 sp-arduino 3;
+#X obj 130 181 sel 1;
+#X msg 130 210 127;
+#X msg 167 211 0;
+#X floatatom 130 269 5 0 0 0 - - -;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 4 0 3 0;
+#X connect 8 0 9 0;
+#X connect 8 2 9 0;
+#X connect 9 0 10 0;
+#X connect 9 1 11 0;
+#X connect 10 0 2 0;
+#X connect 10 0 12 0;
+#X connect 11 0 2 0;
+#X connect 11 0 12 0;
