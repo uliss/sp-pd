@@ -142,7 +142,7 @@
 #X msg 428 399 החמאס: רוצים להשלים את עסקת שליט
 במהירות האפשרית;
 #X msg 428 423 Iñtërnâtiônàlizætiøn;
-#N canvas 99 309 134 194 utf8 1;
+#N canvas 99 309 134 194 utf8 0;
 #X obj 35 132 pack s f f;
 #X obj 35 19 inlet;
 #X obj 35 60 t s b b;
