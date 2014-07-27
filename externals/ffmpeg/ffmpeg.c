@@ -128,7 +128,7 @@ static void ffmpeg_read(t_ffmpeg *x, t_symbol *s, int argc, t_atom *argv)
 
     post(PREFIX "audio_decode");
 
-    int samples = audio_decode2(filename, garrays, table_count, resize);
+    int samples = audio_decode(filename, garrays, table_count, resize);
     if(samples < 0) {
         error(PREFIX "audio decode failed");
         return;

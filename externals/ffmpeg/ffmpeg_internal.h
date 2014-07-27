@@ -42,7 +42,7 @@ size_t aproxStreamSampleCount(AVStream * stream);
  * @param resize - resize flag, if set to 1, destination arrays will be resized
  * @return number of decoded samples
  */
-int audio_decode2(const char * filename, t_garray **garrays, int garray_count, int resize);
+int audio_decode(const char * filename, t_garray **garrays, int garray_count, int resize);
 
 #ifdef __cplusplus
 }

@@ -18,7 +18,7 @@
 
 #include <cstdlib>
 #include <cassert>
-#include <algorithm>>
+#include <algorithm>
 #include <stdint.h>
 
 #include "ffmpeg_internal.h"
@@ -255,7 +255,7 @@ static int copy_samples(AudioBuffer * buffer, t_garray ** garrays, int garray_co
     return vecsize;
 }
 
-int audio_decode2(const char * filename, t_garray ** garrays, int garray_count, int resize)
+int audio_decode(const char * filename, t_garray ** garrays, int garray_count, int resize)
 {
     AVFrame * frame = av_frame_alloc();
     if (!frame) {
