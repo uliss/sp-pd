@@ -18,27 +18,27 @@
 
 #include <cstdlib>
 #include <cassert>
-#include <algorithm>
-#include <iostream>
+#include <algorithm>>
 #include <stdint.h>
 
 #include "ffmpeg_internal.h"
 #include "ffmpeg_common.h"
 
 
-class OutputBuffer
+class AudioBuffer
 {
 private:
     t_float * data_[MAXSFCHANS];
-    size_t channel_size_;
-    size_t num_channels_;
+    size_t n_samples_;
+    size_t n_channels_;
     bool is_alloc_;
 
     void alloc()
     {
-        for(size_t i = 0; i < num_channels_; i++) {
-            data_[i] = (t_float*) calloc(channel_size_, sizeof(t_float));
+        for(size_t i = 0; i < n_channels_; i++) {
+            data_[i] = (t_float*) calloc(n_samples_, sizeof(t_float));
             if(data_[i] == NULL) {
+                error(PREFIX "AudioBuffer allocation failed.");
                 is_alloc_ = false;
                 break;
             }
@@ -52,21 +52,21 @@ private:
         if(!is_alloc_)
             return;
 
-        for(size_t i = 0; i < num_channels_; i++)
+        for(size_t i = 0; i < n_channels_; i++)
             free(data_[i]);
 
         is_alloc_ = false;
     }
 public:
-    OutputBuffer(size_t ch_size, size_t n_ch) :
-        channel_size_(ch_size),
-        num_channels_(n_ch),
+    AudioBuffer(size_t n_samples, size_t n_channels) :
+        n_samples_(n_samples),
+        n_channels_(n_channels),
         is_alloc_(false)
     {
         alloc();
     }
 
-    ~OutputBuffer()
+    ~AudioBuffer()
     {
         dealloc();
     }
@@ -74,25 +74,25 @@ public:
     bool isAllocated() const { return is_alloc_; }
 
     /**
-     * Returns number of samples in each channel
+     * Returns maximum number of samples in each channel
      */
-    inline size_t channelSize() const { return channel_size_; }
+    inline size_t sampleCount() const { return n_samples_; }
 
     /**
-     * Returns number of audio channels in buffer
+     * Returns maximum number of audio channels in buffer
      */
-    inline size_t channelCount() const { return num_channels_; }
+    inline size_t channelCount() const { return n_channels_; }
 
     inline void setSample(int channel, int pos, t_float value)
     {
-        assert(channel < num_channels_);
-        assert(pos < channel_size_);
+        assert(channel < n_channels_);
+        assert(pos < n_samples_);
         data_[channel][pos] = value;
     }
 
     inline t_float sample(int channel, int pos) const {
-        assert(channel < num_channels_);
-        assert(pos < channel_size_);
+        assert(channel < n_channels_);
+        assert(pos < n_samples_);
         return data_[channel][pos];
     }
 };
@@ -108,97 +108,133 @@ size_t aproxStreamSampleCount(AVStream * stream)
     return (size_t) floor(duration * stream->codec->sample_rate * INCREASE);
 }
 
-static int maxChannelCount(const AVFrame * frame, OutputBuffer * buffer)
+static int maxChannelCount(const AVFrame * frame, AudioBuffer * buffer)
 {
     const int frame_channels = av_frame_get_channels(frame);
     int res = std::min(frame_channels, (int) buffer->channelCount());
     return std::min((int) MAXSFCHANS, res);
 }
 
-static void readFrameData(const AVCodecContext * codecContext,
-                          const AVFrame * frame,
-                          OutputBuffer * buffer,
-                          int samples_read)
+static void readPlanarFrameData(const AVFrame * frame,
+                                AudioBuffer * buffer,
+                                AVSampleFormat fmt,
+                                size_t dest_offset)
 {
-    int is_planar = av_sample_fmt_is_planar(codecContext->sample_fmt);
-    int sample_size = av_get_bytes_per_sample(codecContext->sample_fmt);
+    const size_t sample_size = av_get_bytes_per_sample(fmt);
 
-    for(int i = 0; i < maxChannelCount(frame, buffer); i++) {
-        if(is_planar) {
-            for(int j = 0; j < frame->nb_samples && j < buffer->channelSize(); j++) {
-                uint8_t * v = frame->data[i] + (j * sample_size);
+    // read each channel
+    const int max_channels = maxChannelCount(frame, buffer);
+    for(int i = 0; i < max_channels; i++) {
+        // read samples
+        for(int j = 0; j < frame->nb_samples; j++) {
+            const uint8_t * p = frame->data[i] + (j * sample_size);
+            const size_t dest_pos = dest_offset + j;
 
-                switch(codecContext->sample_fmt) {
-                case AV_SAMPLE_FMT_FLTP: {
-                    float vf = *((float*)v);
-                    buffer->setSample(i, j + samples_read, vf);
-                }
-                    break;
-                case AV_SAMPLE_FMT_DBLP: {
-                    double vd = *((double*)v);
-                    buffer->setSample(i, j + samples_read, vd);
-                }
-                    break;
-                case AV_SAMPLE_FMT_S16P: {
-                    int16_t v16 = *((int16_t*) v);
-                    buffer->setSample(i, j + samples_read, v16 / (t_float) 0x7FFF);
-                }
-                default:
-                    break;
-                }
-            }
-        }
-        else {
-            for(int j = 0; j < frame->linesize[0] && j < buffer->channelSize(); j++) {
-                uint8_t * v = &(frame->data[0][j * sample_size + i]);
+            if(dest_pos >= buffer->sampleCount())
+                return;
 
-                switch(codecContext->sample_fmt) {
-                case AV_SAMPLE_FMT_S16: {
-                    int16_t vi = *((int16_t*)v);
-                    buffer->setSample(i, j + samples_read, static_cast<t_float>(vi / (t_float) 0x7FFF));
-                }
-                    break;
-                case AV_SAMPLE_FMT_S32: {
-                    int32_t vi = *((int32_t*)v);
-                    buffer->setSample(i, j + samples_read, static_cast<t_float>(vi / (t_float) INT32_MAX));
-                }
-                    break;
-                default:
-                    break;
-                }
+            switch(fmt) {
+            case AV_SAMPLE_FMT_U8P :
+                buffer->setSample(i, dest_pos, (*(const uint8_t*)p)/(127.0 - 1.0));
+                break;
+            case AV_SAMPLE_FMT_S16P:
+                buffer->setSample(i, dest_pos, (*(const int16_t*)p)/32767.0);
+                break;
+            case AV_SAMPLE_FMT_S32P:
+                buffer->setSample(i, dest_pos, (*(const int32_t*)p)/2147483647.0);
+                break;
+            case AV_SAMPLE_FMT_FLTP:
+                buffer->setSample(i, dest_pos, (*(const float *)p));
+                break;
+            case AV_SAMPLE_FMT_DBLP:
+                buffer->setSample(i, dest_pos, (*(const double *)p));
+                break;
+            default:
+                error(PREFIX "invalid sample format");
+                return;
             }
         }
     }
 }
 
+static void readMixedFrameData(const AVFrame * frame,
+                               AudioBuffer * buffer,
+                               AVSampleFormat fmt,
+                               size_t dest_offset)
+{
+    const size_t sample_size = av_get_bytes_per_sample(fmt);
+    const int max_channels = maxChannelCount(frame, buffer);
+    const int num_channels = av_frame_get_channels(frame);
+
+    for(int smp = 0; smp < frame->linesize[0]; smp++) {
+        const size_t dest_pos = dest_offset + smp;
+        if(dest_pos >= buffer->sampleCount())
+            return;
+
+        for(int ch = 0; ch < max_channels; ch++) {
+            const uint8_t * p = frame->data[0] + ((smp * num_channels) + ch) * sample_size;
+
+            switch(fmt) {
+            case AV_SAMPLE_FMT_U8 :
+                buffer->setSample(ch, dest_pos, ((*(const uint8_t*)p)/127.0) - 1.0);
+                break;
+            case AV_SAMPLE_FMT_S16:
+                buffer->setSample(ch, dest_pos, (*(const int16_t*)p)/32767.0);
+                break;
+            case AV_SAMPLE_FMT_S32:
+                buffer->setSample(ch, dest_pos, (*(const int32_t*)p)/2147483647.0);
+                break;
+            case AV_SAMPLE_FMT_FLT:
+                buffer->setSample(ch, dest_pos, (*(const float *)p));
+                break;
+            case AV_SAMPLE_FMT_DBL:
+                buffer->setSample(ch, dest_pos, (*(const double *)p));
+                break;
+            default:
+                error(PREFIX "invalid sample format");
+                return;
+            }
+        }
+    }
+}
+
+static void readFrameData(const AVCodecContext * codecContext,
+                          const AVFrame * frame,
+                          AudioBuffer * buffer,
+                          int dest_offset)
+{
+    if(av_sample_fmt_is_planar(codecContext->sample_fmt))
+        readPlanarFrameData(frame, buffer, codecContext->sample_fmt, dest_offset);
+    else
+        readMixedFrameData(frame, buffer, codecContext->sample_fmt, dest_offset);
+}
+
 /**
- * Resizes graphcal arrays to new size
+ * Resizes graphical arrays to new size
  * @param garrays - pointer to graphical arrays
  * @param garray_count - number of destination arrays
  * @param size - desired size
  */
-static void resize_garray(t_garray ** garrays, const int garray_count, long size)
+static void resize_garray(t_garray ** garrays, const int garray_count, long new_size)
 {
-    post(PREFIX "resize garrays to %ld samples", size);
-
     t_word * vecs[MAXSFCHANS];
 
     for (int i = 0; i < garray_count; i++) {
-        garray_resize_long(garrays[i], size);
+        garray_resize_long(garrays[i], new_size);
         /* for sanity's sake let's clear the save-in-patch flag here */
         garray_setsaveit(garrays[i], 0);
 
         int vecsize = 0;
         garray_getfloatwords(garrays[i], &vecsize, &vecs[i]);
         /* if the resize failed, garray_resize reported the error */
-        if (vecsize != size) {
+        if (vecsize != new_size) {
             error(PREFIX "garray resize failed");
             return;
         }
     }
 }
 
-static int copy_samples(OutputBuffer * buffer, t_garray ** garrays, int garray_count)
+static int copy_samples(AudioBuffer * buffer, t_garray ** garrays, int garray_count)
 {
     post(PREFIX "copy samples");
 
@@ -211,7 +247,7 @@ static int copy_samples(OutputBuffer * buffer, t_garray ** garrays, int garray_c
     for (int i = 0; i < garray_count && i < buffer->channelCount(); i++) {
         garray_getfloatwords(garrays[i], &vecsize, &vecs[i]);
 
-        for(int j = 0; j < vecsize && j < buffer->channelSize(); j++) {
+        for(int j = 0; j < vecsize && j < buffer->sampleCount(); j++) {
             vecs[i][j].w_float = buffer->sample(i, j);
         }
     }
@@ -274,7 +310,7 @@ int audio_decode2(const char * filename, t_garray ** garrays, int garray_count, 
     }
 
     // allocate memory for decoding
-    OutputBuffer buffer(aprox_sample_count, garray_count);
+    AudioBuffer buffer(aprox_sample_count, garray_count);
     if(!buffer.isAllocated()) {
         av_free(frame);
         avformat_close_input(&formatContext);
