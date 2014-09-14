@@ -1,0 +1,120 @@
+#N canvas 6 22 1274 765 12;
+#X obj 64 633 dac~ 1 2;
+#X msg 185 546 juice;
+#X msg 224 476 pos \$1;
+#X floatatom 224 439 5 0 0 0 - - -;
+#X obj 356 456 f;
+#X floatatom 356 483 5 0 0 0 - - -;
+#X obj 356 369 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X floatatom 427 382 5 0 0 0 - - -;
+#X msg 305 436 0;
+#X obj 427 427 / 1000;
+#X msg 1029 380 \; pd dsp 1;
+#X obj 395 456 + 0.1;
+#X text 233 545 the number of grains printed;
+#X text 354 342 play - i.e. you can pitch shift;
+#N canvas 11 26 1400 1013 (subpatch) 0;
+#X array sample 341421 float 0;
+#X coords 0 1 341420 -1 200 140 1;
+#X restore 66 74 graph;
+#X text 301 49 resize according to your input file \, that is duration
+in seconds * 44100;
+#X obj 276 92 openpanel;
+#X obj 276 143 soundfiler;
+#X obj 276 66 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 64 280 dens 0.005 \, dur 0.3 \, vel 1 \, pos 12.5 \, envq 1
+\, envb 0.5 \, pan 1 \, panr 1 \, densr 0.3 \, durr 0.4 \, posr 0;
+#X msg 1028 422 \; pd dsp 0;
+#X obj 69 -44 cnv 15 200 30 empty empty mill~ 20 12 0 14 -1 -262144
+0;
+#X text 67 -10 by Olli Keskinen <keskinen.olli@gmail.com>;
+#X text 496 287 <---- push me;
+#X msg 979 534 bang;
+#X obj 769 369 *~;
+#X obj 835 349 vline~;
+#X text 766 579 [fades for grain sampler];
+#X floatatom 835 405 5 0 0 0 - - -;
+#X obj 835 385 snapshot~;
+#X text 849 443 start recording;
+#X obj 979 228 bng 15 250 50 0 empty empty record_live_input 17 7 0
+9 -258113 -1 -1;
+#X obj 909 365 r metro;
+#X obj 769 293 adc~ 1;
+#X obj 356 406 metro 50;
+#X obj 367 426 s metro;
+#X text 764 -1 the [mill~] accepts following parameters: dens = density
+in seconds dur = grain duration in seconds vel = grain speed \, 1 is
+default pos = the time where the grain created starts reading the material
+\, in seconds densr = amount of randomness in dens as decimal (1 =
+100%) durr = same for duration velr = for velocity as well posr = the
+maximum amount the actual starting point per grain can vary from the
+pos in seconds envq = envelope quality \, [0 \, 1] \, 0 is no envelope
+\, 1 is hann window \, and for example 0.5 is squished sides of hann
+with block in the middle \, like /''' envb = the center of hann \,
+0 is left \, 1 is right \, 0.5 is default. pan = [ 0 1 ] panr = deviation
+from this \, the maximum amount. juice = print the number of grains
+in use.;
+#X msg 276 119 read -resize \$1 sample;
+#X obj 769 554 tabwrite~ sample;
+#X obj 769 331 *~ 5;
+#X floatatom 276 167 10 0 0 0 - - -;
+#X msg 835 302 0 \, 1 \$1 0 \, 0 250 \$2;
+#X obj 276 216 s ss;
+#X obj 1158 219 r ss;
+#X obj 1211 239 - 200;
+#X obj 276 191 / 44.1;
+#X floatatom 334 211 10 0 0 0 - - -;
+#X obj 1158 282 pack f f;
+#N canvas 309 273 450 300 mill_stuff 0;
+#X obj 230 -152 block~ 1024;
+#X obj 45 -105 inlet;
+#X obj 45 12 outlet~;
+#X obj 110 12 outlet~;
+#X text -37 -63 the name of the array holding the material as an argument
+;
+#X obj 45 -42 mill~ sample;
+#X connect 1 0 5 0;
+#X connect 5 0 2 0;
+#X connect 5 1 3 0;
+#X restore 64 566 pd mill_stuff;
+#X connect 1 0 48 0;
+#X connect 2 0 48 0;
+#X connect 3 0 2 0;
+#X connect 4 0 5 0;
+#X connect 4 0 2 0;
+#X connect 4 0 11 0;
+#X connect 6 0 8 0;
+#X connect 6 0 34 0;
+#X connect 7 0 9 0;
+#X connect 8 0 4 0;
+#X connect 9 0 11 1;
+#X connect 11 0 4 1;
+#X connect 16 0 37 0;
+#X connect 17 0 40 0;
+#X connect 18 0 16 0;
+#X connect 19 0 48 0;
+#X connect 24 0 38 0;
+#X connect 25 0 38 0;
+#X connect 26 0 25 1;
+#X connect 26 0 29 0;
+#X connect 29 0 28 0;
+#X connect 31 0 24 0;
+#X connect 31 0 47 0;
+#X connect 32 0 29 0;
+#X connect 33 0 39 0;
+#X connect 34 0 4 0;
+#X connect 34 0 35 0;
+#X connect 37 0 17 0;
+#X connect 39 0 25 0;
+#X connect 40 0 45 0;
+#X connect 41 0 26 0;
+#X connect 43 0 44 0;
+#X connect 43 0 47 0;
+#X connect 44 0 47 1;
+#X connect 45 0 42 0;
+#X connect 45 0 46 0;
+#X connect 47 0 41 0;
+#X connect 48 0 0 0;
+#X connect 48 1 0 1;
