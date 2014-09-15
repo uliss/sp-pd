@@ -1,6 +1,6 @@
 project(fsplay)
 cmake_minimum_required(VERSION 2.8)
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/..")
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/..")
 
 cmake_policy(SET CMP0042 NEW)
 cmake_policy(SET CMP0037 OLD)
@@ -24,8 +24,6 @@ if(APPLE)
     set(CMAKE_SHARED_LIBRARY_SUFFIX ".pd_darwin")
     set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${ARCH} -undefined suppress -flat_namespace")
 endif()
-
-set(CMAKE_SKIP_RPATH Off)
 
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${PD_INCLUDE_DIR})

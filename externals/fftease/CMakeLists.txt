@@ -1,6 +1,6 @@
 project(fftease)
 cmake_minimum_required(VERSION 2.8)
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/../")
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../")
 
 cmake_policy(SET CMP0042 NEW)
 cmake_policy(SET CMP0037 OLD)
