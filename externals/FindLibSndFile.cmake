@@ -4,6 +4,7 @@
 # SNDFILE_INCLUDE_DIR - where to find sndfile.h, etc.
 # SNDFILE_LIBRARIES - List of libraries when using libsndfile.
 # SNDFILE_FOUND - True if libsndfile found.
+# USE_SNDFILE_STATIC - if true, try to find static libs
 if(SNDFILE_INCLUDE_DIR)
 # Already in cache, be silent
 	set(SNDFILE_FIND_QUIETLY TRUE)
@@ -12,7 +13,13 @@ endif(SNDFILE_INCLUDE_DIR)
 find_path(SNDFILE_INCLUDE_DIR sndfile.h 
 	PATHS /opt/local/include /sw/include)
 
-find_library(SNDFILE_LIBRARY NAMES sndfile sndfile-1
+set(LIB_NAMES sndfile sndfile-1)
+
+if(USE_SNDFILE_STATIC)
+	list(INSERT LIB_NAMES 0 libsndfile.a)
+endif()
+
+find_library(SNDFILE_LIBRARY NAMES ${LIB_NAMES}
 	NO_DEFAULT_PATH
 	PATHS /opt/local/lib /sw/lib)
 
