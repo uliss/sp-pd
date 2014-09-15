@@ -5,19 +5,21 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/../")
 cmake_policy(SET CMP0042 NEW)
 cmake_policy(SET CMP0037 OLD)
 
-include(FindPureDataExtended)
+include(FindPureDataExtended REQUIRED)
 
+include_directories(${PD_INCLUDE_DIR})
 include_directories("${CMAKE_SOURCE_DIR}/lib")
 
 if(APPLE)
+	set(ARCH "-arch i386 -arch x86_64")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32")
-    set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -m32")
-    set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -m32")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${ARCH}")
+    set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} ${ARCH}")
+    set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} ${ARCH}")
     set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS}")
     set(CMAKE_SHARED_LIBRARY_PREFIX "")
     set(CMAKE_SHARED_LIBRARY_SUFFIX ".pd_darwin")
-    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -m32 -undefined suppress -flat_namespace")
+    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${ARCH} -undefined suppress -flat_namespace")
 endif()
 
 
@@ -124,7 +126,6 @@ add_library(xsyn~ SHARED xsyn~.c)
 target_link_libraries(xsyn~ fftease)
 
 # installation
-
 if(APPLE)
 	set(CMAKE_INSTALL_PREFIX "$ENV{HOME}/.pd")
 endif()
