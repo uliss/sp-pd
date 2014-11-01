@@ -18,10 +18,10 @@
 #X obj 149 80 nbx 3 12 0 100 0 0 \$0-dry-wet-s \$0-dry-wet-r empty
 0 -8 0 10 -262144 -1 -1 100 256;
 #X obj 325 205 r \$0-dry-wet-s;
-#X obj 19 50 hsl 120 12 20 44100 1 0 \$0-cutoff-s \$0-cutoff-r cutoff:
+#X obj 19 50 hsl 120 12 20 20000 1 0 \$0-cutoff-s \$0-cutoff-r cutoff(hz):
 -2 -8 0 10 -262144 -1 -262144 11900 1;
-#X obj 150 50 nbx 5 12 20 44100 0 0 \$0-cutoff-s \$0-cutoff-r empty
-0 -8 0 10 -262144 -1 -1 44100 256;
+#X obj 150 50 nbx 5 12 20 20000 0 0 \$0-cutoff-s \$0-cutoff-r empty
+0 -8 0 10 -262144 -1 -1 20000 256;
 #X obj 368 119 r \$0-cutoff-s;
 #X obj 472 145 s \$0-cutoff-r;
 #X obj 517 181 s \$0-pass-r;
@@ -34,7 +34,7 @@
 #X obj 607 150 sp-param-file;
 #X obj 218 48 change;
 #X obj 218 80 change;
-#N canvas 267 369 606 254 param 1;
+#N canvas 267 369 606 254 param 0;
 #X obj 32 77 tof/param /lop/\$1/cutoff 20;
 #X obj 191 17 r \$0-cutoff-s;
 #X obj 191 46 change;

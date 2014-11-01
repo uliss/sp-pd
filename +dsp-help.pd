@@ -1,4 +1,4 @@
-#N canvas 398 231 523 348 10;
+#N canvas 420 148 597 349 10;
 #X obj 327 142 hsl 128 15 0 2 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
 #X obj 131 169 osc~ 440;
@@ -17,6 +17,9 @@
 #X msg 438 69 restore 1;
 #X msg 224 44 vol+ 0.01;
 #X msg 305 30 vol- 0.01;
+#X msg 397 31 midilearn volume 7;
+#X msg 412 216 midilearn on 55;
+#X msg 408 257 midilearn stereo-width 23;
 #X connect 0 0 4 0;
 #X connect 1 0 5 0;
 #X connect 2 0 3 0;
@@ -30,3 +33,6 @@
 #X connect 13 0 5 2;
 #X connect 14 0 5 2;
 #X connect 15 0 5 2;
+#X connect 16 0 5 2;
+#X connect 17 0 5 2;
+#X connect 18 0 5 2;
