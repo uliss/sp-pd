@@ -1,0 +1,4 @@
+#N canvas 0 22 450 300 10;
+#X obj 123 116 sp-gmidilearn;
+#X floatatom 123 219 5 0 0 0 - - -;
+#X connect 0 0 1 0;

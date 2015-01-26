@@ -1,0 +1,40 @@
+#N canvas 287 286 731 241 10;
+#X obj 101 117 cnv 14 98 21 empty empty empty 12 12 0 14 -16662 -258113
+0;
+#X obj 232 22 inlet;
+#X obj 232 56 route midilearn;
+#X obj 232 95 sp-midilearn;
+#X obj 104 120 tgl 15 0 \$0-learn-s \$0-learn-r L 5 8 0 10 -166441
+-166441 -260818 0 1;
+#X obj 232 201 outlet;
+#X msg 132 60 learn \$1;
+#X obj 122 120 nbx 3 14 0 127 0 0 \$0-midiv-s \$0-midiv-r empty 0 -8
+0 10 -262144 -1 -1 68 256;
+#X obj 301 183 s \$0-learn-r;
+#X obj 384 12 r \$0-learn-s;
+#X obj 384 36 == 1;
+#X obj 384 65 sel 1;
+#X obj 499 12 loadbang;
+#X msg 384 94 color 5 5 5;
+#X msg 499 93 color 1 1 14;
+#X obj 161 121 bng 12 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 180 121 bng 12 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 301 155 0 \, color 16 22;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 5 0;
+#X connect 3 0 7 0;
+#X connect 3 3 17 0;
+#X connect 4 0 6 0;
+#X connect 6 0 3 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 13 0;
+#X connect 11 1 14 0;
+#X connect 12 0 14 0;
+#X connect 13 0 8 0;
+#X connect 14 0 8 0;
+#X connect 17 0 8 0;
+#X coords 0 -1 1 1 100 40 1 100 100;
