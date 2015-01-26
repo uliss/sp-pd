@@ -1,0 +1,2 @@
+#N canvas 387 170 450 300 10;
+#X obj 151 64 sp-midiview;

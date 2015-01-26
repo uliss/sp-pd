@@ -1,0 +1,28 @@
+#N canvas 0 22 450 300 10;
+#X obj 101 118 cnv 15 198 100 empty empty empty 20 12 0 14 -128992
+-66577 0;
+#X obj 146 137 nbx 3 14 -1e+37 1e+37 0 0 \$0-ctrl-s \$0-ctrl-r ctrl
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 196 137 nbx 3 14 -1e+37 1e+37 0 0 \$0-ch-s \$0-ch-r channel
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 246 137 nbx 3 14 -1e+37 1e+37 0 0 \$0-val-s \$0-val-r value
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 201 36 ctlin;
+#X text 108 135 CC:;
+#X obj 146 169 nbx 3 14 -1e+37 1e+37 0 0 \$0-ctrl-s \$0-ctrl-r channel
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 196 169 nbx 3 14 -1e+37 1e+37 0 0 \$0-ch-s \$0-ch-r note 0 -8
+0 10 -262144 -1 -1 0 256;
+#X obj 246 169 nbx 3 14 -1e+37 1e+37 0 0 \$0-val-s \$0-val-r vel 0
+-8 0 10 -262144 -1 -1 0 256;
+#X text 107 167 Note:;
+#X obj 334 42 notein;
+#X obj 366 114 pgmin;
+#X obj 343 173 ctlin;
+#X connect 4 0 3 0;
+#X connect 4 1 2 0;
+#X connect 4 2 1 0;
+#X connect 10 0 7 0;
+#X connect 10 1 8 0;
+#X connect 10 2 6 0;
+#X coords 0 -1 1 1 200 120 1 100 100;
