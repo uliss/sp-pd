@@ -1,0 +1,42 @@
+#N canvas 127 73 582 475 10;
+#X obj 41 283 +dsp;
+#X msg 41 82 440;
+#X obj 41 112 sig~;
+#X obj 41 148 sp-gaosc~ 440;
+#X msg 88 80 aosc partials 1 0 0.5 0;
+#X msg 226 106 aosc clear;
+#X msg 304 131 aosc even \$1;
+#X obj 418 94 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 448 94 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 8000 1;
+#X msg 264 79 aosc odd \$1;
+#X obj 378 237 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj 378 401 -;
+#X obj 378 379 swap 1;
+#X msg 271 201 aosc square;
+#X msg 348 78 aosc rand;
+#X obj 348 32 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 348 53 metro 1000;
+#X obj 471 251 sp-gparam;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 0;
+#X connect 3 0 0 1;
+#X connect 4 0 3 1;
+#X connect 5 0 3 1;
+#X connect 6 0 3 1;
+#X connect 7 0 6 0;
+#X connect 8 0 9 0;
+#X connect 9 0 3 1;
+#X connect 10 0 12 0;
+#X connect 10 0 9 0;
+#X connect 11 0 6 0;
+#X connect 12 0 11 0;
+#X connect 12 1 11 1;
+#X connect 13 0 3 1;
+#X connect 14 0 3 1;
+#X connect 15 0 16 0;
+#X connect 16 0 14 0;
