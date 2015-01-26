@@ -1,22 +1,36 @@
-#N canvas 207 118 541 517 10;
+#N canvas 384 68 579 510 10;
 #X declare -path ..;
 #X declare -lib flatgui;
 #X obj 330 21 declare -path ..;
 #X obj 38 107 sp-gmix4~ mix4;
 #X obj 38 392 +dsp;
-#N canvas 747 135 114 94 input 0;
-#X obj 28 55 s~ \$0-in;
+#N canvas 747 135 185 299 input 0;
+#X obj 28 135 s~ \$0-in;
 #X obj 28 27 adc~ 2;
-#X connect 1 0 0 0;
-#X restore 330 52 pd input;
-#N canvas 702 226 452 310 reverb 0;
-#X obj 33 29 r~ \$0-in;
-#X obj 33 59 sp-gfreeverb~;
-#X obj 33 275 outlet~;
-#X connect 0 0 1 0;
+#X obj 28 67 hip~ 60;
+#X obj 28 107 hip~ 100;
+#X obj 28 87 hip~ 100;
 #X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X restore 330 52 pd input;
+#N canvas 603 262 260 307 reverb 0;
+#X obj 33 29 r~ \$0-in;
+#X obj 33 275 outlet~;
+#X obj 64 119 rev3~ 100 92 12000 20;
+#X obj 33 171 sp-dry-wet~;
+#X obj 108 54 r \$0-reverb-control;
+#X obj 108 154 line;
+#X msg 108 79 \$1 100;
+#X msg 73 63 0.5;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X connect 4 0 6 0;
+#X connect 5 0 3 2;
+#X connect 6 0 5 0;
 #X restore 102 33 pd reverb;
-#X obj 329 228 sp-gparam;
+#X obj 329 388 sp-gparam;
 #N canvas 478 281 450 300 pitchshift 0;
 #X obj 44 53 r~ \$0-in;
 #X obj 44 106 delay~ 900;
@@ -45,18 +59,23 @@
 #N canvas 756 144 450 300 init 0;
 #X obj 34 241 s \$0-bus;
 #X obj 34 27 loadbang;
-#X msg 34 175 mix4 0 label raw \, mix4 1 label ptch \, mix4 2 label
-revb \, mix4 3 label ... \, mix4 0 midilearn 0 \, mix4 1 midilearn
-1 \, mix4 2 midilearn 2 \, mix4 3 mute 1 \, midilearn volume 7 \, midilearn
-on 55;
 #X msg 126 56 restore 0;
-#X obj 127 84 s sp-param;
+#X obj 126 84 s sp-param;
+#X msg 34 175 mix4 0 label raw \, mix4 1 label ptch \, mix4 2 label
+revb \, mix4 3 label ... \, mix4 3 mute 1 \, midilearn volume 7 \,
+midilearn on 55 \, mix4 1 midilearn 1;
+#X connect 1 0 4 0;
 #X connect 1 0 2 0;
-#X connect 1 0 3 0;
-#X connect 2 0 0 0;
-#X connect 3 0 4 0;
+#X connect 2 0 3 0;
+#X connect 4 0 0 0;
 #X restore 330 83 pd init;
 #X obj 38 313 sp-gpan4~;
+#X obj 414 181 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 8100 1;
+#X obj 411 153 maxlib/scale 0 127 0 1;
+#X obj 411 204 s \$0-reverb-control;
+#X obj 478 128 init 0;
+#X obj 411 127 ctlin 2;
 #X connect 1 0 10 0;
 #X connect 1 1 10 1;
 #X connect 1 2 10 2;
@@ -69,3 +88,7 @@ on 55;
 #X connect 10 0 2 0;
 #X connect 10 1 2 1;
 #X connect 10 2 2 2;
+#X connect 11 0 13 0;
+#X connect 12 0 11 0;
+#X connect 14 0 12 0;
+#X connect 15 0 12 0;
