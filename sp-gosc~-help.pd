@@ -1,0 +1,9 @@
+#N canvas 509 250 465 422 10;
+#X declare -lib flatgui;
+#X obj 173 106 knob 32 32 0 127 0 0 empty empty test 0 -8 0 11 -258113
+-4034 -4160 0 1;
+#X obj 115 248 +dsp;
+#X obj 295 93 sp-gparam;
+#X obj 115 68 sp-gosc~;
+#X connect 3 0 1 0;
+#X connect 3 0 1 1;

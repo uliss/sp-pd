@@ -1,0 +1,18 @@
+#N canvas 0 22 895 547 10;
+#X declare -lib flatgui;
+#X declare -lib flatgui;
+#X declare -lib flatgui;
+#X declare -lib flatgui;
+#X obj 230 383 +dsp;
+#X obj 232 23 sp-goscbank4~ bnk1;
+#X obj 232 199 sp-gridmix~;
+#X obj 618 216 sp-gparam;
+#X obj 496 327 sp-gring1~;
+#X connect 1 0 2 0;
+#X connect 1 1 2 1;
+#X connect 1 2 2 2;
+#X connect 1 3 2 3;
+#X connect 1 3 4 0;
+#X connect 2 0 0 0;
+#X connect 2 0 0 1;
+#X connect 4 0 2 3;
