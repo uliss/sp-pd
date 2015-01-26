@@ -1,25 +1,25 @@
 #N canvas 378 87 757 653 10;
 #X declare -lib flatgui;
 #X obj 267 371 outlet~;
-#X obj 101 117 cnv 15 98 120 empty empty empty 20 12 0 14 -99865 -66577
+#X obj 101 101 cnv 15 98 120 empty empty empty 20 12 0 14 -99865 -66577
 0;
 #X obj 267 321 sp-osc~;
 #X obj 306 266 r \$0-shape-s;
 #X msg 306 289 shape \$1;
 #X obj 343 36 inlet control;
-#X obj 153 159 knob 40 40 20 10000 1 0 \$0-freq-s \$0-freq-r freq 0
--8 0 10 -262144 -260097 -262144 2462 1;
+#X obj 153 143 knob 40 40 20 10000 1 0 \$0-freq-s \$0-freq-r freq 0
+-8 0 10 -262144 -260097 -262144 788 1;
 #X obj 475 32 import flatgui;
-#X obj 105 124 nbx 5 14 20 10000 1 0 \$0-freq-ind-s \$0-freq-ind-r
-Hz 57 8 0 10 -262144 -1 -262144 1011.21 256;
-#X obj 101 145 cnv 15 45 70 empty empty empty 20 12 0 14 -128992 -66577
+#X obj 105 108 nbx 5 14 20 10000 1 0 \$0-freq-ind-s \$0-freq-ind-r
+Hz 57 8 0 10 -262144 -1 -262144 70.2038 256;
+#X obj 101 129 cnv 15 45 70 empty empty empty 20 12 0 14 -128992 -66577
 0;
-#X obj 107 162 vradio 12 1 0 4 \$0-shape-s \$0-shape-r shape 0 -8 0
-10 -262144 -260097 -262144 0;
-#X text 122 159 sin;
-#X text 122 172 sqr;
-#X text 122 185 tri;
-#X text 122 196 saw;
+#X obj 107 146 vradio 12 1 0 4 \$0-shape-s \$0-shape-r shape 0 -8 0
+10 -262144 -260097 -262144 1;
+#X text 122 143 sin;
+#X text 122 156 sqr;
+#X text 122 169 tri;
+#X text 122 180 saw;
 #N canvas 637 161 418 274 param 0;
 #X obj 30 65 tof/param /\$1/osc/freq 440;
 #X obj 30 91 change;
@@ -42,9 +42,9 @@ Hz 57 8 0 10 -262144 -1 -262144 1011.21 256;
 #X obj 343 119 s \$0-shape-r;
 #X obj 247 227 r \$0-freq-ind-s;
 #X obj 247 289 lop~ 5;
-#X obj 106 220 bng 13 250 50 0 \$0-octup-s \$0-octup-r x2 17 6 0 10
+#X obj 106 204 bng 13 250 50 0 \$0-octup-s \$0-octup-r x2 17 6 0 10
 -262144 -1 -262144;
-#X obj 152 220 bng 13 250 50 0 \$0-octdown-s \$0-octdown-r /2 17 6
+#X obj 152 204 bng 13 250 50 0 \$0-octdown-s \$0-octdown-r /2 17 6
 0 10 -262144 -1 -262144;
 #X obj 32 123 change;
 #X obj 79 432 r \$0-freq-ind-s;
@@ -59,8 +59,8 @@ Hz 57 8 0 10 -262144 -1 -262144 1011.21 256;
 #X obj 184 408 r \$0-octdown-s;
 #X obj 184 482 * 0.5;
 #X obj 184 509 s \$0-freq-ind-r;
-#X obj 179 123 tgl 16 0 \$0-learn-s \$0-learn-r L 6 8 0 10 -24198 -260818
--1 0 1;
+#X obj 179 107 tgl 16 0 \$0-learn-s \$0-learn-r L 6 8 0 10 -99865 -260818
+-262144 0 1;
 #X obj 350 407 r \$0-learn-s;
 #X obj 350 474 sp-midilearn \$1;
 #X msg 350 450 learn \$1;
@@ -125,4 +125,4 @@ Hz 57 8 0 10 -262144 -1 -262144 1011.21 256;
 #X connect 56 0 42 0;
 #X connect 57 0 56 0;
 #X connect 58 0 39 0;
-#X coords 0 -1 1 1 100 138 1 100 100;
+#X coords 0 -1 1 1 100 121 2 100 100;

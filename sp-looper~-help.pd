@@ -10,7 +10,7 @@
 #X msg 268 98 setarray data;
 #X msg 64 249 start;
 #X obj 133 196 hsl 128 15 0 2 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 6350 1;
 #X msg 130 250 speed \$1;
 #X floatatom 141 221 5 0 0 0 - - -;
 #X obj 283 196 hsl 128 15 0 2 0 0 empty empty empty -2 -8 0 10 -262144
@@ -25,7 +25,7 @@
 #X msg 454 249 stop;
 #X obj 377 330 unsig~;
 #X floatatom 399 400 5 0 0 0 - - -;
-#X obj 360 237 table data 1000;
+#X obj 580 25 table data 1000;
 #X connect 1 0 4 0;
 #X connect 1 0 5 0;
 #X connect 3 0 1 0;

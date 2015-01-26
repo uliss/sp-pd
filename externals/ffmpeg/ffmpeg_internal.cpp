@@ -28,7 +28,7 @@
 class AudioBuffer
 {
 private:
-    t_float * data_[MAXSFCHANS];
+    t_word * data_[MAXSFCHANS];
     size_t n_samples_;
     size_t n_channels_;
     bool is_alloc_;
@@ -36,7 +36,7 @@ private:
     void alloc()
     {
         for(size_t i = 0; i < n_channels_; i++) {
-            data_[i] = (t_float*) calloc(n_samples_, sizeof(t_float));
+            data_[i] = (t_word*) calloc(n_samples_, sizeof(t_word));
             if(data_[i] == NULL) {
                 error(PREFIX "AudioBuffer allocation failed.");
                 is_alloc_ = false;
@@ -83,17 +83,23 @@ public:
      */
     inline size_t channelCount() const { return n_channels_; }
 
+    void copyChannel(int idx, t_word * ch_dest, size_t n_samples)
+    {
+        assert(n_samples <= n_samples_);
+        memmove(ch_dest, data_[idx], n_samples);
+    }
+
     inline void setSample(int channel, int pos, t_float value)
     {
         assert(channel < n_channels_);
         assert(pos < n_samples_);
-        data_[channel][pos] = value;
+        data_[channel][pos].w_float = value;
     }
 
     inline t_float sample(int channel, int pos) const {
         assert(channel < n_channels_);
         assert(pos < n_samples_);
-        return data_[channel][pos];
+        return data_[channel][pos].w_float;
     }
 };
 
@@ -236,8 +242,6 @@ static void resize_garray(t_garray ** garrays, const int garray_count, long new_
 
 static int copy_samples(AudioBuffer * buffer, t_garray ** garrays, int garray_count)
 {
-    post(PREFIX "copy samples");
-
     assert(buffer);
     assert(buffer->isAllocated());
 
@@ -247,9 +251,9 @@ static int copy_samples(AudioBuffer * buffer, t_garray ** garrays, int garray_co
     for (int i = 0; i < garray_count && i < buffer->channelCount(); i++) {
         garray_getfloatwords(garrays[i], &vecsize, &vecs[i]);
 
-        for(int j = 0; j < vecsize && j < buffer->sampleCount(); j++) {
-            vecs[i][j].w_float = buffer->sample(i, j);
-        }
+
+        size_t n_samples = std::min((size_t) vecsize, buffer->sampleCount());
+        buffer->copyChannel(i, vecs[i], n_samples);
     }
 
     return vecsize;

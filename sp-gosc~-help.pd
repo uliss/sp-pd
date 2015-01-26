@@ -1,9 +1,20 @@
-#N canvas 509 250 465 422 10;
+#N canvas 114 144 465 422 10;
 #X declare -lib flatgui;
-#X obj 173 106 knob 32 32 0 127 0 0 empty empty test 0 -8 0 11 -258113
+#X obj 93 136 knob 32 32 0 127 0 0 empty empty test 0 -8 0 11 -258113
 -4034 -4160 0 1;
-#X obj 115 248 +dsp;
-#X obj 295 93 sp-gparam;
-#X obj 115 68 sp-gosc~;
+#X obj 35 278 +dsp;
+#X obj 215 123 sp-gparam;
+#X obj 35 98 sp-gosc~;
+#X msg 35 64 osc shape \$1;
+#X obj 35 39 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X msg 163 64 osc freq \$1;
+#X obj 166 39 hsl 128 15 20 1000 1 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 8700 1;
 #X connect 3 0 1 0;
 #X connect 3 0 1 1;
+#X connect 3 1 1 2;
+#X connect 4 0 3 0;
+#X connect 5 0 4 0;
+#X connect 6 0 3 0;
+#X connect 7 0 6 0;
