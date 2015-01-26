@@ -1,0 +1,13 @@
+#N canvas 361 286 605 469 10;
+#X obj 137 20 osc~ 440;
+#X obj 137 274 +dsp;
+#X obj 202 20 osc~ 315;
+#X obj 272 20 osc~ 280;
+#X obj 137 69 sp-gridmix~;
+#X obj 332 20 osc~ 490;
+#X obj 399 99 sp-gparam;
+#X connect 0 0 4 0;
+#X connect 2 0 4 1;
+#X connect 3 0 4 2;
+#X connect 4 0 1 0;
+#X connect 5 0 4 3;
