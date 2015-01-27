@@ -1,0 +1,20 @@
+#N canvas 281 266 357 202 10;
+#X obj 45 50 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 45 127 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 106 127 5 0 0 0 - - -;
+#X obj 45 88 sp-bangsync-pattern 4;
+#X msg 196 88 3;
+#X msg 168 35 10;
+#X text 43 27 bang sync;
+#X text 9 105 output bang;
+#X text 167 105 bang at end;
+#X text 165 58 pattern length;
+#X text 90 105 current pos;
+#X connect 0 0 3 0;
+#X connect 3 0 1 0;
+#X connect 3 1 2 0;
+#X connect 3 2 4 0;
+#X connect 4 0 3 1;
+#X connect 5 0 3 1;

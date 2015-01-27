@@ -1,0 +1,17 @@
+#N canvas 451 351 279 258 10;
+#X obj 52 106 sp-bangsync-pattern \$1;
+#X obj 52 44 inlet;
+#X obj 52 203 outlet;
+#X obj 181 203 outlet;
+#X obj 116 203 outlet;
+#X obj 181 73 f \$1;
+#X msg 211 105 bang;
+#X obj 181 46 inlet;
+#X connect 0 0 2 0;
+#X connect 0 1 4 0;
+#X connect 0 2 3 0;
+#X connect 0 2 6 0;
+#X connect 1 0 0 0;
+#X connect 5 0 0 1;
+#X connect 6 0 5 0;
+#X connect 7 0 5 0;
