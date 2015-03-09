@@ -1,0 +1,17 @@
+#N canvas 420 147 672 592 10;
+#X declare -lib flatgui;
+#X declare -lib flatgui;
+#X declare -lib flatgui;
+#X declare -lib flatgui;
+#X declare -lib zexy;
+#X obj 123 202 sp-goscbank4~;
+#X obj 123 395 +dsp;
+#X obj 123 358 sp-sum4~;
+#X obj 123 106 sp-goscbank4-freqgen;
+#X connect 0 0 2 0;
+#X connect 0 1 2 1;
+#X connect 0 2 2 2;
+#X connect 0 3 2 3;
+#X connect 2 0 1 0;
+#X connect 2 0 1 1;
+#X connect 3 0 0 0;
