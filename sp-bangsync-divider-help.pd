@@ -1,0 +1,23 @@
+#N canvas 605 181 450 300 10;
+#X obj 64 68 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 64 130 sp-bangsync-divider 0.5;
+#X obj 64 161 sp-beep~ 440;
+#X obj 119 257 dac~;
+#X floatatom 190 92 5 0 0 0 - - -;
+#X obj 64 95 sp-timebase 60 2;
+#X obj 223 130 sp-bangsync-divider3 0.5 0.75;
+#X obj 119 203 sp-ghub2~;
+#X obj 223 159 sp-beep~ 490;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 2 0 7 0;
+#X connect 4 0 1 1;
+#X connect 5 0 1 0;
+#X connect 5 0 6 0;
+#X connect 6 0 8 0;
+#X connect 7 0 3 0;
+#X connect 7 0 3 1;
+#X connect 7 1 3 0;
+#X connect 7 1 3 1;
+#X connect 8 0 7 1;
