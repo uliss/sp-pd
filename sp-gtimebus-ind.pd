@@ -1,0 +1,28 @@
+#N canvas 335 176 535 299 10;
+#X obj 21 21 cnv 15 98 78 \$0-cnv-s \$0-cnv-r timebus-ind[0] 5 12 0
+10 -13330 -262144 0;
+#X obj 249 22 loadbang;
+#X obj 249 50 f \$1;
+#X obj 249 100 s \$0-cnv-r;
+#X msg 249 75 label timebus-ind[\$1];
+#X obj 28 45 bng 15 50 50 0 \$0-b-s \$0-b-r empty 17 7 0 10 -262144
+-1 -1;
+#X obj 29 151 sp-timebus \$1;
+#X obj 50 46 nbx 5 14 0 1e+37 0 0 \$0-time-s \$0-time-r empty 0 -8
+0 10 -262144 -1 -1 0 256;
+#X obj 28 76 nbx 3 14 0 600 0 0 $-bpm-s $-bpm-r bpm 0 -8 0 10 -262144
+-1 -262144 60 256;
+#X obj 74 76 nbx 2 14 1 64 0 0 \$0-beats-s \$0-beats-r beats 0 -8 0
+10 -262144 -1 -262144 2 256;
+#X msg 135 75 getbpm \, getbeats;
+#X text 27 258 args: 1 - bus-id;
+#X connect 1 0 2 0;
+#X connect 1 0 10 0;
+#X connect 2 0 4 0;
+#X connect 4 0 3 0;
+#X connect 6 0 5 0;
+#X connect 6 1 7 0;
+#X connect 6 2 8 0;
+#X connect 6 3 9 0;
+#X connect 10 0 6 0;
+#X coords 0 -1 1 1 100 80 2 20 20;

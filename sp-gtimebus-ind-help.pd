@@ -1,0 +1,16 @@
+#N canvas 0 22 450 300 10;
+#X obj 60 76 sp-timebase 60 4 1;
+#X obj 60 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X floatatom 112 43 5 0 0 0 - - -;
+#X obj 210 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 262 43 5 0 0 0 - - -;
+#X obj 59 124 sp-gtimebus-ind 1;
+#X obj 209 126 sp-gtimebus-ind 2;
+#X obj 210 76 sp-timebase 60 4 2;
+#X text 53 267 [sp-gtimebus-ind] args: 1 - bus-id;
+#X connect 1 0 0 0;
+#X connect 2 0 0 1;
+#X connect 3 0 7 0;
+#X connect 4 0 7 1;

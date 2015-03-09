@@ -1,0 +1,7 @@
+#N canvas 64 294 450 300 10;
+#X obj 175 54 sp-gtimebase 90 2 1;
+#X obj 43 133 sp-gtimebus-ind;
+#X obj 174 133 sp-gtimebus-ind 1;
+#X obj 43 53 sp-gtimebase 60 2;
+#X text 45 21 [sp-gtimebase] args: 1 - bpm \, 2 - beats \, 3 - bus
+id;

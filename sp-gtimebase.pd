@@ -1,0 +1,50 @@
+#N canvas 592 130 578 235 10;
+#X obj 101 101 cnv 15 98 58 \$0-cnv-s \$0-cnv-r timebase:11 5 11 0
+10 -16662 -262144 0;
+#X obj 215 28 loadbang;
+#X msg 215 72 label timebase:\$1;
+#X obj 215 94 s \$0-cnv-r;
+#X obj 104 141 nbx 3 14 0 600 0 0 \$0-bpm-s \$0-bpm-r bpm 0 -8 0 10
+-262144 -1 -262144 60 256;
+#X obj 159 142 nbx 3 14 1 64 0 0 \$0-beats-s \$0-beats-r beats 0 -8
+0 10 -262144 -1 -262144 2 256;
+#X obj 175 107 tgl 20 0 \$0-on-s \$0-on-r empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj 175 192 sp-timebase \$1 \$2 \$3;
+#X obj 215 49 f \$3;
+#N canvas 102 269 331 221 param 0;
+#X obj 231 20 r \$0-bpm-s;
+#X obj 24 71 change;
+#X obj 24 95 s \$0-bpm-r;
+#X obj 24 161 change;
+#X obj 243 110 r \$0-beats-s;
+#X obj 24 185 s \$0-beats-r;
+#X obj 24 135 tof/param /timebase/\$1/\$2/\$3/beats \$2;
+#X obj 24 45 tof/param /timebase/\$1/\$2/\$3/bpm \$1;
+#X connect 0 0 7 1;
+#X connect 1 0 2 0;
+#X connect 3 0 5 0;
+#X connect 4 0 6 1;
+#X connect 6 0 3 0;
+#X connect 7 0 1 0;
+#X restore 25 192 pd param;
+#X obj 354 143 sp-param-file;
+#X obj 354 97 route timebase;
+#X obj 354 120 route save restore bpm beats;
+#X obj 354 27 inlet control;
+#X obj 436 166 s \$0-bpm-r;
+#X obj 477 190 s \$0-beats-r;
+#X text 15 6 args: 1 - bpm \, 2 - beats \, 3 - id;
+#X connect 1 0 8 0;
+#X connect 2 0 3 0;
+#X connect 4 0 7 1;
+#X connect 5 0 7 2;
+#X connect 6 0 7 0;
+#X connect 8 0 2 0;
+#X connect 11 0 12 0;
+#X connect 12 0 10 0;
+#X connect 12 1 10 1;
+#X connect 12 2 14 0;
+#X connect 12 3 15 0;
+#X connect 13 0 11 0;
+#X coords 0 -1 1 1 100 60 2 100 100;
