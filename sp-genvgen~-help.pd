@@ -1,0 +1,26 @@
+#N canvas 322 93 737 585 10;
+#X declare -lib ggee;
+#X obj 134 77 sp-genvgen~;
+#X obj 23 220 osc~ 440;
+#X obj 66 330 *~;
+#X obj 66 367 Scope~ 130 130 256 3 128 -1 1 0 0 0 0 102 255 51 135
+135 135 0;
+#X obj 395 74 sp-gparam;
+#X msg 134 42 envgen bang;
+#X msg 230 21 envgen env 0 50 1 75 0.5 100 0;
+#X obj 240 422 +dsp;
+#X obj 148 309 snapshot~;
+#X floatatom 197 342 5 0 0 0 - - -;
+#X obj 199 266 metro 10;
+#X obj 197 234 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X connect 0 0 2 1;
+#X connect 0 0 8 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 0 7 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 0;
+#X connect 8 0 9 0;
+#X connect 10 0 8 0;
+#X connect 11 0 10 0;
