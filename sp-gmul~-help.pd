@@ -1,0 +1,8 @@
+#N canvas 476 179 450 300 10;
+#X obj 33 76 sp-gmul~ m1;
+#X obj 316 210 sp-gparam;
+#X obj 33 140 scope~ 130 130 256 3 128 -1 1 0 0 0 0 102 255 51 135
+135 135 0;
+#X obj 33 21 osc~ 10;
+#X connect 0 0 2 0;
+#X connect 3 0 0 0;

@@ -1,0 +1,32 @@
+#N canvas 0 22 450 300 10;
+#X obj 101 101 cnv 15 98 25 empty empty empty 5 12 0 14 -66577 -262144
+0;
+#X obj 128 105 nbx 5 16 -1000 1000 0 0 \$0-mul-s \$0-mul-r *~ -20 7
+0 12 -262144 -260097 -262144 -18.33 256;
+#X obj 247 46 inlet~;
+#X obj 247 260 outlet~;
+#X obj 77 41 loadbang;
+#X msg 77 65 1;
+#X obj 310 47 inlet control;
+#X obj 28 210 tof/param /\$1/gmul/n 1;
+#X obj 157 180 r \$0-mul-s;
+#X obj 28 235 change;
+#X obj 28 261 s \$0-mul-r;
+#X obj 262 199 line~;
+#X obj 247 221 *~;
+#X msg 262 165 \$1 20;
+#X obj 262 141 r \$0-mul-s;
+#X obj 120 261 sp-param-file;
+#X text 119 238 no connection!;
+#X connect 2 0 12 0;
+#X connect 4 0 5 0;
+#X connect 5 0 1 0;
+#X connect 6 0 1 0;
+#X connect 7 0 9 0;
+#X connect 8 0 7 1;
+#X connect 9 0 10 0;
+#X connect 11 0 12 1;
+#X connect 12 0 3 0;
+#X connect 13 0 11 0;
+#X connect 14 0 13 0;
+#X coords 0 -1 1 1 100 26 1 100 100;
