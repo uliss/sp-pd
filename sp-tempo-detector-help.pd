@@ -1,0 +1,47 @@
+#N canvas 258 279 462 376 10;
+#X declare -lib maxlib;
+#X obj 133 73 sp-attack-detector 50 80;
+#X obj 133 41 adc~;
+#X msg 320 69 reset;
+#X obj 41 101 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 333 194 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 324 250 0;
+#X obj 133 187 spigot;
+#X obj 106 231 metro;
+#X msg 322 102 1;
+#X msg 370 249 1;
+#X obj 122 275 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 54 210 5 0 0 0 - - -;
+#X obj 322 224 del 10;
+#X obj 97 319 sp-beep~ 440;
+#X obj 96 344 dac~;
+#X msg 51 251 0;
+#X obj 375 221 del 10;
+#X obj 133 115 sp-tempo-detector 3;
+#X obj 170 267 sp-bangsync-divider 0.75;
+#X connect 0 0 3 0;
+#X connect 0 0 17 0;
+#X connect 1 0 0 0;
+#X connect 1 1 0 0;
+#X connect 2 0 8 0;
+#X connect 2 0 17 1;
+#X connect 4 0 12 0;
+#X connect 4 0 16 0;
+#X connect 5 0 6 1;
+#X connect 6 0 7 1;
+#X connect 6 0 11 0;
+#X connect 7 0 18 0;
+#X connect 8 0 6 1;
+#X connect 9 0 7 0;
+#X connect 10 0 13 0;
+#X connect 12 0 5 0;
+#X connect 13 0 14 0;
+#X connect 13 0 14 1;
+#X connect 15 0 7 0;
+#X connect 16 0 9 0;
+#X connect 17 0 6 0;
+#X connect 17 2 4 0;
+#X connect 18 0 13 0;
