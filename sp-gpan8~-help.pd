@@ -1,0 +1,17 @@
+#N canvas 310 153 513 453 10;
+#X declare -lib flatgui;
+#X obj 32 270 sp-gpan8~;
+#X obj 32 76 sp-gmix8~;
+#X obj 32 332 +dsp;
+#X obj 342 79 sp-gparam;
+#X connect 0 0 2 0;
+#X connect 0 1 2 1;
+#X connect 1 0 0 0;
+#X connect 1 1 0 1;
+#X connect 1 2 0 2;
+#X connect 1 3 0 3;
+#X connect 1 4 0 4;
+#X connect 1 5 0 5;
+#X connect 1 6 0 6;
+#X connect 1 7 0 7;
+#X connect 1 8 0 8;
