@@ -1,0 +1,7 @@
+#N canvas 0 22 450 300 10;
+#X declare -path ..;
+#X obj 155 71 sp-crackling~;
+#X obj 304 66 declare -path ..;
+#X obj 155 113 +dsp;
+#X connect 0 0 2 0;
+#X connect 0 0 2 1;

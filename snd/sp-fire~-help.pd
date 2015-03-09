@@ -1,0 +1,7 @@
+#N canvas 0 22 450 300 10;
+#X declare -path ..;
+#X obj 122 44 sp-fire~;
+#X obj 122 103 +dsp;
+#X obj 300 44 declare -path ..;
+#X connect 0 0 1 0;
+#X connect 0 0 1 1;

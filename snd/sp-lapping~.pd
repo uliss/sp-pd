@@ -1,0 +1,16 @@
+#N canvas 0 22 450 300 10;
+#X obj 97 45 noise~;
+#X obj 97 73 bp~ 30 5;
+#X obj 97 100 *~ 100;
+#X obj 97 128 hip~ 25;
+#X obj 97 154 clip~ -0.9 0.9;
+#X obj 97 181 hip~ 25;
+#X obj 97 207 *~ 0.6;
+#X obj 97 235 outlet~;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;

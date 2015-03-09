@@ -1,0 +1,14 @@
+#N canvas 0 22 458 366 10;
+#X obj 93 68 sp-hissing~;
+#X obj 196 68 sp-crackling~;
+#X obj 196 96 *~ 0.3;
+#X obj 93 97 *~ 0.2;
+#X obj 161 188 outlet~;
+#X obj 296 68 sp-lapping~;
+#X obj 296 102 *~ 0.6;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 5 0 6 0;
+#X connect 6 0 4 0;
