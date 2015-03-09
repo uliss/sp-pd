@@ -1,0 +1,10 @@
+#N canvas 0 22 590 309 10;
+#X obj 380 106 sp-gparam;
+#X obj 142 240 sp-beep~ 220;
+#X obj 142 269 dac~;
+#X obj 142 106 sp-gadetector~;
+#X obj 142 71 adc~ 1;
+#X connect 1 0 2 0;
+#X connect 1 0 2 1;
+#X connect 3 0 1 0;
+#X connect 4 0 3 0;
