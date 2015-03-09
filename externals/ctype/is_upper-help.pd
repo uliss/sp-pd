@@ -1,0 +1,38 @@
+#N canvas 305 22 655 396 10;
+#X obj 27 21 cnv 15 600 60 empty empty is_upper 12 12 0 22 -204786
+-66577 0;
+#X obj 33 281 cnv 15 15 15 empty empty inlets 0 0 0 14 -262144 -66577
+0;
+#X obj 33 323 cnv 15 15 15 empty empty outlets 0 0 0 14 -262144 -66577
+0;
+#X obj 33 362 cnv 15 15 15 empty empty arguments 0 0 0 14 -262144 -66577
+0;
+#X obj 32 303 cnv 2 600 2 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 474 25 (c) Serj Poltavski \, 2013;
+#X symbolatom 102 146 10 0 0 0 - - -;
+#X obj 32 258 cnv 2 600 2 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 32 343 cnv 2 600 2 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 124 315 0) int;
+#X msg 251 102 symbol;
+#X text 125 273 0) symbol;
+#X obj 182 162 is_upper;
+#X obj 182 189 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 39 54 upper-case character test from C library.;
+#X text 123 354 (none);
+#X text 237 315 - outputs 1 if given symbol in upper case \, 0 if not.
+;
+#X text 237 273 - character to test.;
+#X msg 182 102 symbol A;
+#X msg 305 102 symbol a;
+#X msg 305 145 symbol Ф;
+#X text 373 145 Cyrillic capital F.;
+#X connect 6 0 12 0;
+#X connect 10 0 12 0;
+#X connect 12 0 13 0;
+#X connect 18 0 12 0;
+#X connect 19 0 12 0;
+#X connect 20 0 12 0;
