@@ -1,0 +1,15 @@
+#N canvas 0 22 658 485 10;
+#X declare -lib zexy;
+#X obj 99 348 env~;
+#X floatatom 99 385 5 0 0 0 - - -;
+#X msg 191 157 input mute \$1;
+#X obj 191 136 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 406 65 sp-gparam;
+#X obj 99 98 adc~ 1;
+#X obj 99 211 sp-ginput~;
+#X connect 0 0 1 0;
+#X connect 2 0 6 0;
+#X connect 3 0 2 0;
+#X connect 5 0 6 0;
+#X connect 6 0 0 0;
