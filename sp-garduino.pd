@@ -224,8 +224,8 @@
 #X obj 466 325 s \$0-right-r;
 #X obj 150 386 r \$0-left-s;
 #X obj 241 382 r \$0-right-s;
-#X obj 11 130 cnv 15 198 18 \$0-label-s \$0-label b0 b1 pd0 pd1 ft0 ft1 ft2 ft3
-12 11 0 10 -66577 -262144 0;
+#X obj 11 130 cnv 15 198 18 \$0-label-s \$0-label empty 12 11 0 10
+-66577 -262144 0;
 #X msg 500 45 led_red \$1;
 #X msg 390 45 led_green \$1;
 #X text 16 82 mode:;
